@@ -1,0 +1,10 @@
+.venv/
+.DS_Store
+jobmatch/target/
+jobmatch/data/
+jobmatch/e2e/node_modules/
+jobmatch/e2e/test-results/
+jobmatch/e2e/playwright-report/
+jobmatch/e2e/results.json
+scripts/reference.docx
+~$*
