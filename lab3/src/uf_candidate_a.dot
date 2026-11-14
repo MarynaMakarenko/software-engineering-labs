@@ -1,0 +1,47 @@
+digraph uf_candidate_a {
+  graph [rankdir=TB, fontname="Arial", fontsize=12, nodesep=0.35, ranksep=0.4, pad=0.35, newrank=true, compound=true];
+  node [fontname="Arial", fontsize=11, style=filled, fillcolor=white, color=black, penwidth=1.2];
+  edge [fontname="Arial", fontsize=9.5, color="#222222", arrowsize=0.8];
+  st [shape=ellipse, fillcolor="#dddddd", penwidth=1.4, fontsize=11, label="Ціль: представити себе\nроботодавцям (після входу, рис. 1)"];
+  subgraph cluster_t1 {
+    label="Завдання: вести резюме та історію роботи (C1, C2)"; labeljust=l; style="dashed,rounded"; color="#777777"; fontsize=11; fontname="Arial Bold"; margin=10;
+    res [shape=box, margin="0.08,0.04", class="page", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="2"><TR><TD><B>Моє резюме</B></TD></TR><TR><TD><FONT POINT-SIZE="9" COLOR="#555555">/me/resume</FONT></TD></TR><HR/><TR><TD ALIGN="LEFT" BALIGN="LEFT"><FONT POINT-SIZE="10">• особисті дані, статус, бажані умови<BR/>• освіта: «Додати освіту», «Видалити»<BR/>• «Редагувати»</FONT></TD></TR></TABLE>>];
+    resEdit [shape=box, margin="0.08,0.04", class="page", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="2"><TR><TD><B>Редагування резюме</B></TD></TR><TR><TD><FONT POINT-SIZE="9" COLOR="#555555">/me/resume/edit</FONT></TD></TR><HR/><TR><TD ALIGN="LEFT" BALIGN="LEFT"><FONT POINT-SIZE="10">• ПІБ, дата народж., телефон, email,<BR/>• місто, адреса, статус пошуку,<BR/>• бажана посада, зарплата, про себе</FONT></TD></TR></TABLE>>];
+    dv1 [shape=diamond, fillcolor="#e9e9e9", fontsize=10, margin="0.02,0.02", label="Дані\nкоректні?"];
+    edu [shape=box, margin="0.08,0.04", class="page", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="2"><TR><TD><B>Додавання освіти</B></TD></TR><TR><TD><FONT POINT-SIZE="9" COLOR="#555555">/me/education/new</FONT></TD></TR><HR/><TR><TD ALIGN="LEFT" BALIGN="LEFT"><FONT POINT-SIZE="10">• рівень, заклад,<BR/>• спеціальність, рік</FONT></TD></TR></TABLE>>];
+    dv2 [shape=diamond, fillcolor="#e9e9e9", fontsize=10, margin="0.02,0.02", label="Дані\nкоректні?"];
+    dDelE [shape=diamond, fillcolor="#e9e9e9", fontsize=10, margin="0.02,0.02", label="Підтвердити\nвидалення?"];
+    work [shape=box, margin="0.08,0.04", class="page", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="2"><TR><TD><B>Історія роботи</B></TD></TR><TR><TD><FONT POINT-SIZE="9" COLOR="#555555">/me/work</FONT></TD></TR><HR/><TR><TD ALIGN="LEFT" BALIGN="LEFT"><FONT POINT-SIZE="10">• компанія, посада, зарплата, дати; стаж<BR/>• «Додати», «Редагувати», «Видалити»</FONT></TD></TR></TABLE>>];
+    wForm [shape=box, margin="0.08,0.04", class="group", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="2"><TR><TD><B>Новий запис роботи ·<BR/>Редагування запису роботи</B></TD></TR><TR><TD><FONT POINT-SIZE="9" COLOR="#555555">/me/work/new, /me/work/{id}/edit</FONT></TD></TR><HR/><TR><TD ALIGN="LEFT" BALIGN="LEFT"><FONT POINT-SIZE="10">• компанія, посада, зарплата,<BR/>• дата початку, дата завершення</FONT></TD></TR></TABLE>>];
+    dv3 [shape=diamond, fillcolor="#e9e9e9", fontsize=10, margin="0.02,0.02", label="Дати й поля\nкоректні?"];
+    dDelW [shape=diamond, fillcolor="#e9e9e9", fontsize=10, margin="0.02,0.02", label="Підтвердити\nвидалення?"];
+    e1 [shape=ellipse, fillcolor="#dddddd", penwidth=2.6, fontsize=11, label="Результат:\nрезюме актуальне"];
+  }
+  st -> res [];
+  Rt [shape=circle, width=0.36, fixedsize=true, fontsize=11, label="Р"];
+  Rb [shape=circle, width=0.36, fixedsize=true, fontsize=11, label="Р"];
+  Rt -> res [];
+  res -> resEdit [label="«Редагувати»"];
+  resEdit -> dv1 [label="«Зберегти»"];
+  dv1 -> Rb [label="так: «Збережено»"];
+  dv1 -> resEdit [constraint=false, label="ні", style=dashed];
+  res -> edu [label="«Додати освіту»"];
+  edu -> dv2 [label="«Зберегти»"];
+  dv2 -> Rb [label="так"];
+  dv2 -> edu [constraint=false, label="ні", style=dashed];
+  res -> dDelE [label="«Видалити»\nосвіту"];
+  dDelE -> Rb [label="так", arrowhead=normaltee, arrowsize=0.9];
+  dDelE -> Rb [label="ні", style=dashed];
+  res -> work [label="меню «Історія роботи»", minlen=3];
+  It [shape=circle, width=0.36, fixedsize=true, fontsize=11, label="І"];
+  Ib [shape=circle, width=0.36, fixedsize=true, fontsize=11, label="І"];
+  It -> work [];
+  work -> wForm [label="«Додати» /\n«Редагувати»"];
+  wForm -> dv3 [label="«Зберегти»"];
+  dv3 -> Ib [label="так"];
+  dv3 -> wForm [constraint=false, label="ні", style=dashed];
+  work -> dDelW [label="«Видалити»"];
+  dDelW -> Ib [label="так", arrowhead=normaltee, arrowsize=0.9];
+  dDelW -> Ib [label="ні", style=dashed];
+  work -> e1 [];
+}

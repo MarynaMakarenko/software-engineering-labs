@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="uk"><head><meta charset="utf-8"><title>Wireflow R2 — альтернативні потоки A4–A7</title>
+<link rel="stylesheet" href="wf.css"></head>
+<body><div class="canvas" style="height:840px">
+
+<!-- Е10 вакансію закрито (A4) -->
+<div class="cap" style="left:30px;top:62px">Е10 · Вакансію закрито <small>A4</small></div>
+<div class="scr" style="left:30px;top:90px;height:250px">
+  <div class="hdr"><b>JobMatch</b><span class="pill"></span><span class="pill on">Панель</span><span class="pill"></span><span class="pill"></span><span class="pill"></span><span class="pill r"></span></div>
+  <div class="body">
+    <div class="crumb">Панель › Підбір кандидатів</div>
+    <div class="h1">Підбір кандидатів</div>
+    <div class="params"><div>Компанія<span class="bar"></span></div><div>Посада<span class="bar"></span></div><div>Статус<br><span class="badge">Закрита</span></div></div>
+    <div class="err" style="margin-top:12px;font-size:13px"><b class="ic">!</b><b>Вакансію закрито — підбір недоступний</b>
+      <div style="margin-top:8px"><span class="lnk">До відкритих вакансій</span></div></div>
+  </div>
+</div>
+
+<!-- Е11 помилка коментаря (A5) / скасування (A6) -->
+<div class="cap" style="left:690px;top:62px">Е11 · Коментар довший за 500 <small>A5, A6</small></div>
+<div class="scr" style="left:690px;top:90px;height:312px">
+  <div class="hdr"><b>JobMatch</b><span class="pill"></span><span class="pill on">Панель</span><span class="pill"></span><span class="pill"></span><span class="pill"></span><span class="pill r"></span></div>
+  <div class="body"><div class="crumb">Панель › Підбір кандидатів</div><div class="h1">Підбір кандидатів</div></div>
+  <div class="overlay"></div>
+  <div class="dlg" style="top:44px;left:24px;right:24px">
+    <div class="h1">Запропонувати кандидата</div>
+    <div style="font-size:12.5px">Коментар для компанії <span class="muted">(необов'язково, до 500 символів)</span></div>
+    <div class="ta bad"><span class="bar" style="width:330px"></span><br><span class="bar" style="width:330px"></span><br><span class="bar" style="width:220px"></span></div>
+    <div class="cnt"><b>612 / 500</b></div>
+    <div class="err" style="margin:4px 0"><b class="ic">!</b><b>Коментар довший за 500 символів.</b><br>Скоротіть текст до 500 символів.<br>Лічильник під полем показує кількість введених символів.</div>
+    <div class="row"><span class="btn pri">Підтвердити</span><span class="btn sel">Скасувати</span></div>
+  </div>
+</div>
+
+<!-- Е12 404 (A7) -->
+<div class="cap" style="left:30px;top:520px">Е12 · 404 — Не знайдено <small>A7</small></div>
+<div class="scr" style="left:30px;top:548px;height:262px">
+  <div class="hdr"><b>JobMatch</b><span class="pill"></span><span class="pill"></span><span class="pill"></span><span class="pill"></span><span class="pill"></span><span class="pill r"></span></div>
+  <div class="body" style="text-align:center;padding-top:26px">
+    <div style="font-size:52px;font-weight:bold;letter-spacing:2px">404</div>
+    <div style="font-size:18px;font-weight:bold;margin:4px 0 8px">Не знайдено</div>
+    <div class="muted" style="font-size:13px;margin-bottom:14px">Вакансію або людину видалено іншим користувачем.</div>
+    <span class="btn pri" style="font-size:13px;padding:4px 14px">На панель</span>
+  </div>
+</div>
+
+<div class="legend" style="left:690px;top:548px;width:460px">
+  <b>Відповідність альтернативних потоків екранам</b><br>
+  A1 → Е6, Е7 &nbsp;·&nbsp; A2 → Е8 &nbsp;·&nbsp; A3 → Е9<br>
+  A4 → Е10 &nbsp;·&nbsp; A5, A6 → Е11 &nbsp;·&nbsp; A7 → Е12<br>
+  Діагностичне повідомлення — 3 речення: 1-ше (жирне) —<br>
+  сутність помилки, 2-ге — як виправити зараз,<br>
+  3-тє — як запобігти надалі. Введене зберігається.
+</div>
+
+<svg class="arrows" width="1180" height="840">
+  <defs><marker id="ah" markerWidth="12" markerHeight="10" refX="11" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L12,5 L0,10 z" style="fill:#111;stroke:none"/></marker></defs>
+  <!-- вхід у Е10 -->
+  <circle cx="440" cy="26" r="19"/><text x="440" y="31" text-anchor="middle" class="c">Е1</text>
+  <line x1="440" y1="45" x2="440" y2="86" marker-end="url(#ah)"/>
+  <text x="410" y="31" text-anchor="end"><tspan font-weight="bold">A4</tspan> · вакансія вже закрита</text>
+  <!-- Е10 -> Е1 -->
+  <line x1="492" y1="260" x2="600" y2="260" marker-end="url(#ah)"/>
+  <circle cx="620" cy="260" r="19"/><text x="620" y="265" text-anchor="middle" class="c">Е1</text>
+  <text x="560" y="222" text-anchor="middle">«До відкритих</text>
+  <text x="560" y="240" text-anchor="middle">вакансій»</text>
+  <!-- вхід у Е11 -->
+  <circle cx="1100" cy="26" r="19"/><text x="1100" y="31" text-anchor="middle" class="c">Е4</text>
+  <line x1="1100" y1="45" x2="1100" y2="86" marker-end="url(#ah)"/>
+  <text x="1070" y="31" text-anchor="end"><tspan font-weight="bold">A5</tspan> · коментар &gt; 500, «Підтвердити»</text>
+  <!-- A6: Скасувати -> Е2 -->
+  <line x1="800" y1="404" x2="800" y2="452" marker-end="url(#ah)"/>
+  <circle cx="800" cy="472" r="19"/><text x="800" y="477" text-anchor="middle" class="c">Е2</text>
+  <text x="788" y="434" text-anchor="end"><tspan font-weight="bold">A6</tspan> · «Скасувати»: БД без змін</text>
+  <!-- A5 виправлено -> Е5 -->
+  <line x1="1060" y1="404" x2="1060" y2="452" marker-end="url(#ah)"/>
+  <circle cx="1060" cy="472" r="19"/><text x="1060" y="477" text-anchor="middle" class="c">Е5</text>
+  <text x="1048" y="434" text-anchor="end">скорочено, «Підтвердити»</text>
+  <!-- вхід у Е12 -->
+  <circle cx="440" cy="484" r="24"/><text x="440" y="489" text-anchor="middle" class="c" font-size="12">Е1–4</text>
+  <line x1="440" y1="508" x2="440" y2="544" marker-end="url(#ah)"/>
+  <text x="406" y="489" text-anchor="end"><tspan font-weight="bold">A7</tspan> · вакансію / людину видалено</text>
+  <!-- Е12 -> Е1 -->
+  <line x1="492" y1="740" x2="600" y2="740" marker-end="url(#ah)"/>
+  <circle cx="620" cy="740" r="19"/><text x="620" y="745" text-anchor="middle" class="c">Е1</text>
+  <text x="556" y="722" text-anchor="middle">«На панель»</text>
+</svg>
+</div></body></html>

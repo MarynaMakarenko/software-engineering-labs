@@ -1,0 +1,38 @@
+digraph uf_candidate_b {
+  graph [rankdir=TB, fontname="Arial", fontsize=12, nodesep=0.35, ranksep=0.4, pad=0.35, newrank=true, compound=true];
+  node [fontname="Arial", fontsize=11, style=filled, fillcolor=white, color=black, penwidth=1.2];
+  edge [fontname="Arial", fontsize=9.5, color="#222222", arrowsize=0.8];
+  st [shape=ellipse, fillcolor="#dddddd", penwidth=1.4, fontsize=11, label="Ціль: знайти роботу\n(після входу, рис. 1)"];
+  res [shape=box, margin="0.08,0.04", class="page", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="2"><TR><TD><B>Моє резюме</B></TD></TR><TR><TD><FONT POINT-SIZE="9" COLOR="#555555">/me/resume (рис. 3а)</FONT></TD></TR><HR/><TR><TD ALIGN="LEFT" BALIGN="LEFT"><FONT POINT-SIZE="10">• меню ролі, шапка</FONT></TD></TR></TABLE>>];
+  subgraph cluster_t2 {
+    label="Завдання: знайти роботу й відгукнутися (C3, G1, C4)"; labeljust=l; style="dashed,rounded"; color="#777777"; fontsize=11; fontname="Arial Bold"; margin=10;
+    m1 [shape=box, class="process", margin="0.22,0.06", fillcolor="#f2f2f2", label="Оцінювання відповідності (M1)"];
+    dm [shape=diamond, fillcolor="#e9e9e9", fontsize=10, margin="0.02,0.02", label="Є вакансії\n≥ 50 %?"];
+    mat [shape=box, margin="0.08,0.04", class="page", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="2"><TR><TD><B>Відповідні вакансії</B></TD></TR><TR><TD><FONT POINT-SIZE="9" COLOR="#555555">/me/matches</FONT></TD></TR><HR/><TR><TD ALIGN="LEFT" BALIGN="LEFT"><FONT POINT-SIZE="10">• посада, компанія, зарплата,<BR/>• оцінка, складові</FONT></TD></TR></TABLE>>];
+    vac [shape=box, margin="0.08,0.04", class="page", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="2"><TR><TD><B>Вакансії</B></TD></TR><TR><TD><FONT POINT-SIZE="9" COLOR="#555555">/vacancies</FONT></TD></TR><HR/><TR><TD ALIGN="LEFT" BALIGN="LEFT"><FONT POINT-SIZE="10">• фільтри G1</FONT></TD></TR></TABLE>>];
+    cV [shape=circle, width=0.36, fixedsize=true, fontsize=11, label="В"];
+    card [shape=box, margin="0.08,0.04", class="page", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="2"><TR><TD><B>Вакансія</B></TD></TR><TR><TD><FONT POINT-SIZE="9" COLOR="#555555">/vacancies/{id}</FONT></TD></TR><HR/><TR><TD ALIGN="LEFT" BALIGN="LEFT"><FONT POINT-SIZE="10">• вимоги, умови<BR/>• «Відгукнутися»</FONT></TD></TR></TABLE>>];
+    dap [shape=diamond, fillcolor="#e9e9e9", fontsize=10, margin="0.02,0.02", label="Вакансія відкрита,\nвідгуку ще немає?"];
+    apc [shape=box, class="process", margin="0.22,0.06", fillcolor="#f2f2f2", label="Створення кандидатури\n(«Нова», джерело «Шукач»)"];
+  }
+  subgraph cluster_t3 {
+    label="Завдання: стежити за відгуками (C5)"; labeljust=l; style="dashed,rounded"; color="#777777"; fontsize=11; fontname="Arial Bold"; margin=10;
+    apps [shape=box, margin="0.08,0.04", class="page", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="2"><TR><TD><B>Мої відгуки</B></TD></TR><TR><TD><FONT POINT-SIZE="9" COLOR="#555555">/me/applications</FONT></TD></TR><HR/><TR><TD ALIGN="LEFT" BALIGN="LEFT"><FONT POINT-SIZE="10">• вакансія, компанія, дата, статус</FONT></TD></TR></TABLE>>];
+    e2 [shape=ellipse, fillcolor="#dddddd", penwidth=2.6, fontsize=11, label="Результат: відгук\nнадіслано, статус відомий"];
+  }
+  st -> res [];
+  res -> m1 [label="меню «Відповідні\nвакансії»"];
+  m1 -> dm [];
+  dm -> mat [label="так"];
+  dm -> res [constraint=false, label="ні: порожній стан,\n«Доповніть резюме»", style=dashed];
+  res -> vac [label="«Вакансії»\nу шапці"];
+  mat -> cV [label="посада вакансії"];
+  vac -> cV [label="картка"];
+  cV -> card [];
+  card -> dap [label="«Відгукнутися»"];
+  dap -> apc [label="так"];
+  dap -> card [constraint=false, label="ні: показано\nстатус відгуку", style=dashed];
+  apc -> apps [label="«Відгук надіслано»", arrowhead=normaltee, arrowsize=0.9];
+  res -> apps [label="меню «Мої відгуки»"];
+  apps -> e2 [];
+}

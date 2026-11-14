@@ -1,0 +1,83 @@
+digraph uf_recruiter_data {
+  graph [rankdir=TB, fontname="Arial", fontsize=12, nodesep=0.35, ranksep=0.42, pad=0.35, newrank=true, compound=true];
+  node [fontname="Arial", fontsize=11, style=filled, fillcolor=white, color=black, penwidth=1.2];
+  edge [fontname="Arial", fontsize=9.5, color="#222222", arrowsize=0.8];
+  st [shape=ellipse, fillcolor="#dddddd", penwidth=1.4, fontsize=11, label="Ціль: підтримувати базу людей і компаній,\nпідбирати вакансії шукачам (після входу)"];
+  panel [shape=box, margin="0.08,0.04", class="page", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="2"><TR><TD><B>Панель рекрутера</B></TD></TR><TR><TD><FONT POINT-SIZE="9" COLOR="#555555">/recruiter</FONT></TD></TR><HR/><TR><TD ALIGN="LEFT" BALIGN="LEFT"><FONT POINT-SIZE="10">• меню «Резюме», «Компанії»</FONT></TD></TR></TABLE>>];
+  subgraph cluster_t1 {
+    label="Завдання: знайти людей і вести їхні дані (R1, R4, R5)"; labeljust=l; style="dashed,rounded"; color="#777777"; fontsize=11; fontname="Arial Bold"; margin=10;
+    people [shape=box, margin="0.08,0.04", class="page", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="2"><TR><TD><B>Резюме</B></TD></TR><TR><TD><FONT POINT-SIZE="9" COLOR="#555555">/recruiter/people</FONT></TD></TR><HR/><TR><TD ALIGN="LEFT" BALIGN="LEFT"><FONT POINT-SIZE="10">• фільтри R1: освіта від, компанія, посада,<BR/>• зарплата від–до, статус<BR/>• «Знайти», «Додати людину»</FONT></TD></TR></TABLE>>];
+    dRes [shape=diamond, fillcolor="#e9e9e9", fontsize=10, margin="0.02,0.02", label="Є резюме?"];
+    person [shape=box, margin="0.08,0.04", class="page", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="2"><TR><TD><B>Картка людини</B></TD></TR><TR><TD><FONT POINT-SIZE="9" COLOR="#555555">/recruiter/people/{id}</FONT></TD></TR><HR/><TR><TD ALIGN="LEFT" BALIGN="LEFT"><FONT POINT-SIZE="10">• особисті дані, освіта, історія роботи, стаж,<BR/>• кандидатури людини<BR/>• «Редагувати», «Видалити», «Підібрати вакансії»</FONT></TD></TR></TABLE>>];
+    pForm [shape=box, margin="0.08,0.04", class="group", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="2"><TR><TD><B>Нова людина · Редагування людини</B></TD></TR><TR><TD><FONT POINT-SIZE="9" COLOR="#555555">/recruiter/people/new, …/{id}/edit</FONT></TD></TR><HR/><TR><TD ALIGN="LEFT" BALIGN="LEFT"><FONT POINT-SIZE="10">• резюме, освіта, історія роботи</FONT></TD></TR></TABLE>>];
+    dvP [shape=diamond, fillcolor="#e9e9e9", fontsize=10, margin="0.02,0.02", label="Дані\nкоректні?"];
+    dDelP [shape=diamond, fillcolor="#e9e9e9", fontsize=10, margin="0.02,0.02", label="Підтвердити\nвидалення?"];
+    e1 [shape=ellipse, fillcolor="#dddddd", penwidth=2.6, fontsize=11, label="Результат: дані\nлюдини актуальні"];
+  }
+  subgraph cluster_t3 {
+    label="Завдання: підібрати вакансії шукачу (R3)"; labeljust=l; style="dashed,rounded"; color="#777777"; fontsize=11; fontname="Arial Bold"; margin=10;
+    m1b [shape=box, class="process", margin="0.22,0.06", fillcolor="#f2f2f2", label="Оцінювання відповідності (M1)"];
+    pm [shape=box, margin="0.08,0.04", class="page", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="2"><TR><TD><B>Підбір вакансій</B></TD></TR><TR><TD><FONT POINT-SIZE="9" COLOR="#555555">/recruiter/people/{id}/matches</FONT></TD></TR><HR/><TR><TD ALIGN="LEFT" BALIGN="LEFT"><FONT POINT-SIZE="10">• відкриті вакансії ≥ 50 %: посада,<BR/>• компанія, зарплата, оцінка, складові</FONT></TD></TR></TABLE>>];
+    e3 [shape=ellipse, fillcolor="#dddddd", penwidth=2.6, fontsize=11, label="Результат: шукачу\nпідібрано вакансії"];
+  }
+  subgraph cluster_t4 {
+    label="Завдання: вести компанії та їхні вакансії (R6)"; labeljust=l; style="dashed,rounded"; color="#777777"; fontsize=11; fontname="Arial Bold"; margin=10;
+    comps [shape=box, margin="0.08,0.04", class="page", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="2"><TR><TD><B>Компанії</B></TD></TR><TR><TD><FONT POINT-SIZE="9" COLOR="#555555">/recruiter/companies</FONT></TD></TR><HR/><TR><TD ALIGN="LEFT" BALIGN="LEFT"><FONT POINT-SIZE="10">• пошук за назвою<BR/>• назва, місто, відкриті вакансії<BR/>• «Додати компанію»</FONT></TD></TR></TABLE>>];
+    cc [shape=box, margin="0.08,0.04", class="page", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="2"><TR><TD><B>Картка компанії</B></TD></TR><TR><TD><FONT POINT-SIZE="9" COLOR="#555555">/recruiter/companies/{id}</FONT></TD></TR><HR/><TR><TD ALIGN="LEFT" BALIGN="LEFT"><FONT POINT-SIZE="10">• дані компанії, її вакансії<BR/>• «Редагувати», «Видалити»<BR/>• «Додати вакансію», «Закрити» / «Відкрити»<BR/>• «Підібрати кандидатів»</FONT></TD></TR></TABLE>>];
+    cForm [shape=box, margin="0.08,0.04", class="group", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="2"><TR><TD><B>Нова компанія ·<BR/>Редагування компанії</B></TD></TR><TR><TD><FONT POINT-SIZE="9" COLOR="#555555">/recruiter/companies/new, …/{id}/edit</FONT></TD></TR><HR/><TR><TD ALIGN="LEFT" BALIGN="LEFT"><FONT POINT-SIZE="10">• назва, місто, адреса, контакти, опис</FONT></TD></TR></TABLE>>];
+    vForm [shape=box, margin="0.08,0.04", class="group", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="2"><TR><TD><B>Нова вакансія компанії ·<BR/>Редагування вакансії компанії</B></TD></TR><TR><TD><FONT POINT-SIZE="9" COLOR="#555555">…/companies/{id}/vacancies/new, /recruiter/vacancies/{id}/edit</FONT></TD></TR><HR/><TR><TD ALIGN="LEFT" BALIGN="LEFT"><FONT POINT-SIZE="10">• посада, зарплата, мін. освіта,<BR/>• мін. досвід, місто, вимоги</FONT></TD></TR></TABLE>>];
+    dvC [shape=diamond, fillcolor="#e9e9e9", fontsize=10, margin="0.02,0.02", label="Дані\nкоректні?"];
+    dvV [shape=diamond, fillcolor="#e9e9e9", fontsize=10, margin="0.02,0.02", label="Дані\nкоректні?"];
+    dDelC [shape=diamond, fillcolor="#e9e9e9", fontsize=10, margin="0.02,0.02", label="Підтвердити\nвидалення?"];
+    cP [shape=circle, width=0.36, fixedsize=true, fontsize=11, label="П", xlabel="до рис. 5а", fontsize=11];
+    e4 [shape=ellipse, fillcolor="#dddddd", penwidth=2.6, fontsize=11, label="Результат: дані компаній\nі вакансій актуальні"];
+  }
+  st -> panel [];
+  panel -> people [label="меню «Резюме»"];
+  people -> dRes [label="«Знайти»"];
+  dRes -> person [label="так: ПІБ"];
+  dRes -> people [constraint=false, label="ні: порожній стан,\n«Скинути фільтри»", style=dashed];
+  people -> pForm [label="«Додати людину»"];
+  person -> pForm [label="«Редагувати»"];
+  pForm -> dvP [label="«Зберегти»"];
+  Kt [shape=circle, width=0.36, fixedsize=true, fontsize=11, label="К"];
+  Kb [shape=circle, width=0.36, fixedsize=true, fontsize=11, label="К"];
+  Kt -> person [];
+  dvP -> Kb [label="так"];
+  dvP -> pForm [constraint=false, label="ні: діагностика", style=dashed];
+  person -> dDelP [label="«Видалити»"];
+  Lt [shape=circle, width=0.36, fixedsize=true, fontsize=11, label="Л"];
+  Lb [shape=circle, width=0.36, fixedsize=true, fontsize=11, label="Л"];
+  Lt -> people [];
+  dDelP -> Lb [label="так", arrowhead=normaltee, arrowsize=0.9];
+  dDelP -> Kb [label="ні", style=dashed];
+  person -> e1 [];
+  person -> m1b [label="«Підібрати вакансії»"];
+  m1b -> pm [];
+  pm -> e3 [];
+  cP2 [shape=circle, width=0.36, fixedsize=true, fontsize=11, label="П", xlabel="до рис. 5а", fontsize=11];
+  pm -> cP2 [label="посада вакансії\n(R2)"];
+  panel -> comps [label="меню «Компанії»"];
+  comps -> cc [label="назва"];
+  comps -> cForm [label="«Додати компанію»"];
+  cc -> cForm [label="«Редагувати»"];
+  cc -> vForm [label="«Додати вакансію» /\n«Редагувати» вакансію"];
+  cForm -> dvC [label="«Зберегти»"];
+  Ft [shape=circle, width=0.36, fixedsize=true, fontsize=11, label="Ф"];
+  Fb [shape=circle, width=0.36, fixedsize=true, fontsize=11, label="Ф"];
+  Ft -> cc [];
+  dvC -> Fb [label="так"];
+  dvC -> cForm [constraint=false, label="ні", style=dashed];
+  vForm -> dvV [label="«Зберегти»"];
+  dvV -> Fb [label="так"];
+  dvV -> vForm [constraint=false, label="ні", style=dashed];
+  cc -> dDelC [label="«Видалити»\n(компанію / вакансію)"];
+  Tt [shape=circle, width=0.36, fixedsize=true, fontsize=11, label="Т"];
+  Tb [shape=circle, width=0.36, fixedsize=true, fontsize=11, label="Т"];
+  Tt -> comps [];
+  dDelC -> Tb [label="так", arrowhead=normaltee, arrowsize=0.9];
+  dDelC -> Fb [label="ні", style=dashed];
+  cc -> cP [label="«Підібрати\nкандидатів»"];
+  cc -> e4 [];
+  Kb -> Tt [style=invis]; Lb -> Tt [style=invis]; dvP -> Tt [style=invis];
+}

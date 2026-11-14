@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="734" font-family="Arial" font-size="15">
+<defs><marker id="ah" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 z" fill="#222"/></marker></defs>
+<rect width="860" height="734" fill="white"/>
+<rect x="50" y="21.0" width="110" height="52" fill="white" stroke="black" stroke-width="1.4"/><text x="105" y="37.0" text-anchor="middle" font-weight="bold" font-size="13">Сторінка</text><text x="105" y="50.0" text-anchor="middle" font-size="10" fill="#555">/url</text><line x1="57" y1="54.0" x2="153" y2="54.0" stroke="black"/><text x="59" y="67.0" font-size="11">• дія</text>
+<text x="215" y="52.0">Сторінка: ім'я, URL; під рискою — дії користувача на сторінці</text>
+<rect x="58" y="83.0" width="110" height="40" fill="white" stroke="black" stroke-width="1.4"/>
+<rect x="54" y="87.0" width="110" height="40" fill="white" stroke="black" stroke-width="1.4"/>
+<rect x="50" y="91.0" width="110" height="40" fill="white" stroke="black" stroke-width="1.4"/>
+<text x="105" y="116.0" text-anchor="middle" font-weight="bold" font-size="13">Група</text>
+<text x="215" y="116.0">Група сторінок (три злиті прямокутники)</text>
+<rect x="50" y="155.0" width="110" height="40" fill="#f2f2f2" stroke="black" stroke-width="1.4"/><line x1="57" y1="155.0" x2="57" y2="195.0" stroke="black" stroke-width="1.4"/><line x1="153" y1="155.0" x2="153" y2="195.0" stroke="black" stroke-width="1.4"/><text x="105" y="180.0" text-anchor="middle" font-size="13">Процес</text>
+<text x="215" y="180.0">Процес — дія з вкладеними діями, яку виконує застосунок</text>
+<polygon points="55,239.0 105,214.0 155,239.0 105,264.0" fill="#e9e9e9" stroke="black" stroke-width="1.4"/><text x="105" y="244.0" text-anchor="middle" font-size="12">Умова?</text>
+<text x="215" y="244.0">Розгалуження — рішення користувача або перевірка застосунку</text>
+<ellipse cx="105" cy="303.0" rx="62" ry="22" fill="#dddddd" stroke="black" stroke-width="1.4"/><text x="105" y="308.0" text-anchor="middle" font-size="13">Ціль: …</text>
+<text x="215" y="308.0">Початок — ціль актора</text>
+<ellipse cx="105" cy="367.0" rx="62" ry="22" fill="#dddddd" stroke="black" stroke-width="3"/><text x="105" y="372.0" text-anchor="middle" font-size="13">Результат: …</text>
+<text x="215" y="372.0">Завершення — значущий результат (потовщений контур)</text>
+<circle cx="105" cy="431.0" r="15" fill="white" stroke="black" stroke-width="1.4"/><text x="105" y="436.0" text-anchor="middle" font-size="13">А</text>
+<text x="215" y="436.0">З'єднувач: потоки з однаковим результатом; однакові літери — одна точка</text>
+<line x1="45" y1="495.0" x2="163" y2="495.0" stroke="#222" stroke-width="1.4" marker-end="url(#ah)"/>
+<text x="215" y="500.0">Перехід між діями та сторінками (підпис — елемент керування)</text>
+<line x1="45" y1="559.0" x2="163" y2="559.0" stroke="#222" stroke-width="1.4" stroke-dasharray="6,4" marker-end="url(#ah)"/>
+<text x="105" y="552.0" text-anchor="middle" font-size="11">так</text>
+<text x="215" y="564.0">Перехід за умовою (пунктир; умова — підпис)</text>
+<line x1="45" y1="623.0" x2="163" y2="623.0" stroke="#222" stroke-width="1.4" marker-end="url(#ah)"/>
+<line x1="145" y1="615.0" x2="145" y2="631.0" stroke="#222" stroke-width="2"/>
+<text x="215" y="628.0">Незворотний перехід (стрілка з поперечною рискою)</text>
+<rect x="43" y="665.0" width="124" height="44" rx="8" fill="white" stroke="#777" stroke-width="1.2" stroke-dasharray="5,3"/><text x="51" y="681.0" font-size="11" font-weight="bold">Завдання: …</text>
+<text x="215" y="692.0">Рамка завдання актора (Task Flow) — додатковий елемент</text>
+</svg>

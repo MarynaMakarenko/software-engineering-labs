@@ -1,0 +1,53 @@
+digraph uf_guest {
+  graph [rankdir=TB, fontname="Arial", fontsize=12, nodesep=0.4, ranksep=0.42, pad=0.35, newrank=true, compound=true];
+  node [fontname="Arial", fontsize=11, style=filled, fillcolor=white, color=black, penwidth=1.2];
+  edge [fontname="Arial", fontsize=9.5, color="#222222", arrowsize=0.8];
+  st [shape=ellipse, fillcolor="#dddddd", penwidth=1.4, fontsize=11, label="Ціль: знайти вакансію,\nстати користувачем"];
+  home [shape=box, margin="0.08,0.04", class="page", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="2"><TR><TD><B>Головна</B></TD></TR><TR><TD><FONT POINT-SIZE="9" COLOR="#555555">/</FONT></TD></TR><HR/><TR><TD ALIGN="LEFT" BALIGN="LEFT"><FONT POINT-SIZE="10">• форма «Знайти»: посада, місто<BR/>• «Вакансії», «Реєстрація», «Увійти»</FONT></TD></TR></TABLE>>];
+  subgraph cluster_t1 {
+    label="Завдання: знайти відповідну вакансію (G1)"; labeljust=l; style="dashed,rounded"; color="#777777"; fontsize=11; fontname="Arial Bold"; margin=10;
+    vac [shape=box, margin="0.08,0.04", class="page", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="2"><TR><TD><B>Вакансії</B></TD></TR><TR><TD><FONT POINT-SIZE="9" COLOR="#555555">/vacancies</FONT></TD></TR><HR/><TR><TD ALIGN="LEFT" BALIGN="LEFT"><FONT POINT-SIZE="10">• фільтри: посада, компанія, місто, зарплата від<BR/>• «Знайти», «Скинути фільтри»</FONT></TD></TR></TABLE>>];
+    dres [shape=diamond, fillcolor="#e9e9e9", fontsize=10, margin="0.02,0.02", label="Є вакансії?"];
+    card [shape=box, margin="0.08,0.04", class="page", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="2"><TR><TD><B>Вакансія</B></TD></TR><TR><TD><FONT POINT-SIZE="9" COLOR="#555555">/vacancies/{id}</FONT></TD></TR><HR/><TR><TD ALIGN="LEFT" BALIGN="LEFT"><FONT POINT-SIZE="10">• посада, компанія, зарплата, місто, вимоги<BR/>• «Увійдіть, щоб відгукнутися»</FONT></TD></TR></TABLE>>];
+    err [shape=box, margin="0.08,0.04", class="page", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="2"><TR><TD><B>Помилка 404</B></TD></TR><HR/><TR><TD ALIGN="LEFT" BALIGN="LEFT"><FONT POINT-SIZE="10">• «До вакансій»</FONT></TD></TR></TABLE>>];
+    e1 [shape=ellipse, fillcolor="#dddddd", penwidth=2.6, fontsize=11, label="Результат:\nзнайдено вакансію"];
+  }
+  subgraph cluster_t2 {
+    label="Завдання: отримати доступ до кабінету (G2)"; labeljust=l; style="dashed,rounded"; color="#777777"; fontsize=11; fontname="Arial Bold"; margin=10;
+    dacc [shape=diamond, fillcolor="#e9e9e9", fontsize=10, margin="0.02,0.02", label="Є обліковий\nзапис?"];
+    reg [shape=box, margin="0.08,0.04", class="page", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="2"><TR><TD><B>Реєстрація</B></TD></TR><TR><TD><FONT POINT-SIZE="9" COLOR="#555555">/register</FONT></TD></TR><HR/><TR><TD ALIGN="LEFT" BALIGN="LEFT"><FONT POINT-SIZE="10">• email, пароль, повтор пароля<BR/>• роль: шукач / представник компанії<BR/>• шукач: ПІБ, телефон, місто, адреса, згода<BR/>• компанія: назва, місто, адреса, телефон, email</FONT></TD></TR></TABLE>>];
+    dreg [shape=diamond, fillcolor="#e9e9e9", fontsize=10, margin="0.02,0.02", label="Дані коректні, email\nі назва компанії вільні?"];
+    regp [shape=box, class="process", margin="0.22,0.06", fillcolor="#f2f2f2", label="Створення облікового запису\nі резюме / профілю компанії"];
+    login [shape=box, margin="0.08,0.04", class="page", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="2"><TR><TD><B>Вхід</B></TD></TR><TR><TD><FONT POINT-SIZE="9" COLOR="#555555">/login</FONT></TD></TR><HR/><TR><TD ALIGN="LEFT" BALIGN="LEFT"><FONT POINT-SIZE="10">• «Реєстрацію завершено. Увійдіть…»<BR/>• email, пароль</FONT></TD></TR></TABLE>>];
+    c1 [shape=circle, width=0.36, fixedsize=true, fontsize=11, label="1", xlabel="до рис. 1", fontsize=11];
+  }
+  subgraph cluster_t3 {
+    label="Завдання: дізнатися про агенцію й правила (U3)"; labeljust=l; style="dashed,rounded"; color="#777777"; fontsize=11; fontname="Arial Bold"; margin=10;
+    help [shape=box, margin="0.08,0.04", class="page", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="2"><TR><TD><B>Допомога</B></TD></TR><TR><TD><FONT POINT-SIZE="9" COLOR="#555555">/help</FONT></TD></TR><HR/><TR><TD ALIGN="LEFT" BALIGN="LEFT"><FONT POINT-SIZE="10">• FAQ за ролями<BR/>• «Завантажити Настанову (PDF)»</FONT></TD></TR></TABLE>>];
+    about [shape=box, margin="0.08,0.04", class="page", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="2"><TR><TD><B>Про агенцію й контакти</B></TD></TR><TR><TD><FONT POINT-SIZE="9" COLOR="#555555">/about</FONT></TD></TR><HR/><TR><TD ALIGN="LEFT" BALIGN="LEFT"><FONT POINT-SIZE="10">• адреса, телефон, email, графік</FONT></TD></TR></TABLE>>];
+    cI [shape=circle, width=0.36, fixedsize=true, fontsize=11, label="І"];
+    e3 [shape=ellipse, fillcolor="#dddddd", penwidth=2.6, fontsize=11, label="Результат:\nотримано відповідь"];
+  }
+  st -> home [];
+  home -> vac [label="«Знайти» / «Вакансії»"];
+  vac -> dres [];
+  dres -> card [label="так: відкрити картку"];
+  dres -> vac [constraint=false, label="ні: «Вакансій за заданими\nумовами не знайдено»", style=dashed];
+  card -> e1 [];
+  card -> err [label="id не знайдено", style=dashed];
+  err -> vac [constraint=false, label="«До вакансій»"];
+  card -> dacc [label="хоче відгукнутися", style=dashed];
+  home -> dacc [label="«Реєстрація» /\n«Увійти»"];
+  dacc -> login [label="так"];
+  dacc -> reg [label="ні"];
+  reg -> dreg [label="«Зареєструватися»"];
+  dreg -> reg [constraint=false, label="ні: діагностика", style=dashed];
+  dreg -> regp [label="так"];
+  regp -> login [arrowhead=normaltee, arrowsize=0.9];
+  login -> c1 [label="«Увійти»"];
+  home -> help [label="«Допомога»"];
+  help -> about [label="«Про агенцію»"];
+  help -> cI [];
+  about -> cI [];
+  cI -> e3 [];
+}
