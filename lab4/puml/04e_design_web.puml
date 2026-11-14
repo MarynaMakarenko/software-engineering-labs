@@ -1,0 +1,124 @@
+@startuml 04e_design_web
+' Діаграма класів проєктування, ч. 5: пакет web (контролери MVC)
+!include _cls_head.iuml
+
+title Діаграма класів проєктування, ч. 5 — пакет ua.knu.jobmatch.web (контролери)
+
+package "ua.knu.jobmatch.web" {
+  class RecruiterMatchController <<Controller>> {
+    - companyService : CompanyService
+    - personService : PersonService
+    - matchingService : MatchingService
+    - applicationService : ApplicationService
+    + candidates(id : Long, minScore : String, prev : String) : String
+    + proposeForm(id : Long, personId : Long, minScore : String) : String
+    + propose(id : Long, form : ProposeForm, minScore : String) : String
+    - renderPropose(id : Long, form : ProposeForm, minScore : String) : String
+    - {static} safeScore(raw : String) : int
+    + vacancies(id : Long, minScore : String) : String
+  }
+  class RecruiterController <<Controller>> {
+    - personService : PersonService
+    - companyService : CompanyService
+    - applicationService : ApplicationService
+    - people : PersonRepository
+    - vacancies : VacancyRepository
+    - applications : ApplicationRepository
+    + dashboard() : String
+    + people(criteria : PersonSearchCriteria) : String
+    + newPerson() / createPerson(form : PersonForm) : String
+    + person(id : Long) : String
+    + editPerson(id) / updatePerson(id, form : PersonForm) : String
+    + deletePerson(id : Long) : String
+    + addEducation(id, form : EducationForm) / deleteEducation(id, eduId) : String
+    + addWork(id, form : WorkRecordForm) / deleteWork(id, recordId) : String
+    + companies(q : String) : String
+    + newCompany() / createCompany(form : CompanyForm) : String
+    + company(id) / editCompany(id) / updateCompany(id, form) / deleteCompany(id) : String
+    + newVacancy(id) / createVacancy(id, form : VacancyForm) : String
+    + editVacancy(id) / updateVacancy(id, form) / vacancyStatus(id, open) / deleteVacancy(id) : String
+    + applicationsList(status : ApplicationStatus) : String
+    + hireForm(id : Long) / hire(id : Long, startDate : LocalDate) : String
+  }
+  class CandidateController <<Controller>> {
+    - personService : PersonService
+    - matchingService : MatchingService
+    - applicationService : ApplicationService
+    - me(principal : AccountPrincipal) : Person
+    + resume() / editResume() / saveResume(form : PersonForm) : String
+    + addEducation(form : EducationForm) / deleteEducation(id : Long) : String
+    + work() / newWork() / createWork(form : WorkRecordForm) : String
+    + editWork(id) / updateWork(id, form) / deleteWork(id) : String
+    + matches(minScore : String) : String
+    + apply(vacancyId : Long) : String
+    + applications() : String
+  }
+  class EmployerController <<Controller>> {
+    - companyService : CompanyService
+    - matchingService : MatchingService
+    - applicationService : ApplicationService
+    - myCompany(p : AccountPrincipal) : Company
+    - myVacancy(p : AccountPrincipal, id : Long) : Vacancy
+    + company() / edit() / save(form : CompanyForm) : String
+    + vacancies() / newVacancy() / createVacancy(form : VacancyForm) : String
+    + editVacancy(id) / updateVacancy(id, form) / status(id, open) / delete(id) : String
+    + matches(id : Long, minScore : String) : String
+    + applications(id : Long) : String
+    + review(appId : Long, decision : ApplicationStatus) : String
+  }
+  class PublicController <<Controller>> {
+    - companyService : CompanyService
+    - people : PersonRepository
+    - applications : ApplicationRepository
+    + home() : String
+    + vacancies(criteria : VacancySearchCriteria) : String
+    + vacancy(id : Long) : String
+    + help() : String
+    + about() : String
+  }
+  class AuthController <<Controller>> {
+    - accountService : AccountService
+    + login() : String
+    + registerForm() : String
+    + register(form : RegistrationForm) : String
+  }
+  class ErrorPagesController <<Controller>> {
+    + forbidden() : String
+  }
+  class GlobalControllerAdvice <<ControllerAdvice>> {
+    + initBinder(binder : WebDataBinder)
+    + me(principal : AccountPrincipal) : AccountPrincipal
+    + currentPath(request) : String
+    + notFound(e : Exception) : ModelAndView
+    + business(e : BusinessException, request, ra) : String
+    ~ {static} safeReferer(request) : String
+  }
+  class MatchThreshold {
+    - MatchThreshold()
+    ~ {static} parse(raw : String, model : Model) : int
+    ~ {static} parse(raw : String, prev : String, model : Model) : int
+  }
+  class SearchErrors {
+    - SearchErrors()
+    ~ {static} checkRange(c : PersonSearchCriteria, model : Model)
+    ~ {static} report(binding : BindingResult, model : Model)
+  }
+  class Crumb <<record>> {
+    + label : String
+    + url : String [0..1]
+    + {static} of(items : String...) : List<Crumb>
+  }
+}
+
+RecruiterMatchController ..> MatchThreshold : parse()
+RecruiterMatchController ..> Crumb
+CandidateController ..> MatchThreshold
+EmployerController ..> MatchThreshold
+RecruiterController ..> SearchErrors : checkRange()
+PublicController ..> SearchErrors : report()
+
+PublicController -[hidden]down- AuthController
+AuthController -[hidden]down- ErrorPagesController
+CandidateController -[hidden]down- EmployerController
+RecruiterMatchController -[hidden]down- RecruiterController
+@enduml

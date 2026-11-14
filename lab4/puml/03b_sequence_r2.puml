@@ -1,0 +1,53 @@
+@startuml 03b_sequence_r2
+' Діаграма послідовності R2, ч. 2: крок 3 — обчислення оцінок (M1) і наявні кандидатури
+!include _seq_head.iuml
+
+title R2 — послідовність, ч. 2: крок 3, обчислення оцінок M1 (MatchingService)
+
+control ":RecruiterMatch\nController" as rmc
+participant ":MatchingService" as ms
+participant ":PersonRepository" as pr
+participant "c : MatchCriterion" as crit
+participant "p : Person" as p
+participant ":Application\nService" as as
+participant ":Application\nRepository" as ar
+
+rmc -> ms : findCandidates(v, minScore)
+activate ms
+ms -> ms : validateThreshold(minScore)
+ms -> pr : findByJobStatus(SEARCHING)
+pr --> ms : searching : List<Person> (+ educations)
+opt searching не порожній
+  ms -> pr : fetchWorkRecords(searching)
+end
+loop для кожної p з searching
+  ms -> ms : evaluate(p, v)
+  loop c у порядку @Order: Position-, Salary-, Education-, ExperienceCriterion
+    ms -> crit : evaluate(p, v, today)
+    activate crit
+    alt c = EducationCriterion
+      crit -> p : highestEducation()
+    else c = ExperienceCriterion
+      crit -> p : experienceYears(today)
+      activate p
+      p -> p : Σ WorkRecord.months(today)
+      deactivate p
+    else c = Position- / SalaryCriterion
+      crit -> p : getDesiredPosition(), getWorkRecords() /\ngetDesiredSalary()
+    end
+    crit --> ms : CriterionScore(criterion, points, maxPoints, explanation)
+    deactivate crit
+  end
+  ms -> ms : new MatchResult(p, v, Σ points, parts)
+end
+ms -> ms : filter(score >= minScore);\nsort(score desc, lastName)
+ms --> rmc : List<MatchResult>
+deactivate ms
+
+rmc -> as : byPersonForVacancy(vacancyId)
+activate as
+as -> ar : findByVacancyIdOrderByCreatedAtDesc(vacancyId)
+ar --> as : List<Application>
+as --> rmc : Map<personId, Application>
+deactivate as
+@enduml

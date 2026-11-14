@@ -1,0 +1,70 @@
+@startuml 03d_sequence_r2
+' Діаграма послідовності R2, ч. 4: кроки 6–8; A3, A5, A6, A7
+!include _seq_head.iuml
+
+title R2 — послідовність, ч. 4: створення кандидатури (кроки 6–8; A3, A5, A6, A7)
+
+actor "Recruiter" as rec
+boundary "propose.html /\ncandidate-matches.html" as page
+control ":RecruiterMatch\nController" as rmc
+control ":GlobalController\nAdvice" as gca
+participant ":Application\nService" as as
+participant ":Vacancy\nRepository" as vr
+participant ":Person\nRepository" as pr
+participant ":Application\nRepository" as ar
+
+alt A6: «Скасувати»
+  rec -> page : «Скасувати»
+  page -> rmc : GET /recruiter/vacancies/{id}/matches?minScore=N
+  note right of rmc : кроки 2–3 (рис. 4), БД не змінюється
+else крок 6: «Підтвердити»
+  rec -> page : коментар (лічильник «N / 500 символів»), «Підтвердити»
+  page -> rmc : POST /recruiter/vacancies/{id}/propose\n(personId, comment, minScore, _csrf)
+  activate rmc
+  rmc -> rmc : propose(id, form, result, minScore, model, ra)\n@Valid ProposeForm: @Size(max = 500)
+  alt A5: result.hasErrors() — коментар > 500
+    rmc -> rmc : renderPropose(id, form, minScore, model)
+    rmc --> page : view recruiter/propose (введений текст збережено)
+    page --> rec : повідомлення біля поля (3 частини)
+  else форма коректна
+    rmc -> as : propose(id, personId, comment)
+    activate as
+    as -> as : create(vacancyId, personId, RECRUITER, comment)
+    as -> vr : findById(vacancyId)
+    vr --> as : Optional<Vacancy>
+    as -> pr : findById(personId)
+    pr --> as : Optional<Person>
+    alt A7: вакансію або людину не знайдено
+      as --> rmc : throw NotFoundException
+      rmc -> gca : notFound(e)
+      gca --> page : view error/404 (HTTP 404)
+      page --> rec : «404 — Не знайдено»
+    else вакансію закрито (A4 під час кроку 6) або коментар > 500
+      as --> rmc : throw BusinessException
+      rmc -> rmc : catch: ra.addFlashAttribute("error", e)
+      rmc --> page : redirect:/recruiter/vacancies/{id}/matches?minScore=N
+    else знайдено, відкрита
+      as -> ar : existsByVacancyIdAndPersonId(vacancyId, personId)
+      ar --> as : exists : boolean
+      alt A3: exists = true (подвійне натискання, інша вкладка)
+        as --> rmc : throw BusinessException(«Кандидатура … вже існує»)
+        rmc -> rmc : catch: ra.addFlashAttribute("error", e)
+        rmc --> page : redirect:/recruiter/vacancies/{id}/matches?minScore=N
+        page --> rec : список підбору з повідомленням з 3 частин;\nдублікат не створено
+      else крок 7
+        as -> as : a = new Application(v, p, RECRUITER, comment)\n(status = NEW)
+        as -> ar : save(a)
+        ar --> as : a : Application
+        as --> rmc : a
+        deactivate as
+        rmc -> rmc : ra.addFlashAttribute("success", «Кандидатуру <ПІБ> запропоновано\nна вакансію <посада> (<компанія>)»)
+        rmc --> page : redirect:/recruiter/vacancies/{id}/matches?minScore=N
+        deactivate rmc
+        page -> rmc : GET …/matches (кроки 2–3, рис. 4)
+        page --> rec : повідомлення; у рядку кандидата «Запропоновано: Нова»
+      end
+    end
+  end
+end
+rec -> page : крок 8: наступний кандидат (кроки 4–7) або меню «Панель»
+@enduml

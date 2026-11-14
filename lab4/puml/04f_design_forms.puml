@@ -1,0 +1,136 @@
+@startuml 04f_design_forms
+' Діаграма класів проєктування, ч. 6: пакет web.form (Form Object / DTO) і config
+!include _cls_head.iuml
+
+title Діаграма класів проєктування, ч. 6 — пакети ua.knu.jobmatch.web.form і ua.knu.jobmatch.config
+
+package "ua.knu.jobmatch.web.form" {
+  class ProposeForm {
+    - personId : Long
+    {field} - comment : String [0..1] «@Size(max = 500)»
+  }
+  class PersonForm {
+    ~ {static} NAME : String
+    - lastName : String
+    - firstName : String
+    - middleName : String [0..1]
+    - birthDate : LocalDate [0..1]
+    - phone : String
+    - email : String
+    - city : String
+    - homeAddress : String [0..1]
+    - jobStatus : JobStatus = SEARCHING
+    - desiredPosition : String [0..1]
+    - desiredSalary : Integer [0..1]
+    - about : String [0..1]
+    + {static} of(p : Person) : PersonForm
+    + applyTo(p : Person)
+  }
+  class EducationForm {
+    - level : EducationLevel
+    - institution : String
+    - specialty : String
+    - graduationYear : Integer
+    + toEntity() : Education
+  }
+  class WorkRecordForm {
+    - companyName : String
+    - position : String
+    - salary : Integer [0..1]
+    - startDate : LocalDate
+    - endDate : LocalDate [0..1]
+    + isDatesOrdered() : boolean «@AssertTrue»
+    + {static} of(w : WorkRecord) : WorkRecordForm
+  }
+  class CompanyForm {
+    - name : String
+    - city : String
+    - address : String
+    - phone : String
+    - email : String
+    - website : String [0..1]
+    - description : String [0..1]
+    + {static} of(c : Company) : CompanyForm
+    + applyTo(c : Company)
+  }
+  class VacancyForm {
+    - position : String
+    - salary : Integer
+    - requiredEducation : EducationLevel [0..1]
+    - requiredExperienceYears : Integer = 0
+    - requirements : String [0..1]
+    - city : String
+    + {static} of(v : Vacancy) : VacancyForm
+    + toEntity() : Vacancy
+    + applyTo(v : Vacancy)
+  }
+  class RegistrationForm {
+    - role : Role = CANDIDATE
+    - email : String
+    - password : String
+    - passwordConfirm : String
+    - lastName, firstName, homeAddress : String
+    - consent : boolean
+    - companyName, companyAddress, companyEmail : String
+    - website, description : String
+    - phone : String
+    - city : String
+    + isCandidateDataProvided() : boolean «@AssertTrue»
+    + isConsentGiven() : boolean «@AssertTrue»
+    + isCompanyDataProvided() : boolean «@AssertTrue»
+  }
+  class PersonSearchCriteria {
+    - name : String
+    - minEducation : EducationLevel
+    - company : String
+    - position : String
+    - salaryFrom : Integer
+    - salaryTo : Integer
+    - status : JobStatus
+    + isEmpty() : boolean
+  }
+  class VacancySearchCriteria {
+    - position : String
+    - company : String
+    - city : String
+    - salaryFrom : Integer
+  }
+  class Forms {
+    - Forms()
+    ~ {static} trim(s : String) : String
+  }
+}
+
+package "ua.knu.jobmatch.config" {
+  class AccountPrincipal {
+    - accountId : Long
+    - role : Role
+    + AccountPrincipal(a : UserAccount)
+    + homeUrl() : String
+  }
+  class SecurityConfig <<Configuration>> {
+    + passwordEncoder() : PasswordEncoder
+    + filterChain(http : HttpSecurity) : SecurityFilterChain
+  }
+  class AppConfig <<Configuration>> {
+    + clock() : Clock
+  }
+}
+class "User" as SpringUser #F4F4F4
+class "User (Spring Security)" as SpringUser #F4F4F4
+AccountPrincipal --|> SpringUser
+
+PersonForm -[hidden]down- ProposeForm
+ProposeForm -[hidden]down- EducationForm
+RegistrationForm -[hidden]down- WorkRecordForm
+CompanyForm -[hidden]down- VacancyForm
+WorkRecordForm -[hidden]down- PersonSearchCriteria
+VacancyForm -[hidden]down- VacancySearchCriteria
+VacancySearchCriteria -[hidden]down- Forms
+EducationForm -[hidden]down- AccountPrincipal
+
+note bottom of Forms
+  усі set-методи форм обрізають пробіли через Forms.trim();
+  get/set-методи на діаграмі не показано
+end note
+@enduml

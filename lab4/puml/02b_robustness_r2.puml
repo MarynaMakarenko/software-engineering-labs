@@ -1,0 +1,92 @@
+@startuml 02b_robustness_r2
+' Діаграма придатності R2, частина 2: кроки 4–8, A3, A4, A5, A6, A7
+skinparam defaultFontName Arial
+skinparam dpi 150
+skinparam defaultFontSize 12
+skinparam shadowing false
+skinparam ArrowColor #333333
+skinparam ArrowFontSize 11
+skinparam nodesep 25
+skinparam ranksep 45
+
+title R2 «Підбір кандидатів на вакансію» — діаграма придатності, ч. 2 (кроки 4–8; A3, A4, A5, A6, A7)
+
+actor "Recruiter\n<size:10>Рекрутер</size>" as recruiter
+
+boundary "CandidateMatchingPage\n<size:10>Підбір кандидатів</size>" as matchingPage
+boundary "PersonCard\n<size:10>Картка людини</size>" as personCard
+boundary "ProposeForm\n<size:10>Форма пропозиції</size>" as proposeForm
+boundary "RecruiterDashboard\n<size:10>Панель рекрутера</size>" as dashboardPage
+boundary "NotFoundPage\n<size:10>404 — Не знайдено</size>" as notFoundPage
+
+control "displayPersonCard\n<size:10>Відобразити картку людини</size>" as displayPersonCard
+control "displayProposeForm\n<size:10>Відобразити форму пропозиції</size>" as displayProposeForm
+control "evaluateMatch\n<size:10>Обчислити оцінку (M1)</size>" as evaluateMatch
+control "validateComment\n<size:10>Перевірити коментар (≤ 500)</size>" as validateComment
+control "showCommentError\n<size:10>Показати помилку коментаря</size>" as showCommentError
+control "findVacancyAndPerson\n<size:10>Знайти вакансію й людину</size>" as findBoth
+control "checkDuplicate\n<size:10>Перевірити дублікат</size>" as checkDuplicate
+control "showProposeError\n<size:10>Показати «Кандидатура вже існує» /</size>\n<size:10>«Вакансію закрито»</size>" as showDuplicate
+control "createApplication\n<size:10>Створити кандидатуру</size>" as createApplication
+control "showProposalMessage\n<size:10>Показати «Кандидатуру … запропоновано»</size>" as showSuccess
+control "displayMatching\n<size:10>Відобразити підбір</size>" as displayMatching
+control "displayDashboard\n<size:10>Відобразити панель</size>" as displayDashboard
+control "showNotFound\n<size:10>Показати 404</size>" as showNotFound
+
+entity "Vacancy" as vacancy
+entity "Person" as person
+entity "Education" as education
+entity "WorkRecord" as workRecord
+entity "Application" as application
+
+recruiter -- matchingPage
+recruiter -- personCard
+recruiter -- proposeForm
+recruiter -- dashboardPage
+recruiter -- notFoundPage
+
+matchingPage --> displayPersonCard : 4. ПІБ кандидата
+displayPersonCard --> person
+displayPersonCard --> education
+displayPersonCard --> workRecord
+displayPersonCard --> application
+displayPersonCard --> personCard
+displayPersonCard --> showNotFound : A7
+personCard --> displayMatching : 4. «← Назад\nдо підбору»
+
+matchingPage --> displayProposeForm : 5. «Запропонувати»\n(лише без кандидатури, A3)
+displayProposeForm --> vacancy
+displayProposeForm --> person
+displayProposeForm --> evaluateMatch
+evaluateMatch --> vacancy
+evaluateMatch --> person
+displayProposeForm --> application
+displayProposeForm --> showDuplicate : A3 / A4: кандидатура\nіснує або вакансію закрито
+displayProposeForm --> proposeForm
+displayProposeForm --> showNotFound : A7
+
+proposeForm --> validateComment : 6. «Підтвердити»
+proposeForm --> displayMatching : A6: «Скасувати»
+validateComment --> showCommentError : A5: > 500 символів
+showCommentError --> proposeForm : текст збережено
+validateComment --> findBoth
+findBoth --> vacancy
+findBoth --> person
+findBoth --> showNotFound : A7: не знайдено
+findBoth --> checkDuplicate
+checkDuplicate --> application
+checkDuplicate --> showDuplicate : A3: пара вже існує
+showDuplicate --> matchingPage
+checkDuplicate --> createApplication : 7
+createApplication --> application
+createApplication --> showSuccess
+showSuccess --> displayMatching
+displayMatching --> application
+displayMatching --> matchingPage : «Запропоновано: Нова»
+
+matchingPage --> displayDashboard : 8. меню «Панель»
+showNotFound --> notFoundPage
+notFoundPage --> displayDashboard : A7: «До панелі\nрекрутера»
+displayDashboard --> vacancy
+displayDashboard --> dashboardPage
+@enduml

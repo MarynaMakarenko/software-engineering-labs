@@ -1,0 +1,74 @@
+@startuml 01_domain_model
+' Об'єктна модель (діаграма класів аналізу) — ICONIX, крок 4
+skinparam defaultFontName Arial
+skinparam dpi 150
+skinparam defaultFontSize 13
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam class {
+  BackgroundColor #FFFFFF
+  BorderColor #333333
+  ArrowColor #333333
+}
+skinparam nodesep 60
+skinparam ranksep 70
+hide empty members
+hide circle
+
+title Об'єктна модель предметної галузі JobMatch (класи аналізу)
+
+class UserAccount
+class Person
+class Education
+class WorkRecord
+class Company
+class Vacancy
+class Application
+class Response
+class Proposal
+class MatchResult
+class CriterionScore
+class MatchCriterion
+class PositionCriterion
+class SalaryCriterion
+class EducationCriterion
+class ExperienceCriterion
+
+UserAccount "1" -down- "0..1" Person : owner >
+UserAccount "1" -down- "0..1" Company : owner >
+
+Person "1" *-down- "0..*" Education : educations
+Person "1" *-down- "0..*" WorkRecord : workRecords
+WorkRecord "0..*" -right-> "0..1" Company : employer
+
+Company "1" *-down- "0..*" Vacancy : vacancies
+
+Person "1" -down- "0..*" Application : candidate
+Vacancy "1" -down- "0..*" Application : target
+
+Application <|-down- Response
+Application <|-down- Proposal
+
+MatchResult "0..*" o-up- "1" Person : resume
+MatchResult "0..*" o-up- "1" Vacancy : vacancy
+MatchResult "1" *-down- "4" CriterionScore : parts
+CriterionScore "0..*" -down-> "1" MatchCriterion : criterion
+
+MatchCriterion <|-down- PositionCriterion
+MatchCriterion <|-down- SalaryCriterion
+MatchCriterion <|-down- EducationCriterion
+MatchCriterion <|-down- ExperienceCriterion
+
+note right of Response
+  відгук шукача
+  (C4)
+end note
+note right of Proposal
+  пропозиція рекрутера
+  (R2)
+end note
+note bottom of MatchResult
+  оцінка відповідності
+  0–100 (M1)
+end note
+@enduml

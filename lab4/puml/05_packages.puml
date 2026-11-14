@@ -1,0 +1,45 @@
+@startuml 05_packages
+' Діаграма пакетів і розгортання (додатковий робочий продукт)
+skinparam defaultFontName Arial
+skinparam dpi 150
+skinparam defaultFontSize 12
+skinparam shadowing false
+skinparam ArrowColor #333333
+skinparam packageStyle rectangle
+set separator none
+
+title Шари застосунку JobMatch і розгортання
+
+node "Браузер (Chrome / Firefox / Safari / Edge)" as browser {
+  artifact "HTML5 + CSS3 + app.js" as html
+}
+
+node "Сервер застосунку: JVM 21, Spring Boot 3.5 (вбудований Tomcat, порт 8090)" as server {
+  rectangle "templates (Thymeleaf)\n«boundary»" as tpl
+  rectangle "ua.knu.jobmatch.web\n«control»: контролери MVC" as web
+  rectangle "ua.knu.jobmatch.web.form\nForm Object / DTO" as form
+  rectangle "ua.knu.jobmatch.config\nSpring Security, Clock" as config
+  rectangle "ua.knu.jobmatch.service\nбізнес-логіка, транзакції" as service
+  rectangle "ua.knu.jobmatch.matching\nM1: Strategy + Facade" as matching
+  rectangle "ua.knu.jobmatch.repository\nSpring Data JPA" as repo
+  rectangle "ua.knu.jobmatch.domain\n«entity»: JPA-сутності" as domain
+}
+
+database "H2 2.x (файл ./data/jobmatch,\nMODE=PostgreSQL) — локально\nабо PostgreSQL 16 — профіль prod" as db
+
+html --> web : HTTP(S): GET / POST + CSRF
+web --> tpl : ім'я view + Model
+tpl ..> html : HTML
+web --> form
+web --> service
+web --> matching
+web ..> config
+web ..> repo : читання для панелі й\nкартки вакансії
+service --> repo
+service --> domain
+matching --> repo
+matching --> domain
+repo --> domain
+form ..> domain
+repo --> db : JDBC / Hibernate,\nміграції Flyway V1, V2
+@enduml

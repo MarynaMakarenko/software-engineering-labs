@@ -1,0 +1,101 @@
+@startuml 04d_design_service
+' Діаграма класів проєктування, ч. 4: пакет service
+!include _cls_head.iuml
+
+title Діаграма класів проєктування, ч. 4 — пакет ua.knu.jobmatch.service
+
+package "ua.knu.jobmatch.service" {
+  class ApplicationService <<Service>> {
+    - applications : ApplicationRepository
+    - vacancies : VacancyRepository
+    - people : PersonRepository
+    - clock : Clock
+    + propose(vacancyId : Long, personId : Long, comment : String) : Application
+    + apply(vacancyId : Long, personId : Long) : Application
+    - create(vacancyId, personId, source : ApplicationSource, comment) : Application
+    + byPersonForVacancy(vacancyId : Long) : Map<Long, Application>
+    + byVacancyForPerson(personId : Long) : Map<Long, Application>
+    + forVacancy(vacancyId : Long) : List<Application>
+    + forPerson(personId : Long) : List<Application>
+    + all(status : ApplicationStatus) : List<Application>
+    + get(id : Long) : Application
+    + review(applicationId : Long, companyId : Long, decision : ApplicationStatus)
+    + hire(applicationId : Long, startDate : LocalDate) : Application
+  }
+  class PersonService <<Service>> {
+    - people : PersonRepository
+    - accounts : UserAccountRepository
+    + get(id : Long) : Person
+    + getByUser(userId : Long) : Person
+    + search(c : PersonSearchCriteria) : List<Person>
+    + create(f : PersonForm) : Person
+    + update(id : Long, f : PersonForm) : Person
+    + delete(id : Long)
+    + addEducation(personId : Long, f : EducationForm)
+    + removeEducation(personId : Long, educationId : Long)
+    + addWorkRecord(personId : Long, f : WorkRecordForm) : WorkRecord
+    + updateWorkRecord(personId : Long, recordId : Long, f : WorkRecordForm)
+    + deleteWorkRecord(personId : Long, recordId : Long)
+    + getWorkRecord(personId : Long, recordId : Long) : WorkRecord
+  }
+  class CompanyService <<Service>> {
+    - companies : CompanyRepository
+    - vacancies : VacancyRepository
+    - applications : ApplicationRepository
+    - accounts : UserAccountRepository
+    + get(id : Long) : Company
+    + getByOwner(userId : Long) : Company
+    + list(query : String) : List<Company>
+    + create(f : CompanyForm) : Company
+    + update(id : Long, f : CompanyForm) : Company
+    + delete(id : Long)
+    + applicationCount(c : Company) : long
+    + getVacancy(id : Long) : Vacancy
+    + searchOpen(c : VacancySearchCriteria) : List<Vacancy>
+    + latestOpen() : List<Vacancy>
+    + allOpen() : List<Vacancy>
+    + addVacancy(companyId : Long, f : VacancyForm) : Vacancy
+    + updateVacancy(id : Long, f : VacancyForm) : Vacancy
+    + setVacancyOpen(id : Long, open : boolean)
+    + deleteVacancy(id : Long)
+  }
+  class AccountService <<Service>> {
+    - accounts : UserAccountRepository
+    - people : PersonRepository
+    - companies : CompanyRepository
+    - encoder : PasswordEncoder
+    + loadUserByUsername(email : String) : UserDetails
+    + register(f : RegistrationForm) : UserAccount
+  }
+  class BusinessException {
+    - fixNow : String
+    - prevent : String
+    + BusinessException(what : String, fixNow : String, prevent : String)
+    + getWhat() : String
+    + getFixNow() : String
+    + getPrevent() : String
+  }
+  class NotFoundException {
+    + NotFoundException(what : String)
+  }
+}
+
+
+interface UserDetailsService <<interface>> #F4F4F4
+class RuntimeException #F4F4F4
+
+PersonService -[hidden]down- ApplicationService
+CompanyService -[hidden]down- AccountService
+
+AccountService ..|> UserDetailsService
+BusinessException --|> RuntimeException
+NotFoundException --|> RuntimeException
+ApplicationService ..> BusinessException : «throw»
+ApplicationService ..> NotFoundException : «throw»
+PersonService ..> NotFoundException : «throw»
+CompanyService ..> BusinessException : «throw»
+CompanyService ..> NotFoundException : «throw»
+AccountService ..> BusinessException : «throw»
+
+note "Залежності сервісів від репозиторіїв (рис. 9)\nподано атрибутами; впровадження — через конструктор" as N1
+@enduml

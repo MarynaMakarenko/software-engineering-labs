@@ -1,0 +1,78 @@
+@startuml 02a_robustness_r2
+' Діаграма придатності R2, частина 1: кроки 1–3, A1, A2, A4, A7
+skinparam defaultFontName Arial
+skinparam dpi 150
+skinparam defaultFontSize 12
+skinparam shadowing false
+skinparam ArrowColor #333333
+skinparam ArrowFontSize 11
+skinparam nodesep 25
+skinparam ranksep 45
+
+title R2 «Підбір кандидатів на вакансію» — діаграма придатності, ч. 1 (кроки 1–3; A1, A2, A4, A7)
+
+actor "Recruiter\n<size:10>Рекрутер</size>" as recruiter
+
+boundary "RecruiterDashboard\n<size:10>Панель рекрутера</size>" as dashboardPage
+boundary "CompanyCard\n<size:10>Картка компанії</size>" as companyCard
+boundary "CandidateMatchingPage\n<size:10>Підбір кандидатів</size>" as matchingPage
+boundary "NotFoundPage\n<size:10>404 — Не знайдено</size>" as notFoundPage
+
+control "displayDashboard\n<size:10>Відобразити панель</size>" as displayDashboard
+control "findVacancy\n<size:10>Знайти вакансію</size>" as findVacancy
+control "checkThreshold\n<size:10>Перевірити поріг</size>" as checkThreshold
+control "showThresholdError\n<size:10>Показати помилку порогу</size>" as showThresholdError
+control "checkVacancyOpen\n<size:10>Перевірити статус вакансії</size>" as checkVacancyOpen
+control "showVacancyClosed\n<size:10>Показати «Вакансію закрито»</size>" as showVacancyClosed
+control "selectSearchingPeople\n<size:10>Вибрати людей, що шукають роботу</size>" as selectSearching
+control "evaluateMatch\n<size:10>Обчислити оцінку (M1)</size>" as evaluateMatch
+control "filterAndSort\n<size:10>Відібрати ≥ порогу й упорядкувати</size>" as filterAndSort
+control "loadApplications\n<size:10>Отримати кандидатури на вакансію</size>" as loadApplications
+control "offerPartialMatches\n<size:10>Запропонувати часткові збіги (25 %)</size>" as offerPartial
+control "displayMatching\n<size:10>Відобразити підбір</size>" as displayMatching
+control "showNotFound\n<size:10>Показати 404</size>" as showNotFound
+
+entity "Vacancy" as vacancy
+entity "Person" as person
+entity "Education" as education
+entity "WorkRecord" as workRecord
+entity "Application" as application
+
+recruiter -- dashboardPage
+recruiter -- companyCard
+recruiter -- matchingPage
+recruiter -- notFoundPage
+
+dashboardPage --> findVacancy : 1. «Підібрати\nкандидатів»
+companyCard --> findVacancy : 1. «Підібрати\nкандидатів»
+findVacancy --> vacancy
+findVacancy --> showNotFound : A7: не знайдено
+findVacancy --> checkThreshold : 2
+checkThreshold --> showThresholdError : A2: не ціле\nабо поза 0–100
+checkThreshold --> checkVacancyOpen
+showThresholdError --> checkVacancyOpen : попередній\nпоріг
+checkVacancyOpen --> vacancy
+checkVacancyOpen --> showVacancyClosed : A4: закрита
+showVacancyClosed --> matchingPage
+checkVacancyOpen --> selectSearching : 3: відкрита
+selectSearching --> person
+selectSearching --> evaluateMatch
+evaluateMatch --> vacancy
+evaluateMatch --> person
+evaluateMatch --> education
+evaluateMatch --> workRecord
+evaluateMatch --> filterAndSort
+filterAndSort --> loadApplications
+filterAndSort --> offerPartial : A1: список\nпорожній
+offerPartial --> matchingPage
+loadApplications --> application
+loadApplications --> displayMatching
+displayMatching --> matchingPage
+
+matchingPage --> checkThreshold : A2: «Оновити»;\nA1: «Показати часткові\nзбіги (від 25 %)»
+matchingPage --> displayDashboard : A4: «До відкритих\nвакансій»
+showNotFound --> notFoundPage
+notFoundPage --> displayDashboard : A7: «До панелі\nрекрутера»
+displayDashboard --> vacancy
+displayDashboard --> dashboardPage
+@enduml

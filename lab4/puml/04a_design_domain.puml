@@ -1,0 +1,196 @@
+@startuml 04a_design_domain
+' Діаграма класів проєктування, ч. 1: пакет domain (JPA-сутності й переліки)
+skinparam defaultFontName Arial
+skinparam dpi 150
+skinparam defaultFontSize 12
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam class {
+  BackgroundColor #FFFFFF
+  BorderColor #333333
+  ArrowColor #333333
+}
+skinparam nodesep 40
+skinparam ranksep 50
+hide circle
+hide empty members
+set separator none
+
+title Діаграма класів проєктування, ч. 1 — пакет ua.knu.jobmatch.domain
+
+package "ua.knu.jobmatch.domain" {
+
+class UserAccount <<Entity>> {
+  - id : Long
+  - email : String
+  - passwordHash : String
+  - role : Role
+  - enabled : boolean = true
+  - createdAt : LocalDateTime
+  + UserAccount(email : String, passwordHash : String, role : Role)
+}
+
+class Person <<Entity>> {
+  - id : Long
+  - lastName : String
+  - firstName : String
+  - middleName : String [0..1]
+  - birthDate : LocalDate [0..1]
+  - phone : String
+  - email : String
+  - city : String
+  - homeAddress : String [0..1]
+  - jobStatus : JobStatus = SEARCHING
+  - desiredPosition : String [0..1]
+  - desiredSalary : Integer [0..1]
+  - about : String [0..1]
+  - updatedAt : LocalDateTime
+  + Person(lastName, firstName, phone, email, city : String)
+  + getFullName() : String
+  + isSearching() : boolean
+  + highestEducation() : Optional<EducationLevel>
+  + experienceYears(today : LocalDate) : double
+  + experienceText(today : LocalDate) : String
+  + addEducation(e : Education)
+  + removeEducation(e : Education)
+  + addWorkRecord(r : WorkRecord)
+  + removeWorkRecord(r : WorkRecord)
+  + hire(company : Company, position : String, salary : Integer, startDate : LocalDate) : WorkRecord
+  + touch()
+}
+
+class Education <<Entity>> {
+  - id : Long
+  - level : EducationLevel
+  - institution : String
+  - specialty : String
+  - graduationYear : int
+  + Education(level, institution, specialty, graduationYear)
+  ~ setPerson(p : Person)
+}
+
+class WorkRecord <<Entity>> {
+  - id : Long
+  - companyName : String
+  - position : String
+  - salary : Integer [0..1]
+  - startDate : LocalDate
+  - endDate : LocalDate [0..1]
+  + WorkRecord(companyName, position, salary, startDate, endDate)
+  + isCurrent() : boolean
+  + months(today : LocalDate) : long
+  + update(companyName, company, position, salary, startDate, endDate)
+  + finish(date : LocalDate)
+  ~ setPerson(p : Person)
+}
+
+class Company <<Entity>> {
+  - id : Long
+  - name : String {unique}
+  - city : String
+  - address : String
+  - phone : String
+  - email : String
+  - website : String [0..1]
+  - description : String [0..1]
+  + addVacancy(v : Vacancy) : Vacancy
+  + getOpenVacancyCount() : long
+}
+
+class Vacancy <<Entity>> {
+  - id : Long
+  - position : String
+  - salary : int
+  - requiredEducation : EducationLevel [0..1]
+  - requiredExperienceYears : int
+  - requirements : String [0..1]
+  - city : String
+  - status : VacancyStatus = OPEN
+  - createdAt : LocalDateTime
+  + Vacancy(position, salary, requiredEducation, requiredExperienceYears, requirements, city)
+  + isOpen() : boolean
+  + close()
+  + reopen()
+  ~ setCompany(c : Company)
+}
+
+class Application <<Entity>> {
+  - id : Long
+  - source : ApplicationSource
+  - status : ApplicationStatus = NEW
+  - comment : String [0..1]
+  - createdAt : LocalDateTime
+  + Application(vacancy : Vacancy, person : Person, source : ApplicationSource, comment : String)
+  + changeStatus(newStatus : ApplicationStatus)
+}
+
+enum Role <<enumeration>> {
+  CANDIDATE
+  EMPLOYER
+  RECRUITER
+  --
+  - label : String
+  + getLabel() : String
+}
+enum JobStatus <<enumeration>> {
+  SEARCHING
+  NOT_SEARCHING
+  --
+  - label : String
+  + getLabel() : String
+}
+enum EducationLevel <<enumeration>> {
+  SECONDARY
+  VOCATIONAL
+  BACHELOR
+  MASTER
+  PHD
+  --
+  - label : String
+  + getLabel() : String
+  + isAtLeast(other : EducationLevel) : boolean
+}
+enum VacancyStatus <<enumeration>> {
+  OPEN
+  CLOSED
+  --
+  - label : String
+  + getLabel() : String
+}
+enum ApplicationSource <<enumeration>> {
+  CANDIDATE
+  RECRUITER
+  --
+  - label : String
+  + getLabel() : String
+}
+enum ApplicationStatus <<enumeration>> {
+  NEW
+  INVITED
+  REJECTED
+  HIRED
+  --
+  - label : String
+  + getLabel() : String
+  + isFinal() : boolean
+}
+}
+
+UserAccount "user 0..1" <-- "0..1" Person
+UserAccount "owner 0..1" <-- "0..1" Company
+Person "person 1" *-- "educations 0..* {ordered}" Education
+Person "person 1" *-- "workRecords 0..* {ordered}" WorkRecord
+WorkRecord "0..*" --> "company 0..1" Company
+Company "company 1" *-- "vacancies 0..* {ordered}" Vacancy
+Application "0..*" --> "vacancy 1" Vacancy
+Application "0..*" --> "person 1" Person
+
+UserAccount ..> Role
+Person ..> JobStatus
+Education ..> EducationLevel
+Vacancy ..> EducationLevel
+Vacancy ..> VacancyStatus
+Application ..> ApplicationSource
+Application ..> ApplicationStatus
+
+@enduml

@@ -1,0 +1,85 @@
+@startuml 04b_design_repository
+' Діаграма класів проєктування, ч. 2: пакет repository (Spring Data JPA)
+!include _cls_head.iuml
+
+left to right direction
+title Діаграма класів проєктування, ч. 2 — пакет ua.knu.jobmatch.repository
+
+package "org.springframework.data.jpa" #F4F4F4 {
+  interface "JpaRepository<T, ID>" as JpaRepository <<interface>> {
+    + save(entity : T) : T
+    + findById(id : ID) : Optional<T>
+    + findAll() : List<T>
+    + delete(entity : T)
+    + deleteAll(entities : Iterable<T>)
+    + flush()
+  }
+  interface "JpaSpecificationExecutor<T>" as JpaSpec <<interface>> {
+    + findAll(spec : Specification<T>) : List<T>
+    + findAll(spec : Specification<T>, sort : Sort) : List<T>
+  }
+}
+
+package "ua.knu.jobmatch.repository" {
+  interface UserAccountRepository <<interface>> {
+    + findByEmailIgnoreCase(email : String) : Optional<UserAccount>
+    + existsByEmailIgnoreCase(email : String) : boolean
+  }
+  interface PersonRepository <<interface>> {
+    + findByUserId(userId : Long) : Optional<Person>
+    + findByJobStatus(status : JobStatus) : List<Person>  «@EntityGraph educations»
+    + fetchWorkRecords(people : List<Person>) : List<Person>  «@Query join fetch»
+  }
+  interface CompanyRepository <<interface>> {
+    + findByOwnerId(ownerId : Long) : Optional<Company>
+    + existsByNameIgnoreCase(name : String) : boolean
+    + existsByNameIgnoreCaseAndIdNot(name : String, id : Long) : boolean
+    + findAllByOrderByNameAsc() : List<Company>
+    + findByNameContainingIgnoreCaseOrderByNameAsc(name : String) : List<Company>
+  }
+  interface VacancyRepository <<interface>> {
+    + findByStatusOrderByCreatedAtDesc(status : VacancyStatus) : List<Vacancy>
+    + findTop6ByStatusOrderByCreatedAtDesc(status : VacancyStatus) : List<Vacancy>
+    + findByCompanyIdOrderByCreatedAtDesc(companyId : Long) : List<Vacancy>
+    + countByStatus(status : VacancyStatus) : long
+  }
+  interface ApplicationRepository <<interface>> {
+    + existsByVacancyIdAndPersonId(vacancyId : Long, personId : Long) : boolean
+    + findByVacancyIdAndPersonId(vacancyId : Long, personId : Long) : Optional<Application>
+    + findByVacancyId(vacancyId : Long) : List<Application>
+    + findByVacancyIdOrderByCreatedAtDesc(vacancyId : Long) : List<Application>
+    + findByPersonIdOrderByCreatedAtDesc(personId : Long) : List<Application>
+    + findAllByOrderByCreatedAtDesc() : List<Application>
+    + findByStatusOrderByCreatedAtDesc(status : ApplicationStatus) : List<Application>
+    + countByStatus(status : ApplicationStatus) : long
+  }
+  class PersonSpecifications <<Specification>> {
+    - PersonSpecifications()
+    + {static} matching(c : PersonSearchCriteria) : Specification<Person>
+    ~ {static} like(s : String) : String
+  }
+  class VacancySpecifications <<Specification>> {
+    - VacancySpecifications()
+    + {static} openMatching(c : VacancySearchCriteria) : Specification<Vacancy>
+  }
+}
+
+JpaRepository <|-- UserAccountRepository : T = UserAccount
+JpaRepository <|-- PersonRepository : T = Person
+JpaRepository <|-- CompanyRepository : T = Company
+JpaRepository <|-- VacancyRepository : T = Vacancy
+JpaRepository <|-- ApplicationRepository : T = Application
+JpaSpec <|-- PersonRepository
+JpaSpec <|-- VacancyRepository
+
+PersonSpecifications ..> JpaSpec : «create»\nSpecification<Person>
+VacancySpecifications ..> JpaSpec : «create»\nSpecification<Vacancy>
+VacancySpecifications ..> PersonSpecifications : like()
+
+note bottom of PersonSpecifications
+  R1: критерії освіта / компанія / посада /
+  зарплата від–до / статус → предикати
+  Criteria API (параметризовані, без SQL-рядків);
+  використовується в PersonService.search()
+end note
+@enduml

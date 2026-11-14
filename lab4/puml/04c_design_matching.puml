@@ -1,0 +1,88 @@
+@startuml 04c_design_matching
+' Діаграма класів проєктування, ч. 3: пакет matching (M1, Strategy)
+!include _cls_head.iuml
+
+title Діаграма класів проєктування, ч. 3 — пакет ua.knu.jobmatch.matching
+
+package "ua.knu.jobmatch.matching" {
+  class MatchingService <<Service>> {
+    + {static} DEFAULT_THRESHOLD : int = 50
+    + {static} PARTIAL_THRESHOLD : int = 25
+    - criteria : List<MatchCriterion>
+    - personRepository : PersonRepository
+    - vacancyRepository : VacancyRepository
+    - clock : Clock
+    + evaluate(person : Person, vacancy : Vacancy) : MatchResult
+    + findCandidates(vacancy : Vacancy, minScore : int) : List<MatchResult>
+    + findVacancies(person : Person, minScore : int) : List<MatchResult>
+    + {static} validateThreshold(minScore : int)
+  }
+  interface MatchCriterion <<interface>> {
+    + name() : String
+    + maxPoints() : int
+    + evaluate(person : Person, vacancy : Vacancy, today : LocalDate) : CriterionScore
+  }
+  class PositionCriterion <<Component>> {
+    ~ {static} MAX : int = 55
+    ~ {static} PARTIAL : int = 25
+    ~ {static} compare(a : String, b : String) : int
+    ~ {static} normalize(s : String) : String
+    - {static} tokens(s : String) : List<String>
+    - {static} words(s : String) : Set<String>
+    - {static} candidatePositions(p : Person) : Iterable<String>
+  }
+  class SalaryCriterion <<Component>> {
+    ~ {static} MAX : int = 15
+    ~ {static} PARTIAL : int = 7
+  }
+  class EducationCriterion <<Component>> {
+    ~ {static} MAX : int = 15
+  }
+  class ExperienceCriterion <<Component>> {
+    ~ {static} MAX : int = 15
+    ~ {static} PARTIAL : int = 7
+  }
+  class MatchResult <<record>> {
+    + person : Person
+    + vacancy : Vacancy
+    + score : int
+    + parts : List<CriterionScore>
+  }
+  class CriterionScore <<record>> {
+    + criterion : String
+    + points : int
+    + maxPoints : int
+    + explanation : String
+    + isFull() : boolean
+  }
+}
+
+
+class "Person" as P <<Entity>> #F4F4F4
+class "Vacancy" as V <<Entity>> #F4F4F4
+interface PersonRepository <<interface>> #F4F4F4
+interface VacancyRepository <<interface>> #F4F4F4
+class Clock #F4F4F4
+
+MatchingService "1" o--> "criteria 4 {ordered}" MatchCriterion
+MatchCriterion <|.. PositionCriterion
+MatchCriterion <|.. SalaryCriterion
+MatchCriterion <|.. EducationCriterion
+MatchCriterion <|.. ExperienceCriterion
+MatchingService ..> MatchResult : «create»
+MatchResult "1" *-- "parts 4" CriterionScore
+MatchCriterion ..> CriterionScore : «create»
+MatchResult --> "1" P
+MatchResult --> "1" V
+MatchingService --> "1" PersonRepository
+MatchingService --> "1" VacancyRepository
+MatchingService --> "1" Clock
+MatchCriterion ..> P
+MatchCriterion ..> V
+
+note right of MatchingService
+  Facade (GoF) + Pure Fabrication (GRASP);
+  критерії впроваджує Spring як
+  List<MatchCriterion> у порядку @Order(1..4)
+end note
+@enduml

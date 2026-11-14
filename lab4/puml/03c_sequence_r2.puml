@@ -1,0 +1,63 @@
+@startuml 03c_sequence_r2
+' Діаграма послідовності R2, ч. 3: кроки 4–5 (R4, форма пропозиції); A3, A4, A7
+!include _seq_head.iuml
+
+title R2 — послідовність, ч. 3: картка людини і форма пропозиції (кроки 4–5; A3, A4, A7)
+
+actor "Recruiter" as rec
+boundary "candidate-matches.html /\nperson.html / propose.html" as page
+control ":Recruiter\nController" as rc
+control ":RecruiterMatch\nController" as rmc
+control ":GlobalController\nAdvice" as gca
+participant ":PersonService" as ps
+participant ":CompanyService" as cs
+participant ":MatchingService" as ms
+participant ":Application\nService" as as
+
+opt крок 4 — розширення R4
+  rec -> page : ПІБ кандидата
+  page -> rc : GET /recruiter/people/{personId}?from={id}&minScore=N
+  activate rc
+  rc -> ps : get(personId)
+  note right of ps : PersonRepository.findById;\nосвіта й історія роботи
+  ps --> rc : p : Person
+  rc -> rc : applicationService.forPerson(personId)
+  rc --> page : view recruiter/person
+  deactivate rc
+  page --> rec : резюме, освіта, історія роботи, стаж, кандидатури;\n«← Назад до підбору», «← До списку резюме»
+  rec -> page : «← Назад до підбору»
+  page -> rmc : GET /recruiter/vacancies/{id}/matches?minScore=N (рис. 4)
+end
+
+rec -> page : «Запропонувати» (personId, minScore)
+page -> rmc : GET /recruiter/vacancies/{id}/propose?personId=…&minScore=N
+activate rmc
+rmc -> rmc : proposeForm(id, personId, minScore, model, ra)
+rmc -> cs : getVacancy(id)
+cs --> rmc : v : Vacancy
+rmc -> as : byPersonForVacancy(id)
+as --> rmc : proposals : Map<Long, Application>
+alt A4: !v.isOpen() або A3: proposals.containsKey(personId)
+  rmc -> rmc : ra.addFlashAttribute("error",\nBusinessException(3 частини))
+  rmc --> page : redirect:/recruiter/vacancies/{id}/matches?minScore=N
+  page --> rec : список підбору з повідомленням
+else вакансія відкрита, кандидатури немає
+rmc -> rmc : renderPropose(id, form, minScore, model)
+rmc -> cs : getVacancy(id)
+cs --> rmc : v : Vacancy
+rmc -> ps : get(personId)
+alt A7: вакансію або людину не знайдено
+  ps --> rmc : throw NotFoundException
+  rmc -> gca : notFound(e)
+  gca --> page : view error/404 (HTTP 404)
+  page --> rec : «404 — Не знайдено»
+else знайдено
+  ps --> rmc : p : Person
+  rmc -> ms : evaluate(p, v)
+  ms --> rmc : match : MatchResult
+  rmc --> page : view recruiter/propose\n(vacancy, person, match, form, minScore)
+  page --> rec : форма «Коментар для компанії» (≤ 500,\nлічильник «N / 500 символів»), «Підтвердити», «Скасувати»
+end
+end
+deactivate rmc
+@enduml

@@ -1,0 +1,9 @@
+skinparam defaultFontName Arial
+skinparam dpi 150
+skinparam defaultFontSize 13
+skinparam shadowing false
+skinparam sequenceMessageAlign left
+skinparam responseMessageBelowArrow true
+skinparam maxMessageSize 200
+autonumber "<b>0."
+hide footbox

@@ -1,0 +1,15 @@
+skinparam defaultFontName Arial
+skinparam dpi 150
+skinparam defaultFontSize 12
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam class {
+  BackgroundColor #FFFFFF
+  BorderColor #333333
+  ArrowColor #333333
+}
+skinparam nodesep 35
+skinparam ranksep 45
+hide circle
+hide empty members
+set separator none

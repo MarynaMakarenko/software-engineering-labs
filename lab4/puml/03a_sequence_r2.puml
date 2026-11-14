@@ -1,0 +1,66 @@
+@startuml 03a_sequence_r2
+' Діаграма послідовності R2, ч. 1: кроки 1–3 на рівні контролера; A1, A2, A4, A7
+!include _seq_head.iuml
+
+title R2 — послідовність, ч. 1: відкриття підбору (кроки 1–3; A1, A2, A4, A7)
+
+actor "Recruiter" as rec
+boundary "dashboard.html /\ncandidate-matches.html" as page
+control ":RecruiterMatch\nController" as rmc
+control ":GlobalController\nAdvice" as gca
+participant ":CompanyService" as cs
+participant "MatchThreshold" as mt
+participant ":MatchingService" as ms
+participant ":Application\nService" as as
+
+rec -> page : «Підібрати кандидатів»
+page -> rmc : GET /recruiter/vacancies/{id}/matches?minScore=50\n(після «Оновити» — minScore=N&prev=P)
+activate rmc
+rmc -> cs : getVacancy(id)
+activate cs
+note right of cs : VacancyRepository.findById(id)
+alt A7: вакансію не знайдено
+  cs --> rmc : throw NotFoundException
+  rmc -> gca : notFound(e)
+  gca --> page : view error/404 (HTTP 404)
+  page --> rec : «404 — Не знайдено»,\n«До панелі рекрутера»
+else вакансію знайдено
+  cs --> rmc : v : Vacancy
+  deactivate cs
+  rmc -> mt : parse(minScore, prev, model)
+  activate mt
+  alt A2: не ціле або поза 0..100
+    mt -> mt : model.error =\nBusinessException(3 частини)
+    mt --> rmc : prev — попередній поріг\n(без prev — DEFAULT_THRESHOLD = 50)
+  else коректне значення
+    mt --> rmc : threshold
+  end
+  deactivate mt
+  rmc -> rmc : v.isOpen()
+  alt A4: вакансію закрито
+    rmc -> rmc : results = List.of()
+  else вакансія відкрита
+    rmc -> ms : findCandidates(v, threshold)
+    activate ms
+    ref over ms : рис. 5 — обчислення оцінок M1
+    ms --> rmc : results : List<MatchResult>
+    deactivate ms
+  end
+  rmc -> as : byPersonForVacancy(id)
+  activate as
+  ref over as : рис. 5
+  as --> rmc : proposals : Map<Long, Application>
+  deactivate as
+  rmc --> page : view recruiter/candidate-matches\n(vacancy, results, proposals, minScore)
+  deactivate rmc
+  alt A4: вакансію закрито
+    page --> rec : «Вакансію закрито — підбір недоступний»,\n«До відкритих вакансій»
+  else A1: results порожній
+    page --> rec : «Немає кандидатів з оцінкою від N %»,\n«Показати часткові збіги (від 25 %)»
+    rec -> page : «Показати часткові збіги»
+    page -> rmc : GET …/matches?minScore=25\n(повтор кроків 2–3)
+  else список не порожній
+    page --> rec : таблиця: оцінка, складові, «Запропонувати»;\nA3: для наявної кандидатури — позначка статусу
+  end
+end
+@enduml
