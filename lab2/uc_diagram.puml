@@ -1,0 +1,118 @@
+@startuml uc_diagram
+left to right direction
+skinparam defaultFontName "Arial"
+skinparam defaultFontSize 14
+skinparam dpi 200
+skinparam shadowing false
+skinparam nodesep 14
+skinparam ranksep 40
+skinparam usecase {
+  BackgroundColor #FFFFFF
+  BorderColor #000000
+}
+skinparam rectangle {
+  BorderColor #000000
+}
+skinparam actor {
+  BorderColor #000000
+  BackgroundColor #FFFFFF
+}
+skinparam ArrowColor #000000
+
+actor "A1. Гість" as A1
+actor "A2. Шукач" as A2
+actor "A3. Представник\nкомпанії" as A3
+actor "A4. Рекрутер" as A4
+
+rectangle "Веб-застосунок JobMatch" {
+  ' ліва колонка — Гість і Шукач
+  usecase "G2. Реєстрація\nоблікового запису" as G2
+  usecase "C1. Ведення резюме" as C1
+  usecase "C2. Ведення історії\nроботи" as C2
+  usecase "C3. Перегляд відповідних\nвакансій" as C3
+  usecase "C4. Відгук на вакансію" as C4
+  usecase "C5. Перегляд власних\nвідгуків" as C5
+
+  ' центральна колонка — спільні
+  usecase "U3. Перегляд довідки" as U3
+  usecase "G1. Перегляд і пошук\nвакансій" as G1
+  usecase "U1. Вхід до застосунку" as U1
+  usecase "U2. Вихід із застосунку" as U2
+  usecase "M1. Оцінювання\nвідповідності\nрезюме й вакансії" as M1
+
+  ' права колонка — Представник компанії і Рекрутер
+  usecase "E1. Ведення профілю\nкомпанії" as E1
+  usecase "E2. Ведення вакансій\nкомпанії" as E2
+  usecase "E3. Перегляд відповідних\nрезюме на вакансію" as E3
+  usecase "E4. Розгляд кандидатур\nна вакансію" as E4
+  usecase "R1. Пошук резюме\nза критеріями" as R1
+  usecase "R2. Підбір кандидатів\nна вакансію" as R2
+  usecase "R3. Підбір вакансій\nдля шукача" as R3
+  usecase "R4. Перегляд історії\nроботи людини" as R4
+  usecase "R5. Ведення даних\nпро людей" as R5
+  usecase "R6. Ведення даних про\nкомпанії та вакансії" as R6
+  usecase "R7. Реєстрація\nпрацевлаштування" as R7
+}
+
+' --- A1 Гість ---
+A1 --> G2
+A1 --> G1
+A1 --> U3
+
+' --- A2 Шукач ---
+A2 --> C1
+A2 --> C2
+A2 --> C3
+A2 --> C4
+A2 --> C5
+A2 --> U1
+A2 --> U2
+A2 --> G1
+A2 --> U3
+
+' --- A3 Представник компанії (праворуч) ---
+E1 <-- A3
+E2 <-- A3
+E3 <-- A3
+E4 <-- A3
+U1 <-- A3
+U2 <-- A3
+G1 <-- A3
+U3 <-- A3
+
+' --- A4 Рекрутер (праворуч) ---
+R1 <-- A4
+R2 <-- A4
+R3 <-- A4
+R4 <-- A4
+R5 <-- A4
+R6 <-- A4
+R7 <-- A4
+U1 <-- A4
+U2 <-- A4
+G1 <-- A4
+U3 <-- A4
+
+' --- include / extend ---
+C3 ..> M1 : <<include>>
+M1 <.. E3 : <<include>>
+M1 <.. R2 : <<include>>
+M1 <.. R3 : <<include>>
+C4 ..> G1 : <<extend>>
+C4 .[norank].> C3 : <<extend>>
+R4 .[norank].> R2 : <<extend>>
+
+' --- розміщення колонок ---
+C1 -[hidden]-> U1
+C2 -[hidden]-> U2
+C5 -[hidden]-> M1
+G2 -[hidden]-> U3
+U1 -[hidden]-> E1
+U2 -[hidden]-> R5
+U3 -[hidden]-> R6
+G1 -[hidden]-> R1
+M1 -[hidden]-> R4
+U2 -[hidden]-> R7
+U1 -[hidden]-> E2
+U1 -[hidden]-> E4
+@enduml
