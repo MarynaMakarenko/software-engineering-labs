@@ -1,0 +1,572 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="ua.knu.jobmatch.web.CandidateMatchingIntegrationTest" time="4.76" tests="11" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="java.specification.version" value="27"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.class.path" value="/Users/marina.makarenko/Desktop/pi-labs/app/target/test-classes:/Users/marina.makarenko/Desktop/pi-labs/app/target/classes:/Users/marina.makarenko/.m2/repository/org/springframework/boot/spring-boot-starter-web/3.5.6/spring-boot-starter-web-3.5.6.jar:/Users/marina.makarenko/.m2/repository/org/springframework/boot/spring-boot-starter/3.5.6/spring-boot-starter-3.5.6.jar:/Users/marina.makarenko/.m2/repository/org/springframework/boot/spring-boot/3.5.6/spring-boot-3.5.6.jar:/Users/marina.makarenko/.m2/repository/org/springframework/boot/spring-boot-autoconfigure/3.5.6/spring-boot-autoconfigure-3.5.6.jar:/Users/marina.makarenko/.m2/repository/org/springframework/boot/spring-boot-starter-logging/3.5.6/spring-boot-starter-logging-3.5.6.jar:/Users/marina.makarenko/.m2/repository/ch/qos/logback/logback-classic/1.5.18/logback-classic-1.5.18.jar:/Users/marina.makarenko/.m2/repository/ch/qos/logback/logback-core/1.5.18/logback-core-1.5.18.jar:/Users/marina.makarenko/.m2/repository/org/apache/logging/log4j/log4j-to-slf4j/2.24.3/log4j-to-slf4j-2.24.3.jar:/Users/marina.makarenko/.m2/repository/org/apache/logging/log4j/log4j-api/2.24.3/log4j-api-2.24.3.jar:/Users/marina.makarenko/.m2/repository/org/slf4j/jul-to-slf4j/2.0.17/jul-to-slf4j-2.0.17.jar:/Users/marina.makarenko/.m2/repository/jakarta/annotation/jakarta.annotation-api/2.1.1/jakarta.annotation-api-2.1.1.jar:/Users/marina.makarenko/.m2/repository/org/yaml/snakeyaml/2.4/snakeyaml-2.4.jar:/Users/marina.makarenko/.m2/repository/org/springframework/boot/spring-boot-starter-json/3.5.6/spring-boot-starter-json-3.5.6.jar:/Users/marina.makarenko/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.19.2/jackson-databind-2.19.2.jar:/Users/marina.makarenko/.m2/repository/com/fasterxml/jackson/datatype/jackson-datatype-jdk8/2.19.2/jackson-datatype-jdk8-2.19.2.jar:/Users/marina.makarenko/.m2/repository/com/fasterxml/jackson/module/jackson-module-parameter-names/2.19.2/jackson-module-parameter-names-2.19.2.jar:/Users/marina.makarenko/.m2/repository/org/springframework/boot/spring-boot-starter-tomcat/3.5.6/spring-boot-starter-tomcat-3.5.6.jar:/Users/marina.makarenko/.m2/repository/org/apache/tomcat/embed/tomcat-embed-core/10.1.46/tomcat-embed-core-10.1.46.jar:/Users/marina.makarenko/.m2/repository/org/apache/tomcat/embed/tomcat-embed-websocket/10.1.46/tomcat-embed-websocket-10.1.46.jar:/Users/marina.makarenko/.m2/repository/org/springframework/spring-web/6.2.11/spring-web-6.2.11.jar:/Users/marina.makarenko/.m2/repository/org/springframework/spring-beans/6.2.11/spring-beans-6.2.11.jar:/Users/marina.makarenko/.m2/repository/io/micrometer/micrometer-observation/1.15.4/micrometer-observation-1.15.4.jar:/Users/marina.makarenko/.m2/repository/io/micrometer/micrometer-commons/1.15.4/micrometer-commons-1.15.4.jar:/Users/marina.makarenko/.m2/repository/org/springframework/spring-webmvc/6.2.11/spring-webmvc-6.2.11.jar:/Users/marina.makarenko/.m2/repository/org/springframework/spring-context/6.2.11/spring-context-6.2.11.jar:/Users/marina.makarenko/.m2/repository/org/springframework/spring-expression/6.2.11/spring-expression-6.2.11.jar:/Users/marina.makarenko/.m2/repository/org/springframework/boot/spring-boot-starter-thymeleaf/3.5.6/spring-boot-starter-thymeleaf-3.5.6.jar:/Users/marina.makarenko/.m2/repository/org/thymeleaf/thymeleaf-spring6/3.1.3.RELEASE/thymeleaf-spring6-3.1.3.RELEASE.jar:/Users/marina.makarenko/.m2/repository/org/thymeleaf/thymeleaf/3.1.3.RELEASE/thymeleaf-3.1.3.RELEASE.jar:/Users/marina.makarenko/.m2/repository/org/attoparser/attoparser/2.0.7.RELEASE/attoparser-2.0.7.RELEASE.jar:/Users/marina.makarenko/.m2/repository/org/unbescape/unbescape/1.1.6.RELEASE/unbescape-1.1.6.RELEASE.jar:/Users/marina.makarenko/.m2/repository/org/thymeleaf/extras/thymeleaf-extras-springsecurity6/3.1.3.RELEASE/thymeleaf-extras-springsecurity6-3.1.3.RELEASE.jar:/Users/marina.makarenko/.m2/repository/org/slf4j/slf4j-api/2.0.17/slf4j-api-2.0.17.jar:/Users/marina.makarenko/.m2/repository/org/springframework/boot/spring-boot-starter-security/3.5.6/spring-boot-starter-security-3.5.6.jar:/Users/marina.makarenko/.m2/repository/org/springframework/spring-aop/6.2.11/spring-aop-6.2.11.jar:/Users/marina.makarenko/.m2/repository/org/springframework/security/spring-security-config/6.5.5/spring-security-config-6.5.5.jar:/Users/marina.makarenko/.m2/repository/org/springframework/security/spring-security-web/6.5.5/spring-security-web-6.5.5.jar:/Users/marina.makarenko/.m2/repository/org/springframework/boot/spring-boot-starter-data-jpa/3.5.6/spring-boot-starter-data-jpa-3.5.6.jar:/Users/marina.makarenko/.m2/repository/org/springframework/boot/spring-boot-starter-jdbc/3.5.6/spring-boot-starter-jdbc-3.5.6.jar:/Users/marina.makarenko/.m2/repository/com/zaxxer/HikariCP/6.3.3/HikariCP-6.3.3.jar:/Users/marina.makarenko/.m2/repository/org/springframework/spring-jdbc/6.2.11/spring-jdbc-6.2.11.jar:/Users/marina.makarenko/.m2/repository/org/hibernate/orm/hibernate-core/6.6.29.Final/hibernate-core-6.6.29.Final.jar:/Users/marina.makarenko/.m2/repository/jakarta/persistence/jakarta.persistence-api/3.1.0/jakarta.persistence-api-3.1.0.jar:/Users/marina.makarenko/.m2/repository/jakarta/transaction/jakarta.transaction-api/2.0.1/jakarta.transaction-api-2.0.1.jar:/Users/marina.makarenko/.m2/repository/org/jboss/logging/jboss-logging/3.6.1.Final/jboss-logging-3.6.1.Final.jar:/Users/marina.makarenko/.m2/repository/org/hibernate/common/hibernate-commons-annotations/7.0.3.Final/hibernate-commons-annotations-7.0.3.Final.jar:/Users/marina.makarenko/.m2/repository/io/smallrye/jandex/3.2.0/jandex-3.2.0.jar:/Users/marina.makarenko/.m2/repository/com/fasterxml/classmate/1.7.0/classmate-1.7.0.jar:/Users/marina.makarenko/.m2/repository/net/bytebuddy/byte-buddy/1.17.7/byte-buddy-1.17.7.jar:/Users/marina.makarenko/.m2/repository/org/glassfish/jaxb/jaxb-runtime/4.0.5/jaxb-runtime-4.0.5.jar:/Users/marina.makarenko/.m2/repository/org/glassfish/jaxb/jaxb-core/4.0.5/jaxb-core-4.0.5.jar:/Users/marina.makarenko/.m2/repository/org/eclipse/angus/angus-activation/2.0.2/angus-activation-2.0.2.jar:/Users/marina.makarenko/.m2/repository/org/glassfish/jaxb/txw2/4.0.5/txw2-4.0.5.jar:/Users/marina.makarenko/.m2/repository/com/sun/istack/istack-commons-runtime/4.1.2/istack-commons-runtime-4.1.2.jar:/Users/marina.makarenko/.m2/repository/jakarta/inject/jakarta.inject-api/2.0.1/jakarta.inject-api-2.0.1.jar:/Users/marina.makarenko/.m2/repository/org/antlr/antlr4-runtime/4.13.0/antlr4-runtime-4.13.0.jar:/Users/marina.makarenko/.m2/repository/org/springframework/data/spring-data-jpa/3.5.4/spring-data-jpa-3.5.4.jar:/Users/marina.makarenko/.m2/repository/org/springframework/data/spring-data-commons/3.5.4/spring-data-commons-3.5.4.jar:/Users/marina.makarenko/.m2/repository/org/springframework/spring-orm/6.2.11/spring-orm-6.2.11.jar:/Users/marina.makarenko/.m2/repository/org/springframework/spring-tx/6.2.11/spring-tx-6.2.11.jar:/Users/marina.makarenko/.m2/repository/org/springframework/spring-aspects/6.2.11/spring-aspects-6.2.11.jar:/Users/marina.makarenko/.m2/repository/org/aspectj/aspectjweaver/1.9.24/aspectjweaver-1.9.24.jar:/Users/marina.makarenko/.m2/repository/org/springframework/boot/spring-boot-starter-validation/3.5.6/spring-boot-starter-validation-3.5.6.jar:/Users/marina.makarenko/.m2/repository/org/apache/tomcat/embed/tomcat-embed-el/10.1.46/tomcat-embed-el-10.1.46.jar:/Users/marina.makarenko/.m2/repository/org/hibernate/validator/hibernate-validator/8.0.3.Final/hibernate-validator-8.0.3.Final.jar:/Users/marina.makarenko/.m2/repository/jakarta/validation/jakarta.validation-api/3.0.2/jakarta.validation-api-3.0.2.jar:/Users/marina.makarenko/.m2/repository/org/flywaydb/flyway-core/11.7.2/flyway-core-11.7.2.jar:/Users/marina.makarenko/.m2/repository/com/fasterxml/jackson/dataformat/jackson-dataformat-toml/2.19.2/jackson-dataformat-toml-2.19.2.jar:/Users/marina.makarenko/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.19.2/jackson-core-2.19.2.jar:/Users/marina.makarenko/.m2/repository/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.19.2/jackson-datatype-jsr310-2.19.2.jar:/Users/marina.makarenko/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.19.2/jackson-annotations-2.19.2.jar:/Users/marina.makarenko/.m2/repository/com/h2database/h2/2.3.232/h2-2.3.232.jar:/Users/marina.makarenko/.m2/repository/org/postgresql/postgresql/42.7.7/postgresql-42.7.7.jar:/Users/marina.makarenko/.m2/repository/org/checkerframework/checker-qual/3.49.3/checker-qual-3.49.3.jar:/Users/marina.makarenko/.m2/repository/org/flywaydb/flyway-database-postgresql/11.7.2/flyway-database-postgresql-11.7.2.jar:/Users/marina.makarenko/.m2/repository/org/springframework/boot/spring-boot-starter-test/3.5.6/spring-boot-starter-test-3.5.6.jar:/Users/marina.makarenko/.m2/repository/org/springframework/boot/spring-boot-test/3.5.6/spring-boot-test-3.5.6.jar:/Users/marina.makarenko/.m2/repository/org/springframework/boot/spring-boot-test-autoconfigure/3.5.6/spring-boot-test-autoconfigure-3.5.6.jar:/Users/marina.makarenko/.m2/repository/com/jayway/jsonpath/json-path/2.9.0/json-path-2.9.0.jar:/Users/marina.makarenko/.m2/repository/jakarta/xml/bind/jakarta.xml.bind-api/4.0.2/jakarta.xml.bind-api-4.0.2.jar:/Users/marina.makarenko/.m2/repository/jakarta/activation/jakarta.activation-api/2.1.4/jakarta.activation-api-2.1.4.jar:/Users/marina.makarenko/.m2/repository/net/minidev/json-smart/2.5.2/json-smart-2.5.2.jar:/Users/marina.makarenko/.m2/repository/net/minidev/accessors-smart/2.5.2/accessors-smart-2.5.2.jar:/Users/marina.makarenko/.m2/repository/org/ow2/asm/asm/9.7.1/asm-9.7.1.jar:/Users/marina.makarenko/.m2/repository/org/assertj/assertj-core/3.27.4/assertj-core-3.27.4.jar:/Users/marina.makarenko/.m2/repository/org/awaitility/awaitility/4.2.2/awaitility-4.2.2.jar:/Users/marina.makarenko/.m2/repository/org/hamcrest/hamcrest/3.0/hamcrest-3.0.jar:/Users/marina.makarenko/.m2/repository/org/junit/jupiter/junit-jupiter/5.12.2/junit-jupiter-5.12.2.jar:/Users/marina.makarenko/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.12.2/junit-jupiter-api-5.12.2.jar:/Users/marina.makarenko/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/Users/marina.makarenko/.m2/repository/org/junit/platform/junit-platform-commons/1.12.2/junit-platform-commons-1.12.2.jar:/Users/marina.makarenko/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/marina.makarenko/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.12.2/junit-jupiter-params-5.12.2.jar:/Users/marina.makarenko/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.12.2/junit-jupiter-engine-5.12.2.jar:/Users/marina.makarenko/.m2/repository/org/junit/platform/junit-platform-engine/1.12.2/junit-platform-engine-1.12.2.jar:/Users/marina.makarenko/.m2/repository/org/mockito/mockito-core/5.17.0/mockito-core-5.17.0.jar:/Users/marina.makarenko/.m2/repository/net/bytebuddy/byte-buddy-agent/1.17.7/byte-buddy-agent-1.17.7.jar:/Users/marina.makarenko/.m2/repository/org/objenesis/objenesis/3.3/objenesis-3.3.jar:/Users/marina.makarenko/.m2/repository/org/mockito/mockito-junit-jupiter/5.17.0/mockito-junit-jupiter-5.17.0.jar:/Users/marina.makarenko/.m2/repository/org/skyscreamer/jsonassert/1.5.3/jsonassert-1.5.3.jar:/Users/marina.makarenko/.m2/repository/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar:/Users/marina.makarenko/.m2/repository/org/springframework/spring-core/6.2.11/spring-core-6.2.11.jar:/Users/marina.makarenko/.m2/repository/org/springframework/spring-jcl/6.2.11/spring-jcl-6.2.11.jar:/Users/marina.makarenko/.m2/repository/org/springframework/spring-test/6.2.11/spring-test-6.2.11.jar:/Users/marina.makarenko/.m2/repository/org/xmlunit/xmlunit-core/2.10.4/xmlunit-core-2.10.4.jar:/Users/marina.makarenko/.m2/repository/org/springframework/security/spring-security-test/6.5.5/spring-security-test-6.5.5.jar:/Users/marina.makarenko/.m2/repository/org/springframework/security/spring-security-core/6.5.5/spring-security-core-6.5.5.jar:/Users/marina.makarenko/.m2/repository/org/springframework/security/spring-security-crypto/6.5.5/spring-security-crypto-6.5.5.jar:"/>
+    <property name="java.vm.vendor" value="Homebrew"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.vendor.url" value="https://github.com/Homebrew/homebrew-core/issues"/>
+    <property name="user.timezone" value="Europe/Kiev"/>
+    <property name="org.jboss.logging.provider" value="slf4j"/>
+    <property name="os.name" value="Mac OS X"/>
+    <property name="java.vm.specification.version" value="27"/>
+    <property name="APPLICATION_NAME" value="JobMatch"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="UA"/>
+    <property name="sun.boot.library.path" value="/opt/homebrew/Cellar/openjdk/27.0.1.0.3/libexec/openjdk.jdk/Contents/Home/lib"/>
+    <property name="sun.java.command" value="/Users/marina.makarenko/Desktop/pi-labs/app/target/surefire/surefirebooter-20261114173417425_3.jar /Users/marina.makarenko/Desktop/pi-labs/app/target/surefire 2026-11-14T17-34-17_380-jvmRun1 surefire-20261114173417425_1tmp surefire_0-20261114173417425_2tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="/Users/marina.makarenko/Desktop/pi-labs/app/target/test-classes:/Users/marina.makarenko/Desktop/pi-labs/app/target/classes:/Users/marina.makarenko/.m2/repository/org/springframework/boot/spring-boot-starter-web/3.5.6/spring-boot-starter-web-3.5.6.jar:/Users/marina.makarenko/.m2/repository/org/springframework/boot/spring-boot-starter/3.5.6/spring-boot-starter-3.5.6.jar:/Users/marina.makarenko/.m2/repository/org/springframework/boot/spring-boot/3.5.6/spring-boot-3.5.6.jar:/Users/marina.makarenko/.m2/repository/org/springframework/boot/spring-boot-autoconfigure/3.5.6/spring-boot-autoconfigure-3.5.6.jar:/Users/marina.makarenko/.m2/repository/org/springframework/boot/spring-boot-starter-logging/3.5.6/spring-boot-starter-logging-3.5.6.jar:/Users/marina.makarenko/.m2/repository/ch/qos/logback/logback-classic/1.5.18/logback-classic-1.5.18.jar:/Users/marina.makarenko/.m2/repository/ch/qos/logback/logback-core/1.5.18/logback-core-1.5.18.jar:/Users/marina.makarenko/.m2/repository/org/apache/logging/log4j/log4j-to-slf4j/2.24.3/log4j-to-slf4j-2.24.3.jar:/Users/marina.makarenko/.m2/repository/org/apache/logging/log4j/log4j-api/2.24.3/log4j-api-2.24.3.jar:/Users/marina.makarenko/.m2/repository/org/slf4j/jul-to-slf4j/2.0.17/jul-to-slf4j-2.0.17.jar:/Users/marina.makarenko/.m2/repository/jakarta/annotation/jakarta.annotation-api/2.1.1/jakarta.annotation-api-2.1.1.jar:/Users/marina.makarenko/.m2/repository/org/yaml/snakeyaml/2.4/snakeyaml-2.4.jar:/Users/marina.makarenko/.m2/repository/org/springframework/boot/spring-boot-starter-json/3.5.6/spring-boot-starter-json-3.5.6.jar:/Users/marina.makarenko/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.19.2/jackson-databind-2.19.2.jar:/Users/marina.makarenko/.m2/repository/com/fasterxml/jackson/datatype/jackson-datatype-jdk8/2.19.2/jackson-datatype-jdk8-2.19.2.jar:/Users/marina.makarenko/.m2/repository/com/fasterxml/jackson/module/jackson-module-parameter-names/2.19.2/jackson-module-parameter-names-2.19.2.jar:/Users/marina.makarenko/.m2/repository/org/springframework/boot/spring-boot-starter-tomcat/3.5.6/spring-boot-starter-tomcat-3.5.6.jar:/Users/marina.makarenko/.m2/repository/org/apache/tomcat/embed/tomcat-embed-core/10.1.46/tomcat-embed-core-10.1.46.jar:/Users/marina.makarenko/.m2/repository/org/apache/tomcat/embed/tomcat-embed-websocket/10.1.46/tomcat-embed-websocket-10.1.46.jar:/Users/marina.makarenko/.m2/repository/org/springframework/spring-web/6.2.11/spring-web-6.2.11.jar:/Users/marina.makarenko/.m2/repository/org/springframework/spring-beans/6.2.11/spring-beans-6.2.11.jar:/Users/marina.makarenko/.m2/repository/io/micrometer/micrometer-observation/1.15.4/micrometer-observation-1.15.4.jar:/Users/marina.makarenko/.m2/repository/io/micrometer/micrometer-commons/1.15.4/micrometer-commons-1.15.4.jar:/Users/marina.makarenko/.m2/repository/org/springframework/spring-webmvc/6.2.11/spring-webmvc-6.2.11.jar:/Users/marina.makarenko/.m2/repository/org/springframework/spring-context/6.2.11/spring-context-6.2.11.jar:/Users/marina.makarenko/.m2/repository/org/springframework/spring-expression/6.2.11/spring-expression-6.2.11.jar:/Users/marina.makarenko/.m2/repository/org/springframework/boot/spring-boot-starter-thymeleaf/3.5.6/spring-boot-starter-thymeleaf-3.5.6.jar:/Users/marina.makarenko/.m2/repository/org/thymeleaf/thymeleaf-spring6/3.1.3.RELEASE/thymeleaf-spring6-3.1.3.RELEASE.jar:/Users/marina.makarenko/.m2/repository/org/thymeleaf/thymeleaf/3.1.3.RELEASE/thymeleaf-3.1.3.RELEASE.jar:/Users/marina.makarenko/.m2/repository/org/attoparser/attoparser/2.0.7.RELEASE/attoparser-2.0.7.RELEASE.jar:/Users/marina.makarenko/.m2/repository/org/unbescape/unbescape/1.1.6.RELEASE/unbescape-1.1.6.RELEASE.jar:/Users/marina.makarenko/.m2/repository/org/thymeleaf/extras/thymeleaf-extras-springsecurity6/3.1.3.RELEASE/thymeleaf-extras-springsecurity6-3.1.3.RELEASE.jar:/Users/marina.makarenko/.m2/repository/org/slf4j/slf4j-api/2.0.17/slf4j-api-2.0.17.jar:/Users/marina.makarenko/.m2/repository/org/springframework/boot/spring-boot-starter-security/3.5.6/spring-boot-starter-security-3.5.6.jar:/Users/marina.makarenko/.m2/repository/org/springframework/spring-aop/6.2.11/spring-aop-6.2.11.jar:/Users/marina.makarenko/.m2/repository/org/springframework/security/spring-security-config/6.5.5/spring-security-config-6.5.5.jar:/Users/marina.makarenko/.m2/repository/org/springframework/security/spring-security-web/6.5.5/spring-security-web-6.5.5.jar:/Users/marina.makarenko/.m2/repository/org/springframework/boot/spring-boot-starter-data-jpa/3.5.6/spring-boot-starter-data-jpa-3.5.6.jar:/Users/marina.makarenko/.m2/repository/org/springframework/boot/spring-boot-starter-jdbc/3.5.6/spring-boot-starter-jdbc-3.5.6.jar:/Users/marina.makarenko/.m2/repository/com/zaxxer/HikariCP/6.3.3/HikariCP-6.3.3.jar:/Users/marina.makarenko/.m2/repository/org/springframework/spring-jdbc/6.2.11/spring-jdbc-6.2.11.jar:/Users/marina.makarenko/.m2/repository/org/hibernate/orm/hibernate-core/6.6.29.Final/hibernate-core-6.6.29.Final.jar:/Users/marina.makarenko/.m2/repository/jakarta/persistence/jakarta.persistence-api/3.1.0/jakarta.persistence-api-3.1.0.jar:/Users/marina.makarenko/.m2/repository/jakarta/transaction/jakarta.transaction-api/2.0.1/jakarta.transaction-api-2.0.1.jar:/Users/marina.makarenko/.m2/repository/org/jboss/logging/jboss-logging/3.6.1.Final/jboss-logging-3.6.1.Final.jar:/Users/marina.makarenko/.m2/repository/org/hibernate/common/hibernate-commons-annotations/7.0.3.Final/hibernate-commons-annotations-7.0.3.Final.jar:/Users/marina.makarenko/.m2/repository/io/smallrye/jandex/3.2.0/jandex-3.2.0.jar:/Users/marina.makarenko/.m2/repository/com/fasterxml/classmate/1.7.0/classmate-1.7.0.jar:/Users/marina.makarenko/.m2/repository/net/bytebuddy/byte-buddy/1.17.7/byte-buddy-1.17.7.jar:/Users/marina.makarenko/.m2/repository/org/glassfish/jaxb/jaxb-runtime/4.0.5/jaxb-runtime-4.0.5.jar:/Users/marina.makarenko/.m2/repository/org/glassfish/jaxb/jaxb-core/4.0.5/jaxb-core-4.0.5.jar:/Users/marina.makarenko/.m2/repository/org/eclipse/angus/angus-activation/2.0.2/angus-activation-2.0.2.jar:/Users/marina.makarenko/.m2/repository/org/glassfish/jaxb/txw2/4.0.5/txw2-4.0.5.jar:/Users/marina.makarenko/.m2/repository/com/sun/istack/istack-commons-runtime/4.1.2/istack-commons-runtime-4.1.2.jar:/Users/marina.makarenko/.m2/repository/jakarta/inject/jakarta.inject-api/2.0.1/jakarta.inject-api-2.0.1.jar:/Users/marina.makarenko/.m2/repository/org/antlr/antlr4-runtime/4.13.0/antlr4-runtime-4.13.0.jar:/Users/marina.makarenko/.m2/repository/org/springframework/data/spring-data-jpa/3.5.4/spring-data-jpa-3.5.4.jar:/Users/marina.makarenko/.m2/repository/org/springframework/data/spring-data-commons/3.5.4/spring-data-commons-3.5.4.jar:/Users/marina.makarenko/.m2/repository/org/springframework/spring-orm/6.2.11/spring-orm-6.2.11.jar:/Users/marina.makarenko/.m2/repository/org/springframework/spring-tx/6.2.11/spring-tx-6.2.11.jar:/Users/marina.makarenko/.m2/repository/org/springframework/spring-aspects/6.2.11/spring-aspects-6.2.11.jar:/Users/marina.makarenko/.m2/repository/org/aspectj/aspectjweaver/1.9.24/aspectjweaver-1.9.24.jar:/Users/marina.makarenko/.m2/repository/org/springframework/boot/spring-boot-starter-validation/3.5.6/spring-boot-starter-validation-3.5.6.jar:/Users/marina.makarenko/.m2/repository/org/apache/tomcat/embed/tomcat-embed-el/10.1.46/tomcat-embed-el-10.1.46.jar:/Users/marina.makarenko/.m2/repository/org/hibernate/validator/hibernate-validator/8.0.3.Final/hibernate-validator-8.0.3.Final.jar:/Users/marina.makarenko/.m2/repository/jakarta/validation/jakarta.validation-api/3.0.2/jakarta.validation-api-3.0.2.jar:/Users/marina.makarenko/.m2/repository/org/flywaydb/flyway-core/11.7.2/flyway-core-11.7.2.jar:/Users/marina.makarenko/.m2/repository/com/fasterxml/jackson/dataformat/jackson-dataformat-toml/2.19.2/jackson-dataformat-toml-2.19.2.jar:/Users/marina.makarenko/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.19.2/jackson-core-2.19.2.jar:/Users/marina.makarenko/.m2/repository/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.19.2/jackson-datatype-jsr310-2.19.2.jar:/Users/marina.makarenko/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.19.2/jackson-annotations-2.19.2.jar:/Users/marina.makarenko/.m2/repository/com/h2database/h2/2.3.232/h2-2.3.232.jar:/Users/marina.makarenko/.m2/repository/org/postgresql/postgresql/42.7.7/postgresql-42.7.7.jar:/Users/marina.makarenko/.m2/repository/org/checkerframework/checker-qual/3.49.3/checker-qual-3.49.3.jar:/Users/marina.makarenko/.m2/repository/org/flywaydb/flyway-database-postgresql/11.7.2/flyway-database-postgresql-11.7.2.jar:/Users/marina.makarenko/.m2/repository/org/springframework/boot/spring-boot-starter-test/3.5.6/spring-boot-starter-test-3.5.6.jar:/Users/marina.makarenko/.m2/repository/org/springframework/boot/spring-boot-test/3.5.6/spring-boot-test-3.5.6.jar:/Users/marina.makarenko/.m2/repository/org/springframework/boot/spring-boot-test-autoconfigure/3.5.6/spring-boot-test-autoconfigure-3.5.6.jar:/Users/marina.makarenko/.m2/repository/com/jayway/jsonpath/json-path/2.9.0/json-path-2.9.0.jar:/Users/marina.makarenko/.m2/repository/jakarta/xml/bind/jakarta.xml.bind-api/4.0.2/jakarta.xml.bind-api-4.0.2.jar:/Users/marina.makarenko/.m2/repository/jakarta/activation/jakarta.activation-api/2.1.4/jakarta.activation-api-2.1.4.jar:/Users/marina.makarenko/.m2/repository/net/minidev/json-smart/2.5.2/json-smart-2.5.2.jar:/Users/marina.makarenko/.m2/repository/net/minidev/accessors-smart/2.5.2/accessors-smart-2.5.2.jar:/Users/marina.makarenko/.m2/repository/org/ow2/asm/asm/9.7.1/asm-9.7.1.jar:/Users/marina.makarenko/.m2/repository/org/assertj/assertj-core/3.27.4/assertj-core-3.27.4.jar:/Users/marina.makarenko/.m2/repository/org/awaitility/awaitility/4.2.2/awaitility-4.2.2.jar:/Users/marina.makarenko/.m2/repository/org/hamcrest/hamcrest/3.0/hamcrest-3.0.jar:/Users/marina.makarenko/.m2/repository/org/junit/jupiter/junit-jupiter/5.12.2/junit-jupiter-5.12.2.jar:/Users/marina.makarenko/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.12.2/junit-jupiter-api-5.12.2.jar:/Users/marina.makarenko/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/Users/marina.makarenko/.m2/repository/org/junit/platform/junit-platform-commons/1.12.2/junit-platform-commons-1.12.2.jar:/Users/marina.makarenko/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/marina.makarenko/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.12.2/junit-jupiter-params-5.12.2.jar:/Users/marina.makarenko/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.12.2/junit-jupiter-engine-5.12.2.jar:/Users/marina.makarenko/.m2/repository/org/junit/platform/junit-platform-engine/1.12.2/junit-platform-engine-1.12.2.jar:/Users/marina.makarenko/.m2/repository/org/mockito/mockito-core/5.17.0/mockito-core-5.17.0.jar:/Users/marina.makarenko/.m2/repository/net/bytebuddy/byte-buddy-agent/1.17.7/byte-buddy-agent-1.17.7.jar:/Users/marina.makarenko/.m2/repository/org/objenesis/objenesis/3.3/objenesis-3.3.jar:/Users/marina.makarenko/.m2/repository/org/mockito/mockito-junit-jupiter/5.17.0/mockito-junit-jupiter-5.17.0.jar:/Users/marina.makarenko/.m2/repository/org/skyscreamer/jsonassert/1.5.3/jsonassert-1.5.3.jar:/Users/marina.makarenko/.m2/repository/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar:/Users/marina.makarenko/.m2/repository/org/springframework/spring-core/6.2.11/spring-core-6.2.11.jar:/Users/marina.makarenko/.m2/repository/org/springframework/spring-jcl/6.2.11/spring-jcl-6.2.11.jar:/Users/marina.makarenko/.m2/repository/org/springframework/spring-test/6.2.11/spring-test-6.2.11.jar:/Users/marina.makarenko/.m2/repository/org/xmlunit/xmlunit-core/2.10.4/xmlunit-core-2.10.4.jar:/Users/marina.makarenko/.m2/repository/org/springframework/security/spring-security-test/6.5.5/spring-security-test-6.5.5.jar:/Users/marina.makarenko/.m2/repository/org/springframework/security/spring-security-core/6.5.5/spring-security-core-6.5.5.jar:/Users/marina.makarenko/.m2/repository/org/springframework/security/spring-security-crypto/6.5.5/spring-security-crypto-6.5.5.jar:"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="/Users/marina.makarenko"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2026-10-24"/>
+    <property name="java.home" value="/opt/homebrew/Cellar/openjdk/27.0.1.0.3/libexec/openjdk.jdk/Contents/Home"/>
+    <property name="file.separator" value="/"/>
+    <property name="basedir" value="/Users/marina.makarenko/Desktop/pi-labs/app"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="FILE_LOG_CHARSET" value="UTF-8"/>
+    <property name="java.awt.headless" value="true"/>
+    <property name="apple.awt.application.name" value="ForkedBooter"/>
+    <property name="surefire.real.class.path" value="/Users/marina.makarenko/Desktop/pi-labs/app/target/surefire/surefirebooter-20261114173417425_3.jar"/>
+    <property name="polyglot.engine.WarnInterpreterOnly" value="false"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="27.0.1.0.3"/>
+    <property name="user.name" value="marina.makarenko"/>
+    <property name="stdout.encoding" value="UTF-8"/>
+    <property name="path.separator" value=":"/>
+    <property name="os.version" value="26.0.1"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="java.vendor.version" value="Homebrew"/>
+    <property name="localRepository" value="/Users/marina.makarenko/.m2/repository"/>
+    <property name="java.vendor.url.bug" value="https://github.com/Homebrew/homebrew-core/issues"/>
+    <property name="java.io.tmpdir" value="/var/folders/bh/7t55_b9n15lcmh12yknj3b7r0000gn/T/"/>
+    <property name="com.zaxxer.hikari.pool_number" value="11"/>
+    <property name="java.version" value="27.0.1.0.3"/>
+    <property name="user.dir" value="/Users/marina.makarenko/Desktop/pi-labs/app"/>
+    <property name="os.arch" value="aarch64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="PID" value="44476"/>
+    <property name="CONSOLE_LOG_CHARSET" value="UTF-8"/>
+    <property name="native.encoding" value="UTF-8"/>
+    <property name="java.library.path" value="/Users/marina.makarenko/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:."/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="stderr.encoding" value="UTF-8"/>
+    <property name="java.vendor" value="Homebrew"/>
+    <property name="java.vm.version" value="27.0.1.0.3"/>
+    <property name="stdin.encoding" value="UTF-8"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
+    <property name="java.class.version" value="71.0"/>
+    <property name="LOGGED_APPLICATION_NAME" value="[JobMatch] "/>
+  </properties>
+  <testcase name="duplicateProposalRejected" classname="ua.knu.jobmatch.web.CandidateMatchingIntegrationTest" time="0.144">
+    <system-out><![CDATA[17:34:18.582 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [ua.knu.jobmatch.web.CandidateMatchingIntegrationTest]: CandidateMatchingIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+17:34:18.638 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration ua.knu.jobmatch.JobMatchApplication for test class ua.knu.jobmatch.web.CandidateMatchingIntegrationTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.5.6)
+
+2026-11-14T17:34:18.803+02:00  INFO 44476 --- [JobMatch] [           main] u.k.j.w.CandidateMatchingIntegrationTest : Starting CandidateMatchingIntegrationTest using Java 27.0.1.0.3 with PID 44476 (started by marina.makarenko in /Users/marina.makarenko/Desktop/pi-labs/app)
+2026-11-14T17:34:18.803+02:00  INFO 44476 --- [JobMatch] [           main] u.k.j.w.CandidateMatchingIntegrationTest : The following 1 profile is active: "test"
+2026-11-14T17:34:19.096+02:00  INFO 44476 --- [JobMatch] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-11-14T17:34:19.123+02:00  INFO 44476 --- [JobMatch] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 21 ms. Found 5 JPA repository interfaces.
+2026-11-14T17:34:19.384+02:00  INFO 44476 --- [JobMatch] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-11-14T17:34:19.458+02:00  INFO 44476 --- [JobMatch] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:jobmatch-test user=JOBMATCH
+2026-11-14T17:34:19.458+02:00  INFO 44476 --- [JobMatch] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-11-14T17:34:19.477+02:00  INFO 44476 --- [JobMatch] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:h2:mem:jobmatch-test (H2 2.3)
+2026-11-14T17:34:19.496+02:00  INFO 44476 --- [JobMatch] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Schema history table "public"."flyway_schema_history" does not exist yet
+2026-11-14T17:34:19.497+02:00  INFO 44476 --- [JobMatch] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 2 migrations (execution time 00:00.007s)
+2026-11-14T17:34:19.501+02:00  INFO 44476 --- [JobMatch] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table "public"."flyway_schema_history" ...
+2026-11-14T17:34:19.518+02:00  INFO 44476 --- [JobMatch] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2026-11-14T17:34:19.525+02:00  INFO 44476 --- [JobMatch] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "1 - schema"
+2026-11-14T17:34:19.545+02:00  INFO 44476 --- [JobMatch] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "2 - seed"
+2026-11-14T17:34:19.558+02:00  INFO 44476 --- [JobMatch] [           main] o.f.core.internal.command.DbMigrate      : Successfully applied 2 migrations to schema "public", now at version v2 (execution time 00:00.020s)
+2026-11-14T17:34:19.602+02:00  INFO 44476 --- [JobMatch] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-11-14T17:34:19.632+02:00  INFO 44476 --- [JobMatch] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.29.Final
+2026-11-14T17:34:19.648+02:00  INFO 44476 --- [JobMatch] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-11-14T17:34:19.706+02:00  INFO 44476 --- [JobMatch] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-11-14T17:34:19.740+02:00  INFO 44476 --- [JobMatch] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-11-14T17:34:20.112+02:00  INFO 44476 --- [JobMatch] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-11-14T17:34:20.120+02:00  INFO 44476 --- [JobMatch] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-11-14T17:34:20.255+02:00  INFO 44476 --- [JobMatch] [           main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-11-14T17:34:20.497+02:00  INFO 44476 --- [JobMatch] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name accountService
+2026-11-14T17:34:20.791+02:00  INFO 44476 --- [JobMatch] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-11-14T17:34:20.791+02:00  INFO 44476 --- [JobMatch] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-11-14T17:34:20.792+02:00  INFO 44476 --- [JobMatch] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-11-14T17:34:20.806+02:00  INFO 44476 --- [JobMatch] [           main] u.k.j.w.CandidateMatchingIntegrationTest : Started CandidateMatchingIntegrationTest in 2.101 seconds (process running for 3.33)
+2026-11-14T17:34:20.952+02:00  INFO 44476 --- [JobMatch] [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-11-14T17:34:20.953+02:00  INFO 44476 --- [JobMatch] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-11-14T17:34:20.954+02:00  INFO 44476 --- [JobMatch] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+]]></system-out>
+  </testcase>
+  <testcase name="longCommentKeepsFormAndText" classname="ua.knu.jobmatch.web.CandidateMatchingIntegrationTest" time="0.198">
+    <system-out><![CDATA[
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.5.6)
+
+2026-11-14T17:34:20.964+02:00  INFO 44476 --- [JobMatch] [           main] u.k.j.w.CandidateMatchingIntegrationTest : Starting CandidateMatchingIntegrationTest using Java 27.0.1.0.3 with PID 44476 (started by marina.makarenko in /Users/marina.makarenko/Desktop/pi-labs/app)
+2026-11-14T17:34:20.964+02:00  INFO 44476 --- [JobMatch] [           main] u.k.j.w.CandidateMatchingIntegrationTest : The following 1 profile is active: "test"
+2026-11-14T17:34:21.014+02:00  INFO 44476 --- [JobMatch] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-11-14T17:34:21.020+02:00  INFO 44476 --- [JobMatch] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 5 ms. Found 5 JPA repository interfaces.
+2026-11-14T17:34:21.055+02:00  INFO 44476 --- [JobMatch] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2026-11-14T17:34:21.056+02:00  INFO 44476 --- [JobMatch] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection conn10: url=jdbc:h2:mem:jobmatch-test user=JOBMATCH
+2026-11-14T17:34:21.056+02:00  INFO 44476 --- [JobMatch] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2026-11-14T17:34:21.056+02:00  INFO 44476 --- [JobMatch] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:h2:mem:jobmatch-test (H2 2.3)
+2026-11-14T17:34:21.060+02:00  INFO 44476 --- [JobMatch] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 2 migrations (execution time 00:00.002s)
+2026-11-14T17:34:21.061+02:00  INFO 44476 --- [JobMatch] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 2
+2026-11-14T17:34:21.061+02:00  INFO 44476 --- [JobMatch] [           main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2026-11-14T17:34:21.067+02:00  INFO 44476 --- [JobMatch] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-11-14T17:34:21.068+02:00  INFO 44476 --- [JobMatch] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-11-14T17:34:21.070+02:00  INFO 44476 --- [JobMatch] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-11-14T17:34:21.071+02:00  INFO 44476 --- [JobMatch] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-2)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-11-14T17:34:21.104+02:00  INFO 44476 --- [JobMatch] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-11-14T17:34:21.105+02:00  INFO 44476 --- [JobMatch] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-11-14T17:34:21.144+02:00  INFO 44476 --- [JobMatch] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name accountService
+2026-11-14T17:34:21.195+02:00  INFO 44476 --- [JobMatch] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-11-14T17:34:21.195+02:00  INFO 44476 --- [JobMatch] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-11-14T17:34:21.196+02:00  INFO 44476 --- [JobMatch] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-11-14T17:34:21.200+02:00  INFO 44476 --- [JobMatch] [           main] u.k.j.w.CandidateMatchingIntegrationTest : Started CandidateMatchingIntegrationTest in 0.245 seconds (process running for 3.724)
+2026-11-14T17:34:21.396+02:00  INFO 44476 --- [JobMatch] [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-11-14T17:34:21.396+02:00  INFO 44476 --- [JobMatch] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2026-11-14T17:34:21.399+02:00  INFO 44476 --- [JobMatch] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+]]></system-out>
+  </testcase>
+  <testcase name="anonymousRedirectedToLogin" classname="ua.knu.jobmatch.web.CandidateMatchingIntegrationTest" time="0.021">
+    <system-out><![CDATA[
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.5.6)
+
+2026-11-14T17:34:21.408+02:00  INFO 44476 --- [JobMatch] [           main] u.k.j.w.CandidateMatchingIntegrationTest : Starting CandidateMatchingIntegrationTest using Java 27.0.1.0.3 with PID 44476 (started by marina.makarenko in /Users/marina.makarenko/Desktop/pi-labs/app)
+2026-11-14T17:34:21.408+02:00  INFO 44476 --- [JobMatch] [           main] u.k.j.w.CandidateMatchingIntegrationTest : The following 1 profile is active: "test"
+2026-11-14T17:34:21.459+02:00  INFO 44476 --- [JobMatch] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-11-14T17:34:21.464+02:00  INFO 44476 --- [JobMatch] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 4 ms. Found 5 JPA repository interfaces.
+2026-11-14T17:34:21.490+02:00  INFO 44476 --- [JobMatch] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2026-11-14T17:34:21.491+02:00  INFO 44476 --- [JobMatch] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-3 - Added connection conn18: url=jdbc:h2:mem:jobmatch-test user=JOBMATCH
+2026-11-14T17:34:21.491+02:00  INFO 44476 --- [JobMatch] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2026-11-14T17:34:21.492+02:00  INFO 44476 --- [JobMatch] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:h2:mem:jobmatch-test (H2 2.3)
+2026-11-14T17:34:21.494+02:00  INFO 44476 --- [JobMatch] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 2 migrations (execution time 00:00.001s)
+2026-11-14T17:34:21.495+02:00  INFO 44476 --- [JobMatch] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 2
+2026-11-14T17:34:21.495+02:00  INFO 44476 --- [JobMatch] [           main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2026-11-14T17:34:21.500+02:00  INFO 44476 --- [JobMatch] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-11-14T17:34:21.501+02:00  INFO 44476 --- [JobMatch] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-11-14T17:34:21.504+02:00  INFO 44476 --- [JobMatch] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-11-14T17:34:21.504+02:00  INFO 44476 --- [JobMatch] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-3)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-11-14T17:34:21.535+02:00  INFO 44476 --- [JobMatch] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-11-14T17:34:21.536+02:00  INFO 44476 --- [JobMatch] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-11-14T17:34:21.567+02:00  INFO 44476 --- [JobMatch] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name accountService
+2026-11-14T17:34:21.610+02:00  INFO 44476 --- [JobMatch] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-11-14T17:34:21.610+02:00  INFO 44476 --- [JobMatch] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-11-14T17:34:21.610+02:00  INFO 44476 --- [JobMatch] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-11-14T17:34:21.613+02:00  INFO 44476 --- [JobMatch] [           main] u.k.j.w.CandidateMatchingIntegrationTest : Started CandidateMatchingIntegrationTest in 0.213 seconds (process running for 4.137)
+2026-11-14T17:34:21.619+02:00  INFO 44476 --- [JobMatch] [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-11-14T17:34:21.619+02:00  INFO 44476 --- [JobMatch] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown initiated...
+2026-11-14T17:34:21.634+02:00  INFO 44476 --- [JobMatch] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown completed.
+]]></system-out>
+  </testcase>
+  <testcase name="mainFlowShowsRankedCandidates" classname="ua.knu.jobmatch.web.CandidateMatchingIntegrationTest" time="0.091">
+    <system-out><![CDATA[
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.5.6)
+
+2026-11-14T17:34:21.643+02:00  INFO 44476 --- [JobMatch] [           main] u.k.j.w.CandidateMatchingIntegrationTest : Starting CandidateMatchingIntegrationTest using Java 27.0.1.0.3 with PID 44476 (started by marina.makarenko in /Users/marina.makarenko/Desktop/pi-labs/app)
+2026-11-14T17:34:21.643+02:00  INFO 44476 --- [JobMatch] [           main] u.k.j.w.CandidateMatchingIntegrationTest : The following 1 profile is active: "test"
+2026-11-14T17:34:21.681+02:00  INFO 44476 --- [JobMatch] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-11-14T17:34:21.685+02:00  INFO 44476 --- [JobMatch] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 4 ms. Found 5 JPA repository interfaces.
+2026-11-14T17:34:21.710+02:00  INFO 44476 --- [JobMatch] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Starting...
+2026-11-14T17:34:21.711+02:00  INFO 44476 --- [JobMatch] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-4 - Added connection conn21: url=jdbc:h2:mem:jobmatch-test user=JOBMATCH
+2026-11-14T17:34:21.711+02:00  INFO 44476 --- [JobMatch] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Start completed.
+2026-11-14T17:34:21.712+02:00  INFO 44476 --- [JobMatch] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:h2:mem:jobmatch-test (H2 2.3)
+2026-11-14T17:34:21.714+02:00  INFO 44476 --- [JobMatch] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 2 migrations (execution time 00:00.001s)
+2026-11-14T17:34:21.716+02:00  INFO 44476 --- [JobMatch] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 2
+2026-11-14T17:34:21.716+02:00  INFO 44476 --- [JobMatch] [           main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2026-11-14T17:34:21.721+02:00  INFO 44476 --- [JobMatch] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-11-14T17:34:21.722+02:00  INFO 44476 --- [JobMatch] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-11-14T17:34:21.724+02:00  INFO 44476 --- [JobMatch] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-11-14T17:34:21.724+02:00  INFO 44476 --- [JobMatch] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-4)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-11-14T17:34:21.756+02:00  INFO 44476 --- [JobMatch] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-11-14T17:34:21.757+02:00  INFO 44476 --- [JobMatch] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-11-14T17:34:21.787+02:00  INFO 44476 --- [JobMatch] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name accountService
+2026-11-14T17:34:21.832+02:00  INFO 44476 --- [JobMatch] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-11-14T17:34:21.832+02:00  INFO 44476 --- [JobMatch] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-11-14T17:34:21.832+02:00  INFO 44476 --- [JobMatch] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-11-14T17:34:21.835+02:00  INFO 44476 --- [JobMatch] [           main] u.k.j.w.CandidateMatchingIntegrationTest : Started CandidateMatchingIntegrationTest in 0.2 seconds (process running for 4.359)
+2026-11-14T17:34:21.910+02:00  INFO 44476 --- [JobMatch] [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-11-14T17:34:21.911+02:00  INFO 44476 --- [JobMatch] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown initiated...
+2026-11-14T17:34:21.926+02:00  INFO 44476 --- [JobMatch] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown completed.
+]]></system-out>
+  </testcase>
+  <testcase name="candidateCannotOpenRecruiterPage" classname="ua.knu.jobmatch.web.CandidateMatchingIntegrationTest" time="0.03">
+    <system-out><![CDATA[
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.5.6)
+
+2026-11-14T17:34:21.933+02:00  INFO 44476 --- [JobMatch] [           main] u.k.j.w.CandidateMatchingIntegrationTest : Starting CandidateMatchingIntegrationTest using Java 27.0.1.0.3 with PID 44476 (started by marina.makarenko in /Users/marina.makarenko/Desktop/pi-labs/app)
+2026-11-14T17:34:21.933+02:00  INFO 44476 --- [JobMatch] [           main] u.k.j.w.CandidateMatchingIntegrationTest : The following 1 profile is active: "test"
+2026-11-14T17:34:21.965+02:00  INFO 44476 --- [JobMatch] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-11-14T17:34:21.970+02:00  INFO 44476 --- [JobMatch] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 3 ms. Found 5 JPA repository interfaces.
+2026-11-14T17:34:21.993+02:00  INFO 44476 --- [JobMatch] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Starting...
+2026-11-14T17:34:21.994+02:00  INFO 44476 --- [JobMatch] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-5 - Added connection conn26: url=jdbc:h2:mem:jobmatch-test user=JOBMATCH
+2026-11-14T17:34:21.994+02:00  INFO 44476 --- [JobMatch] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Start completed.
+2026-11-14T17:34:21.995+02:00  INFO 44476 --- [JobMatch] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:h2:mem:jobmatch-test (H2 2.3)
+2026-11-14T17:34:21.996+02:00  INFO 44476 --- [JobMatch] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 2 migrations (execution time 00:00.001s)
+2026-11-14T17:34:21.998+02:00  INFO 44476 --- [JobMatch] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 2
+2026-11-14T17:34:21.998+02:00  INFO 44476 --- [JobMatch] [           main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2026-11-14T17:34:22.002+02:00  INFO 44476 --- [JobMatch] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-11-14T17:34:22.003+02:00  INFO 44476 --- [JobMatch] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-11-14T17:34:22.006+02:00  INFO 44476 --- [JobMatch] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-11-14T17:34:22.007+02:00  INFO 44476 --- [JobMatch] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-5)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-11-14T17:34:22.036+02:00  INFO 44476 --- [JobMatch] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-11-14T17:34:22.037+02:00  INFO 44476 --- [JobMatch] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-11-14T17:34:22.066+02:00  INFO 44476 --- [JobMatch] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name accountService
+2026-11-14T17:34:22.102+02:00  INFO 44476 --- [JobMatch] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-11-14T17:34:22.102+02:00  INFO 44476 --- [JobMatch] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-11-14T17:34:22.102+02:00  INFO 44476 --- [JobMatch] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-11-14T17:34:22.104+02:00  INFO 44476 --- [JobMatch] [           main] u.k.j.w.CandidateMatchingIntegrationTest : Started CandidateMatchingIntegrationTest in 0.177 seconds (process running for 4.629)
+2026-11-14T17:34:22.111+02:00  INFO 44476 --- [JobMatch] [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-11-14T17:34:22.111+02:00  INFO 44476 --- [JobMatch] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown initiated...
+2026-11-14T17:34:22.135+02:00  INFO 44476 --- [JobMatch] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown completed.
+]]></system-out>
+  </testcase>
+  <testcase name="proposeCreatesApplication" classname="ua.knu.jobmatch.web.CandidateMatchingIntegrationTest" time="0.044">
+    <system-out><![CDATA[
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.5.6)
+
+2026-11-14T17:34:22.141+02:00  INFO 44476 --- [JobMatch] [           main] u.k.j.w.CandidateMatchingIntegrationTest : Starting CandidateMatchingIntegrationTest using Java 27.0.1.0.3 with PID 44476 (started by marina.makarenko in /Users/marina.makarenko/Desktop/pi-labs/app)
+2026-11-14T17:34:22.141+02:00  INFO 44476 --- [JobMatch] [           main] u.k.j.w.CandidateMatchingIntegrationTest : The following 1 profile is active: "test"
+2026-11-14T17:34:22.171+02:00  INFO 44476 --- [JobMatch] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-11-14T17:34:22.176+02:00  INFO 44476 --- [JobMatch] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 4 ms. Found 5 JPA repository interfaces.
+2026-11-14T17:34:22.199+02:00  INFO 44476 --- [JobMatch] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Starting...
+2026-11-14T17:34:22.200+02:00  INFO 44476 --- [JobMatch] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-6 - Added connection conn29: url=jdbc:h2:mem:jobmatch-test user=JOBMATCH
+2026-11-14T17:34:22.200+02:00  INFO 44476 --- [JobMatch] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Start completed.
+2026-11-14T17:34:22.200+02:00  INFO 44476 --- [JobMatch] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:h2:mem:jobmatch-test (H2 2.3)
+2026-11-14T17:34:22.202+02:00  INFO 44476 --- [JobMatch] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 2 migrations (execution time 00:00.001s)
+2026-11-14T17:34:22.203+02:00  INFO 44476 --- [JobMatch] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 2
+2026-11-14T17:34:22.204+02:00  INFO 44476 --- [JobMatch] [           main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2026-11-14T17:34:22.207+02:00  INFO 44476 --- [JobMatch] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-11-14T17:34:22.208+02:00  INFO 44476 --- [JobMatch] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-11-14T17:34:22.211+02:00  INFO 44476 --- [JobMatch] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-11-14T17:34:22.211+02:00  INFO 44476 --- [JobMatch] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-6)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-11-14T17:34:22.234+02:00  INFO 44476 --- [JobMatch] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-11-14T17:34:22.235+02:00  INFO 44476 --- [JobMatch] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-11-14T17:34:22.263+02:00  INFO 44476 --- [JobMatch] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name accountService
+2026-11-14T17:34:22.296+02:00  INFO 44476 --- [JobMatch] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-11-14T17:34:22.296+02:00  INFO 44476 --- [JobMatch] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-11-14T17:34:22.297+02:00  INFO 44476 --- [JobMatch] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-11-14T17:34:22.299+02:00  INFO 44476 --- [JobMatch] [           main] u.k.j.w.CandidateMatchingIntegrationTest : Started CandidateMatchingIntegrationTest in 0.163 seconds (process running for 4.823)
+2026-11-14T17:34:22.326+02:00  INFO 44476 --- [JobMatch] [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-11-14T17:34:22.326+02:00  INFO 44476 --- [JobMatch] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Shutdown initiated...
+2026-11-14T17:34:22.343+02:00  INFO 44476 --- [JobMatch] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Shutdown completed.
+]]></system-out>
+  </testcase>
+  <testcase name="invalidThresholdFallsBackWithMessage" classname="ua.knu.jobmatch.web.CandidateMatchingIntegrationTest" time="0.056">
+    <system-out><![CDATA[
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.5.6)
+
+2026-11-14T17:34:22.349+02:00  INFO 44476 --- [JobMatch] [           main] u.k.j.w.CandidateMatchingIntegrationTest : Starting CandidateMatchingIntegrationTest using Java 27.0.1.0.3 with PID 44476 (started by marina.makarenko in /Users/marina.makarenko/Desktop/pi-labs/app)
+2026-11-14T17:34:22.349+02:00  INFO 44476 --- [JobMatch] [           main] u.k.j.w.CandidateMatchingIntegrationTest : The following 1 profile is active: "test"
+2026-11-14T17:34:22.377+02:00  INFO 44476 --- [JobMatch] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-11-14T17:34:22.380+02:00  INFO 44476 --- [JobMatch] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 3 ms. Found 5 JPA repository interfaces.
+2026-11-14T17:34:22.401+02:00  INFO 44476 --- [JobMatch] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Starting...
+2026-11-14T17:34:22.402+02:00  INFO 44476 --- [JobMatch] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-7 - Added connection conn32: url=jdbc:h2:mem:jobmatch-test user=JOBMATCH
+2026-11-14T17:34:22.402+02:00  INFO 44476 --- [JobMatch] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Start completed.
+2026-11-14T17:34:22.402+02:00  INFO 44476 --- [JobMatch] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:h2:mem:jobmatch-test (H2 2.3)
+2026-11-14T17:34:22.404+02:00  INFO 44476 --- [JobMatch] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 2 migrations (execution time 00:00.001s)
+2026-11-14T17:34:22.405+02:00  INFO 44476 --- [JobMatch] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 2
+2026-11-14T17:34:22.406+02:00  INFO 44476 --- [JobMatch] [           main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2026-11-14T17:34:22.409+02:00  INFO 44476 --- [JobMatch] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-11-14T17:34:22.410+02:00  INFO 44476 --- [JobMatch] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-11-14T17:34:22.412+02:00  INFO 44476 --- [JobMatch] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-11-14T17:34:22.413+02:00  INFO 44476 --- [JobMatch] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-7)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-11-14T17:34:22.434+02:00  INFO 44476 --- [JobMatch] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-11-14T17:34:22.435+02:00  INFO 44476 --- [JobMatch] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-11-14T17:34:22.461+02:00  INFO 44476 --- [JobMatch] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name accountService
+2026-11-14T17:34:22.494+02:00  INFO 44476 --- [JobMatch] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-11-14T17:34:22.494+02:00  INFO 44476 --- [JobMatch] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-11-14T17:34:22.494+02:00  INFO 44476 --- [JobMatch] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-11-14T17:34:22.497+02:00  INFO 44476 --- [JobMatch] [           main] u.k.j.w.CandidateMatchingIntegrationTest : Started CandidateMatchingIntegrationTest in 0.153 seconds (process running for 5.021)
+2026-11-14T17:34:22.540+02:00  INFO 44476 --- [JobMatch] [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-11-14T17:34:22.541+02:00  INFO 44476 --- [JobMatch] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Shutdown initiated...
+2026-11-14T17:34:22.553+02:00  INFO 44476 --- [JobMatch] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Shutdown completed.
+]]></system-out>
+  </testcase>
+  <testcase name="closedVacancyNotMatched" classname="ua.knu.jobmatch.web.CandidateMatchingIntegrationTest" time="0.048">
+    <system-out><![CDATA[
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.5.6)
+
+2026-11-14T17:34:22.559+02:00  INFO 44476 --- [JobMatch] [           main] u.k.j.w.CandidateMatchingIntegrationTest : Starting CandidateMatchingIntegrationTest using Java 27.0.1.0.3 with PID 44476 (started by marina.makarenko in /Users/marina.makarenko/Desktop/pi-labs/app)
+2026-11-14T17:34:22.559+02:00  INFO 44476 --- [JobMatch] [           main] u.k.j.w.CandidateMatchingIntegrationTest : The following 1 profile is active: "test"
+2026-11-14T17:34:22.596+02:00  INFO 44476 --- [JobMatch] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-11-14T17:34:22.599+02:00  INFO 44476 --- [JobMatch] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 3 ms. Found 5 JPA repository interfaces.
+2026-11-14T17:34:22.623+02:00  INFO 44476 --- [JobMatch] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Starting...
+2026-11-14T17:34:22.624+02:00  INFO 44476 --- [JobMatch] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-8 - Added connection conn35: url=jdbc:h2:mem:jobmatch-test user=JOBMATCH
+2026-11-14T17:34:22.624+02:00  INFO 44476 --- [JobMatch] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Start completed.
+2026-11-14T17:34:22.624+02:00  INFO 44476 --- [JobMatch] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:h2:mem:jobmatch-test (H2 2.3)
+2026-11-14T17:34:22.626+02:00  INFO 44476 --- [JobMatch] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 2 migrations (execution time 00:00.000s)
+2026-11-14T17:34:22.627+02:00  INFO 44476 --- [JobMatch] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 2
+2026-11-14T17:34:22.627+02:00  INFO 44476 --- [JobMatch] [           main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2026-11-14T17:34:22.631+02:00  INFO 44476 --- [JobMatch] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-11-14T17:34:22.632+02:00  INFO 44476 --- [JobMatch] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-11-14T17:34:22.634+02:00  INFO 44476 --- [JobMatch] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-11-14T17:34:22.634+02:00  INFO 44476 --- [JobMatch] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-8)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-11-14T17:34:22.658+02:00  INFO 44476 --- [JobMatch] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-11-14T17:34:22.659+02:00  INFO 44476 --- [JobMatch] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-11-14T17:34:22.682+02:00  INFO 44476 --- [JobMatch] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name accountService
+2026-11-14T17:34:22.714+02:00  INFO 44476 --- [JobMatch] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-11-14T17:34:22.714+02:00  INFO 44476 --- [JobMatch] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-11-14T17:34:22.714+02:00  INFO 44476 --- [JobMatch] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-11-14T17:34:22.717+02:00  INFO 44476 --- [JobMatch] [           main] u.k.j.w.CandidateMatchingIntegrationTest : Started CandidateMatchingIntegrationTest in 0.163 seconds (process running for 5.241)
+2026-11-14T17:34:22.737+02:00  INFO 44476 --- [JobMatch] [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-11-14T17:34:22.737+02:00  INFO 44476 --- [JobMatch] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Shutdown initiated...
+2026-11-14T17:34:22.765+02:00  INFO 44476 --- [JobMatch] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Shutdown completed.
+]]></system-out>
+  </testcase>
+  <testcase name="emptyStateOffersPartial" classname="ua.knu.jobmatch.web.CandidateMatchingIntegrationTest" time="0.031">
+    <system-out><![CDATA[
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.5.6)
+
+2026-11-14T17:34:22.771+02:00  INFO 44476 --- [JobMatch] [           main] u.k.j.w.CandidateMatchingIntegrationTest : Starting CandidateMatchingIntegrationTest using Java 27.0.1.0.3 with PID 44476 (started by marina.makarenko in /Users/marina.makarenko/Desktop/pi-labs/app)
+2026-11-14T17:34:22.771+02:00  INFO 44476 --- [JobMatch] [           main] u.k.j.w.CandidateMatchingIntegrationTest : The following 1 profile is active: "test"
+2026-11-14T17:34:22.799+02:00  INFO 44476 --- [JobMatch] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-11-14T17:34:22.804+02:00  INFO 44476 --- [JobMatch] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 3 ms. Found 5 JPA repository interfaces.
+2026-11-14T17:34:22.824+02:00  INFO 44476 --- [JobMatch] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-9 - Starting...
+2026-11-14T17:34:22.824+02:00  INFO 44476 --- [JobMatch] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-9 - Added connection conn38: url=jdbc:h2:mem:jobmatch-test user=JOBMATCH
+2026-11-14T17:34:22.825+02:00  INFO 44476 --- [JobMatch] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-9 - Start completed.
+2026-11-14T17:34:22.825+02:00  INFO 44476 --- [JobMatch] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:h2:mem:jobmatch-test (H2 2.3)
+2026-11-14T17:34:22.827+02:00  INFO 44476 --- [JobMatch] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 2 migrations (execution time 00:00.000s)
+2026-11-14T17:34:22.828+02:00  INFO 44476 --- [JobMatch] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 2
+2026-11-14T17:34:22.828+02:00  INFO 44476 --- [JobMatch] [           main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2026-11-14T17:34:22.832+02:00  INFO 44476 --- [JobMatch] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-11-14T17:34:22.833+02:00  INFO 44476 --- [JobMatch] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-11-14T17:34:22.835+02:00  INFO 44476 --- [JobMatch] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-11-14T17:34:22.836+02:00  INFO 44476 --- [JobMatch] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-9)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-11-14T17:34:22.861+02:00  INFO 44476 --- [JobMatch] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-11-14T17:34:22.862+02:00  INFO 44476 --- [JobMatch] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-11-14T17:34:22.889+02:00  INFO 44476 --- [JobMatch] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name accountService
+2026-11-14T17:34:22.922+02:00  INFO 44476 --- [JobMatch] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-11-14T17:34:22.922+02:00  INFO 44476 --- [JobMatch] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-11-14T17:34:22.922+02:00  INFO 44476 --- [JobMatch] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-11-14T17:34:22.924+02:00  INFO 44476 --- [JobMatch] [           main] u.k.j.w.CandidateMatchingIntegrationTest : Started CandidateMatchingIntegrationTest in 0.158 seconds (process running for 5.448)
+2026-11-14T17:34:22.955+02:00  INFO 44476 --- [JobMatch] [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-11-14T17:34:22.955+02:00  INFO 44476 --- [JobMatch] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-9 - Shutdown initiated...
+2026-11-14T17:34:22.956+02:00  INFO 44476 --- [JobMatch] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-9 - Shutdown completed.
+]]></system-out>
+  </testcase>
+  <testcase name="deletedVacancyGives404" classname="ua.knu.jobmatch.web.CandidateMatchingIntegrationTest" time="0.014">
+    <system-out><![CDATA[
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.5.6)
+
+2026-11-14T17:34:22.963+02:00  INFO 44476 --- [JobMatch] [           main] u.k.j.w.CandidateMatchingIntegrationTest : Starting CandidateMatchingIntegrationTest using Java 27.0.1.0.3 with PID 44476 (started by marina.makarenko in /Users/marina.makarenko/Desktop/pi-labs/app)
+2026-11-14T17:34:22.963+02:00  INFO 44476 --- [JobMatch] [           main] u.k.j.w.CandidateMatchingIntegrationTest : The following 1 profile is active: "test"
+2026-11-14T17:34:22.994+02:00  INFO 44476 --- [JobMatch] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-11-14T17:34:22.997+02:00  INFO 44476 --- [JobMatch] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 3 ms. Found 5 JPA repository interfaces.
+2026-11-14T17:34:23.015+02:00  INFO 44476 --- [JobMatch] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-10 - Starting...
+2026-11-14T17:34:23.016+02:00  INFO 44476 --- [JobMatch] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-10 - Added connection conn41: url=jdbc:h2:mem:jobmatch-test user=JOBMATCH
+2026-11-14T17:34:23.016+02:00  INFO 44476 --- [JobMatch] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-10 - Start completed.
+2026-11-14T17:34:23.017+02:00  INFO 44476 --- [JobMatch] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:h2:mem:jobmatch-test (H2 2.3)
+2026-11-14T17:34:23.019+02:00  INFO 44476 --- [JobMatch] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 2 migrations (execution time 00:00.000s)
+2026-11-14T17:34:23.020+02:00  INFO 44476 --- [JobMatch] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 2
+2026-11-14T17:34:23.021+02:00  INFO 44476 --- [JobMatch] [           main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2026-11-14T17:34:23.026+02:00  INFO 44476 --- [JobMatch] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-11-14T17:34:23.026+02:00  INFO 44476 --- [JobMatch] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-11-14T17:34:23.028+02:00  INFO 44476 --- [JobMatch] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-11-14T17:34:23.029+02:00  INFO 44476 --- [JobMatch] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-10)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-11-14T17:34:23.049+02:00  INFO 44476 --- [JobMatch] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-11-14T17:34:23.050+02:00  INFO 44476 --- [JobMatch] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-11-14T17:34:23.074+02:00  INFO 44476 --- [JobMatch] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name accountService
+2026-11-14T17:34:23.102+02:00  INFO 44476 --- [JobMatch] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-11-14T17:34:23.102+02:00  INFO 44476 --- [JobMatch] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-11-14T17:34:23.102+02:00  INFO 44476 --- [JobMatch] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-11-14T17:34:23.105+02:00  INFO 44476 --- [JobMatch] [           main] u.k.j.w.CandidateMatchingIntegrationTest : Started CandidateMatchingIntegrationTest in 0.146 seconds (process running for 5.629)
+2026-11-14T17:34:23.118+02:00  INFO 44476 --- [JobMatch] [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-11-14T17:34:23.119+02:00  INFO 44476 --- [JobMatch] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-10 - Shutdown initiated...
+2026-11-14T17:34:23.119+02:00  INFO 44476 --- [JobMatch] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-10 - Shutdown completed.
+]]></system-out>
+  </testcase>
+  <testcase name="partialMatchesShowMore" classname="ua.knu.jobmatch.web.CandidateMatchingIntegrationTest" time="0.062">
+    <system-out><![CDATA[
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.5.6)
+
+2026-11-14T17:34:23.125+02:00  INFO 44476 --- [JobMatch] [           main] u.k.j.w.CandidateMatchingIntegrationTest : Starting CandidateMatchingIntegrationTest using Java 27.0.1.0.3 with PID 44476 (started by marina.makarenko in /Users/marina.makarenko/Desktop/pi-labs/app)
+2026-11-14T17:34:23.125+02:00  INFO 44476 --- [JobMatch] [           main] u.k.j.w.CandidateMatchingIntegrationTest : The following 1 profile is active: "test"
+2026-11-14T17:34:23.151+02:00  INFO 44476 --- [JobMatch] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-11-14T17:34:23.155+02:00  INFO 44476 --- [JobMatch] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 2 ms. Found 5 JPA repository interfaces.
+2026-11-14T17:34:23.171+02:00  INFO 44476 --- [JobMatch] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-11 - Starting...
+2026-11-14T17:34:23.172+02:00  INFO 44476 --- [JobMatch] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-11 - Added connection conn43: url=jdbc:h2:mem:jobmatch-test user=JOBMATCH
+2026-11-14T17:34:23.172+02:00  INFO 44476 --- [JobMatch] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-11 - Start completed.
+2026-11-14T17:34:23.172+02:00  INFO 44476 --- [JobMatch] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:h2:mem:jobmatch-test (H2 2.3)
+2026-11-14T17:34:23.174+02:00  INFO 44476 --- [JobMatch] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 2 migrations (execution time 00:00.000s)
+2026-11-14T17:34:23.175+02:00  INFO 44476 --- [JobMatch] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 2
+2026-11-14T17:34:23.175+02:00  INFO 44476 --- [JobMatch] [           main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2026-11-14T17:34:23.178+02:00  INFO 44476 --- [JobMatch] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-11-14T17:34:23.179+02:00  INFO 44476 --- [JobMatch] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-11-14T17:34:23.181+02:00  INFO 44476 --- [JobMatch] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-11-14T17:34:23.181+02:00  INFO 44476 --- [JobMatch] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-11)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-11-14T17:34:23.199+02:00  INFO 44476 --- [JobMatch] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-11-14T17:34:23.200+02:00  INFO 44476 --- [JobMatch] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-11-14T17:34:23.220+02:00  INFO 44476 --- [JobMatch] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name accountService
+2026-11-14T17:34:23.251+02:00  INFO 44476 --- [JobMatch] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-11-14T17:34:23.251+02:00  INFO 44476 --- [JobMatch] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-11-14T17:34:23.251+02:00  INFO 44476 --- [JobMatch] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-11-14T17:34:23.254+02:00  INFO 44476 --- [JobMatch] [           main] u.k.j.w.CandidateMatchingIntegrationTest : Started CandidateMatchingIntegrationTest in 0.134 seconds (process running for 5.778)
+2026-11-14T17:34:23.305+02:00  INFO 44476 --- [JobMatch] [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-11-14T17:34:23.305+02:00  INFO 44476 --- [JobMatch] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-11 - Shutdown initiated...
+2026-11-14T17:34:23.315+02:00  INFO 44476 --- [JobMatch] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-11 - Shutdown completed.
+]]></system-out>
+  </testcase>
+</testsuite>

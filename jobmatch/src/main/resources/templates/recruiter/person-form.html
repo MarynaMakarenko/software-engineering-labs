@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="uk" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{fragments :: head('Резюме')}"></head>
+<body>
+<header th:replace="~{fragments :: header}"></header>
+<nav th:replace="~{fragments :: crumbs}"></nav>
+<main id="main" class="wrap page">
+    <div th:replace="~{fragments :: messages}"></div>
+    <h1 th:text="${#strings.endsWith(action, 'new') ? 'Нова людина' : 'Редагування резюме'}">Резюме</h1>
+    <form class="card form wide" th:action="@{${action}}" th:object="${form}" method="post" novalidate>
+        <div th:replace="~{fragments :: formErrors(${form})}"></div>
+        <div th:replace="~{shared/person-parts :: personFields}"></div>
+        <div class="form-actions"><button class="btn" type="submit">Зберегти</button> <a class="btn btn-ghost" th:href="@{/recruiter/people}">Скасувати</a></div>
+    </form>
+</main>
+<footer th:replace="~{fragments :: footer}"></footer>
+</body>
+</html>

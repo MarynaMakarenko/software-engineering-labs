@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="uk" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{fragments :: head('Кандидатури')}"></head>
+<body>
+<header th:replace="~{fragments :: header}"></header>
+<nav th:replace="~{fragments :: crumbs}"></nav>
+<main id="main" class="wrap page">
+    <div th:replace="~{fragments :: messages}"></div>
+    <h1>Кандидатури</h1>
+    <form class="filters" th:action="@{/recruiter/applications}" method="get">
+        <div class="field"><label for="status">Статус</label>
+            <select id="status" name="status"><option value="">усі</option>
+                <option th:each="s : ${T(ua.knu.jobmatch.domain.ApplicationStatus).values()}" th:value="${s}" th:text="${s.label}" th:selected="${s == status}">Нова</option></select></div>
+        <div class="field"><button class="btn" type="submit">Показати</button></div>
+    </form>
+    <div class="table-wrap" th:if="${!#lists.isEmpty(applications)}">
+        <table>
+            <thead><tr><th>Дата</th><th>Кандидат</th><th>Вакансія</th><th>Компанія</th><th>Джерело</th><th>Статус</th><th><span class="sr">Дія</span></th></tr></thead>
+            <tbody><tr th:each="a : ${applications}">
+                <td th:text="${#temporals.format(a.createdAt, 'dd.MM.yyyy')}">01.01.2026</td>
+                <td><a th:href="@{/recruiter/people/{id}(id=${a.person.id})}" th:text="${a.person.fullName}">ПІБ</a></td>
+                <td><a th:href="@{/vacancies/{id}(id=${a.vacancy.id})}" th:text="${a.vacancy.position}">Посада</a></td>
+                <td th:text="${a.vacancy.company.name}">Компанія</td>
+                <td th:text="${a.source.label}">Джерело</td>
+                <td><span class="badge" th:classappend="'badge-' + ${#strings.toLowerCase(a.status)}" th:text="${a.status.label}">Нова</span></td>
+                <td class="actions"><a th:if="${a.status.name() == 'INVITED'}" class="btn btn-small" th:href="@{/recruiter/applications/{id}/hire(id=${a.id})}">Зареєструвати працевлаштування</a></td>
+            </tr></tbody>
+        </table>
+    </div>
+    <div class="card empty" th:if="${#lists.isEmpty(applications)}"><p>Кандидатур з таким статусом немає.</p></div>
+</main>
+<footer th:replace="~{fragments :: footer}"></footer>
+</body>
+</html>

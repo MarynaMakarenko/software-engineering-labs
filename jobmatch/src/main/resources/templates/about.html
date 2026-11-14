@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="uk" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{fragments :: head('Про агенцію')}"></head>
+<body>
+<header th:replace="~{fragments :: header}"></header>
+<nav th:replace="~{fragments :: crumbs}"></nav>
+<main id="main" class="wrap page">
+    <div th:replace="~{fragments :: messages}"></div>
+    <h1>Про агенцію та контакти</h1>
+    <section class="card">
+        <p>ТОВ «Кадрова агенція «ПрофіКадр» з 2014 року підбирає персонал для компаній Києва та регіонів України: ІТ, логістика, агросектор, медицина, фінанси.</p>
+        <dl class="props">
+            <dt>Адреса</dt><dd>м. Київ, вул. Хрещатик, 22, офіс 305</dd>
+            <dt>Телефон</dt><dd><a href="tel:+380441234567">+380 44 123 45 67</a></dd>
+            <dt>E-mail</dt><dd><a href="mailto:info@profikadr.ua">info@profikadr.ua</a></dd>
+            <dt>Графік</dt><dd>пн–пт, 9:00–18:00</dd>
+        </dl>
+    </section>
+</main>
+<footer th:replace="~{fragments :: footer}"></footer>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="uk" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{fragments :: head('Кандидатури')}"></head>
+<body>
+<header th:replace="~{fragments :: header}"></header>
+<nav th:replace="~{fragments :: crumbs}"></nav>
+<main id="main" class="wrap page">
+    <div th:replace="~{fragments :: messages}"></div>
+    <h1 th:text="'Кандидатури: ' + ${vacancy.position}">Кандидатури</h1>
+    <p class="muted small">Контакти запрошеного кандидата і час співбесіди погоджує рекрутер агенції.</p>
+    <div class="table-wrap" th:if="${!#lists.isEmpty(applications)}">
+        <table>
+            <thead><tr><th>Дата</th><th>Кандидат</th><th>Бажана посада</th><th>Стаж</th><th>Освіта</th><th>Джерело</th><th>Коментар рекрутера</th><th>Статус</th><th>Рішення</th></tr></thead>
+            <tbody><tr th:each="a : ${applications}">
+                <td th:text="${#temporals.format(a.createdAt, 'dd.MM.yyyy')}">01.01.2026</td>
+                <td th:text="${a.person.firstName} + ' ' + ${#strings.substring(a.person.lastName,0,1)} + '.'">Ім'я П.</td>
+                <td th:text="${a.person.desiredPosition != null ? a.person.desiredPosition : '—'}">—</td>
+                <td class="num" th:text="${a.person.experienceText(#temporals.createToday())}">0</td>
+                <td th:text="${a.person.highestEducation().isPresent() ? a.person.highestEducation().get().label : '—'}">—</td>
+                <td th:text="${a.source.label}">Джерело</td>
+                <td class="small pre" th:text="${a.comment != null ? a.comment : '—'}">—</td>
+                <td><span class="badge" th:classappend="'badge-' + ${#strings.toLowerCase(a.status)}" th:text="${a.status.label}">Нова</span></td>
+                <td class="actions">
+                    <th:block th:if="${a.status.name() == 'NEW'}">
+                        <form th:action="@{/company/applications/{id}/review(id=${a.id})}" method="post">
+                            <input type="hidden" name="decision" value="INVITED"><button class="btn btn-small" type="submit">Запросити</button></form>
+                        <form th:action="@{/company/applications/{id}/review(id=${a.id})}" method="post" data-confirm="Відхилити кандидатуру? Статус «Відхилено» остаточний.">
+                            <input type="hidden" name="decision" value="REJECTED"><button class="btn btn-small btn-danger" type="submit">Відхилити</button></form>
+                    </th:block>
+                    <span th:if="${a.status.name() != 'NEW'}" class="muted">—</span>
+                </td>
+            </tr></tbody>
+        </table>
+    </div>
+    <div class="card empty" th:if="${#lists.isEmpty(applications)}"><p>Кандидатур на цю вакансію ще немає.</p></div>
+</main>
+<footer th:replace="~{fragments :: footer}"></footer>
+</body>
+</html>

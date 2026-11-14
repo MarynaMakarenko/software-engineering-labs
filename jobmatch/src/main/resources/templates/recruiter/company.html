@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="uk" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{fragments :: head(${company.name})}"></head>
+<body>
+<header th:replace="~{fragments :: header}"></header>
+<nav th:replace="~{fragments :: crumbs}"></nav>
+<main id="main" class="wrap page">
+    <div th:replace="~{fragments :: messages}"></div>
+    <div class="toolbar"><h1 th:text="${company.name}">Компанія</h1><span class="spacer"></span>
+        <a class="btn" th:href="@{/recruiter/companies/{id}/vacancies/new(id=${company.id})}">+ Нова вакансія</a>
+        <a class="btn btn-ghost" th:href="@{/recruiter/companies/{id}/edit(id=${company.id})}">Редагувати</a>
+        <form th:action="@{/recruiter/companies/{id}/delete(id=${company.id})}" method="post" class="inline"
+              th:attr="data-confirm='Видалити компанію ' + ${company.name} + '? Буде видалено: вакансій — ' + ${#lists.size(company.vacancies)} + ', кандидатур — ' + ${applicationCount} + (${company.owner != null} ? ', обліковий запис представника' : '') + '. Назва компанії залишиться в історії роботи людей. Дію не можна скасувати.'">
+            <button class="btn btn-danger" type="submit">Видалити</button></form>
+    </div>
+    <section class="card">
+        <dl class="props">
+            <dt>Місто</dt><dd th:text="${company.city}">Місто</dd>
+            <dt>Адреса</dt><dd th:text="${company.address}">Адреса</dd>
+            <dt>Телефон</dt><dd th:text="${company.phone}">Тел</dd>
+            <dt>E-mail</dt><dd th:text="${company.email}">E-mail</dd>
+            <dt>Сайт</dt><dd th:text="${company.website != null ? company.website : '—'}">—</dd>
+            <dt>Представник</dt><dd th:text="${company.owner != null ? company.owner.email : 'немає облікового запису'}">—</dd>
+            <dt>Опис</dt><dd class="pre" th:text="${company.description != null ? company.description : '—'}">—</dd>
+        </dl>
+    </section>
+    <h2>Вакансії</h2>
+    <div class="table-wrap" th:if="${!#lists.isEmpty(company.vacancies)}">
+        <table>
+            <thead><tr><th>Посада</th><th class="num">Зарплата, грн/міс</th><th>Статус</th><th>Дії</th></tr></thead>
+            <tbody><tr th:each="v : ${company.vacancies}">
+                <td><a th:href="@{/vacancies/{id}(id=${v.id})}" th:text="${v.position}">Посада</a></td>
+                <td class="num" th:text="${#numbers.formatInteger(v.salary, 1, 'WHITESPACE')}">0</td>
+                <td><span class="badge" th:classappend="'badge-' + ${#strings.toLowerCase(v.status)}" th:text="${v.status.label}">Відкрита</span></td>
+                <td class="actions">
+                    <a th:if="${v.open}" class="btn btn-small" th:href="@{/recruiter/vacancies/{id}/matches(id=${v.id})}">Підібрати кандидатів</a>
+                    <a class="btn btn-small btn-ghost" th:href="@{/recruiter/vacancies/{id}/edit(id=${v.id})}">Редагувати</a>
+                    <form th:action="@{/recruiter/vacancies/{id}/status(id=${v.id})}" method="post">
+                        <input type="hidden" name="open" th:value="${!v.open}">
+                        <button class="btn btn-small btn-ghost" type="submit" th:text="${v.open ? 'Закрити' : 'Відкрити'}">Закрити</button></form>
+                    <form th:action="@{/recruiter/vacancies/{id}/delete(id=${v.id})}" method="post" th:attr="data-confirm='Видалити вакансію ' + ${v.position} + ' разом з кандидатурами на неї? Дію не можна скасувати.'">
+                        <button class="btn btn-small btn-danger" type="submit">Видалити</button></form>
+                </td>
+            </tr></tbody>
+        </table>
+    </div>
+    <div class="card empty" th:if="${#lists.isEmpty(company.vacancies)}"><p>Вакансій немає.</p></div>
+</main>
+<footer th:replace="~{fragments :: footer}"></footer>
+</body>
+</html>

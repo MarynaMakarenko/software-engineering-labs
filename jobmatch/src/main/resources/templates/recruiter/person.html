@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="uk" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{fragments :: head(${person.fullName})}"></head>
+<body>
+<header th:replace="~{fragments :: header}"></header>
+<nav th:replace="~{fragments :: crumbs}"></nav>
+<main id="main" class="wrap page">
+    <div th:replace="~{fragments :: messages}"></div>
+    <div class="toolbar"><h1 th:text="${person.fullName}">ПІБ</h1><span class="spacer"></span>
+        <a class="btn" th:href="@{/recruiter/people/{id}/matches(id=${person.id})}">Підібрати вакансії</a>
+        <a class="btn btn-ghost" th:href="@{/recruiter/people/{id}/edit(id=${person.id})}">Редагувати</a>
+        <form th:action="@{/recruiter/people/{id}/delete(id=${person.id})}" method="post" class="inline"
+              th:attr="data-confirm='Видалити резюме ' + ${person.fullName} + '? Буде видалено: записів освіти — ' + ${#lists.size(person.educations)} + ', записів історії роботи — ' + ${#lists.size(person.workRecords)} + ', кандидатур — ' + ${#lists.size(applications)} + (${person.user != null} ? ', обліковий запис шукача' : '') + '. Дію не можна скасувати.'">
+            <button class="btn btn-danger" type="submit">Видалити</button></form>
+    </div>
+    <div th:replace="~{shared/person-parts :: personal(${person})}"></div>
+    <section class="card">
+        <div class="toolbar"><h2>Історія роботи</h2><span class="spacer"></span>
+            <button class="btn btn-small btn-ghost" type="button" data-toggle="work-form" aria-controls="work-form">+ Додати запис</button></div>
+        <div th:replace="~{shared/person-parts :: workTable(${person}, null, '/recruiter/people/' + ${person.id} + '/work/')}"></div>
+    </section>
+    <form th:action="@{/recruiter/people/{id}/work(id=${person.id})}" th:object="${workForm}" method="post" novalidate id="work-form"
+          th:hidden="${workOpen == null}" class="card form">
+        <h3>Новий запис історії роботи</h3>
+        <div th:replace="~{fragments :: formErrors(${workForm})}"></div>
+        <div th:replace="~{fragments :: input('companyName', 'Компанія', 'text', true, null)}"></div>
+        <div th:replace="~{fragments :: input('position', 'Посада', 'text', true, null)}"></div>
+        <div th:replace="~{fragments :: input('salary', 'Зарплата, грн/міс', 'number', false, null)}"></div>
+        <div th:replace="~{fragments :: input('startDate', 'Дата початку', 'date', true, null)}"></div>
+        <div th:replace="~{fragments :: input('endDate', 'Дата завершення', 'date', false, 'Порожнє поле — працює досі.')}"></div>
+        <div class="form-actions"><button class="btn" type="submit">Додати</button>
+            <button class="btn btn-ghost" type="button" data-toggle="work-form">Скасувати</button></div>
+    </form>
+    <section class="card">
+        <div class="toolbar"><h2>Освіта</h2><span class="spacer"></span>
+            <button class="btn btn-small btn-ghost" type="button" data-toggle="education-form" aria-controls="education-form">+ Додати освіту</button></div>
+        <div th:replace="~{shared/person-parts :: educationTable(${person}, '/recruiter/people/' + ${person.id} + '/education/')}"></div>
+    </section>
+    <form th:replace="~{shared/person-parts :: educationForm('/recruiter/people/' + ${person.id} + '/education', ${educationOpen != null})}"></form>
+    <section class="card">
+        <h2>Кандидатури</h2>
+        <div class="table-wrap" th:if="${!#lists.isEmpty(applications)}">
+            <table><thead><tr><th>Дата</th><th>Вакансія</th><th>Компанія</th><th>Джерело</th><th>Статус</th></tr></thead>
+                <tbody><tr th:each="a : ${applications}">
+                    <td th:text="${#temporals.format(a.createdAt, 'dd.MM.yyyy')}">01.01.2026</td>
+                    <td><a th:href="@{/vacancies/{id}(id=${a.vacancy.id})}" th:text="${a.vacancy.position}">Посада</a></td>
+                    <td th:text="${a.vacancy.company.name}">Компанія</td>
+                    <td th:text="${a.source.label}">Джерело</td>
+                    <td><span class="badge" th:classappend="'badge-' + ${#strings.toLowerCase(a.status)}" th:text="${a.status.label}">Нова</span></td>
+                </tr></tbody></table>
+        </div>
+        <p class="muted" th:if="${#lists.isEmpty(applications)}">Кандидатур немає.</p>
+    </section>
+    <p><a th:if="${param.from != null}" th:href="@{/recruiter/vacancies/{v}/matches(v=${param.from[0]},minScore=${param.minScore != null ? param.minScore[0] : 50})}">← Назад до підбору</a>
+       <span th:if="${param.from != null}"> · </span><a th:href="@{/recruiter/people}">← До списку резюме</a></p>
+</main>
+<footer th:replace="~{fragments :: footer}"></footer>
+</body>
+</html>

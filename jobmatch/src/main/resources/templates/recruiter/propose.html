@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="uk" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{fragments :: head('Пропозиція кандидата')}"></head>
+<body>
+<header th:replace="~{fragments :: header}"></header>
+<nav th:replace="~{fragments :: crumbs}"></nav>
+<main id="main" class="wrap page">
+    <div th:replace="~{fragments :: messages}"></div>
+    <h1>Пропозиція кандидата</h1>
+    <section class="card">
+        <dl class="props">
+            <dt>Кандидат</dt><dd><a th:href="@{/recruiter/people/{id}(id=${person.id})}" th:text="${person.fullName}">ПІБ</a></dd>
+            <dt>Вакансія</dt><dd th:text="${vacancy.position} + ' — ' + ${vacancy.company.name}">Посада</dd>
+            <dt>Оцінка відповідності</dt><dd><span th:replace="~{fragments :: score(${match.score})}"></span> <div th:replace="~{fragments :: scoreParts(${match})}"></div></dd>
+        </dl>
+    </section>
+    <form class="card form" th:action="@{/recruiter/vacancies/{id}/propose(id=${vacancy.id})}" th:object="${form}" method="post" novalidate>
+        <div th:replace="~{fragments :: formErrors(${form})}"></div>
+        <input type="hidden" th:field="*{personId}">
+        <input type="hidden" name="minScore" th:value="${minScore}">
+        <div th:replace="~{fragments :: textarea('comment', 'Коментар для компанії', 500, 'Необов\'язково. Сильні сторони кандидата.')}"></div>
+        <div class="form-actions">
+            <button class="btn" type="submit">Підтвердити</button>
+            <a class="btn btn-ghost" th:href="@{/recruiter/vacancies/{id}/matches(id=${vacancy.id},minScore=${minScore})}">Скасувати</a>
+        </div>
+    </form>
+</main>
+<footer th:replace="~{fragments :: footer}"></footer>
+</body>
+</html>

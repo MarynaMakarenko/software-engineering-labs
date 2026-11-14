@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="uk" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:fragment="head(title)">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="JobMatch — веб-застосунок кадрової агенції «ПрофіКадр»: вакансії, резюме, підбір кандидатів.">
+    <title th:text="${title} + ' — JobMatch'">JobMatch</title>
+    <link rel="stylesheet" th:href="@{/css/app.css}">
+    <link rel="icon" th:href="@{/img/favicon.svg}" type="image/svg+xml">
+    <script th:src="@{/js/app.js}" defer></script>
+</head>
+<body>
+
+<header th:fragment="header" class="site-header" th:with="currentPath=${currentPath != null ? currentPath : ''}">
+    <a class="skip" href="#main">Перейти до вмісту</a>
+    <div class="wrap header-row">
+        <a class="logo" th:href="@{/}" aria-label="JobMatch — на головну"><span class="logo-mark">JM</span> JobMatch</a>
+        <nav class="main-nav" aria-label="Головне меню">
+            <a th:href="@{/vacancies}" th:classappend="${#strings.startsWith(currentPath,'/vacancies')} ? 'active'">Вакансії</a>
+            <th:block sec:authorize="hasRole('CANDIDATE')">
+                <a th:href="@{/me/resume}" th:classappend="${#strings.startsWith(currentPath,'/me/resume') or #strings.startsWith(currentPath,'/me/education')} ? 'active'">Моє резюме</a>
+                <a th:href="@{/me/work}" th:classappend="${#strings.startsWith(currentPath,'/me/work')} ? 'active'">Історія роботи</a>
+                <a th:href="@{/me/matches}" th:classappend="${#strings.startsWith(currentPath,'/me/matches')} ? 'active'">Відповідні вакансії</a>
+                <a th:href="@{/me/applications}" th:classappend="${#strings.startsWith(currentPath,'/me/applications')} ? 'active'">Мої відгуки</a>
+            </th:block>
+            <th:block sec:authorize="hasRole('EMPLOYER')">
+                <a th:href="@{/company}" th:classappend="${currentPath == '/company' or currentPath == '/company/edit'} ? 'active'">Моя компанія</a>
+                <a th:href="@{/company/vacancies}" th:classappend="${#strings.startsWith(currentPath,'/company/vacancies')} ? 'active'">Вакансії компанії</a>
+            </th:block>
+            <th:block sec:authorize="hasRole('RECRUITER')">
+                <a th:href="@{/recruiter}" th:classappend="${currentPath == '/recruiter' or #strings.startsWith(currentPath,'/recruiter/vacancies')} ? 'active'">Панель</a>
+                <a th:href="@{/recruiter/people}" th:classappend="${#strings.startsWith(currentPath,'/recruiter/people')} ? 'active'">Резюме</a>
+                <a th:href="@{/recruiter/companies}" th:classappend="${#strings.startsWith(currentPath,'/recruiter/companies')} ? 'active'">Компанії</a>
+                <a th:href="@{/recruiter/applications}" th:classappend="${#strings.startsWith(currentPath,'/recruiter/applications')} ? 'active'">Кандидатури</a>
+            </th:block>
+            <a th:href="@{/help}" th:classappend="${currentPath == '/help'} ? 'active'">Допомога</a>
+        </nav>
+        <div class="user-box">
+            <th:block sec:authorize="isAnonymous()">
+                <a class="btn btn-small btn-ghost" th:href="@{/login}">Увійти</a>
+                <a class="btn btn-small" th:href="@{/register}">Реєстрація</a>
+            </th:block>
+            <th:block sec:authorize="isAuthenticated()">
+                <span class="user-email"><span th:text="${#authentication.name}">user</span> · <span th:text="${#authentication.principal.role.label}">роль</span></span>
+                <form th:action="@{/logout}" method="post" class="inline">
+                    <button type="submit" class="btn btn-small btn-ghost">Вийти</button>
+                </form>
+            </th:block>
+        </div>
+    </div>
+</header>
+
+<nav th:fragment="crumbs" class="crumbs wrap" aria-label="Навігаційний ланцюжок" th:if="${crumbs != null}">
+    <ol>
+        <li th:each="c, st : ${crumbs}">
+            <a th:if="${c.url != null and !st.last}" th:href="@{${c.url}}" th:text="${c.label}">Головна</a>
+            <span th:unless="${c.url != null and !st.last}" aria-current="page" th:text="${c.label}">Поточна</span>
+        </li>
+    </ol>
+</nav>
+
+<div th:fragment="messages" class="messages">
+    <div th:if="${success}" class="alert alert-success" role="status" th:text="${success}">Успіх</div>
+    <div th:if="${error}" class="alert alert-error" role="alert">
+        <strong th:text="${error.what}">Сутність помилки</strong>
+        <p><b>Як виправити зараз:</b> <span th:text="${error.fixNow}">...</span></p>
+        <p><b>Як запобігти надалі:</b> <span th:text="${error.prevent}">...</span></p>
+    </div>
+</div>
+
+<div th:fragment="formErrors(obj)" th:if="${#fields.hasAnyErrors()}" class="alert alert-error" role="alert">
+    <strong>Форму не збережено: виправте позначені поля.</strong>
+    <ul><li th:each="e : ${#fields.allErrors()}" th:text="${e}">помилка</li></ul>
+</div>
+
+<footer th:fragment="footer" class="site-footer">
+    <div class="wrap footer-row">
+        <span>© 2026 ТОВ «Кадрова агенція «ПрофіКадр» · JobMatch 1.0</span>
+        <nav aria-label="Службові посилання">
+            <a th:href="@{/about}">Про агенцію та контакти</a>
+            <a th:href="@{/help}">Допомога</a>
+            <a th:href="@{/docs/Nastanova_JobMatch.pdf}">Настанова користувача (PDF)</a>
+        </nav>
+    </div>
+</footer>
+
+<div th:fragment="scoreParts(result)" class="score-parts">
+    <span th:each="part : ${result.parts}" class="part" th:classappend="${part.points == part.maxPoints} ? 'full' : (${part.points == 0} ? 'zero' : 'half')"
+          th:title="${part.explanation}">
+        <span th:text="${part.criterion}">Посада</span> <b th:text="${part.points} + '/' + ${part.maxPoints}">40/40</b>
+    </span>
+</div>
+
+<div th:fragment="input(name, label, type, required, hint)" class="field">
+    <label th:for="${name}"><span th:text="${label}">Поле</span> <span th:if="${required}" class="req" aria-hidden="true">*</span></label>
+    <input th:type="${type}" th:field="*{__${name}__}" th:errorclass="invalid"
+           th:attr="aria-required=${required ? 'true' : null}, aria-describedby=${hint != null ? name + '-hint' : null}">
+    <div class="hint" th:if="${hint != null}" th:id="${name + '-hint'}" th:text="${hint}">підказка</div>
+    <div class="field-error" th:if="${#fields.hasErrors('__${name}__')}" th:errors="*{__${name}__}">помилка</div>
+</div>
+
+<div th:fragment="textarea(name, label, max, hint)" class="field">
+    <label th:for="${name}" th:text="${label}">Поле</label>
+    <textarea th:field="*{__${name}__}" th:errorclass="invalid" th:attr="maxlength=${max}, aria-describedby=${name + '-hint'}"></textarea>
+    <div class="hint" th:id="${name + '-hint'}" th:text="${hint != null ? hint + ' ' : ''} + 'До ' + ${max} + ' символів.'">підказка</div>
+    <div class="field-error" th:if="${#fields.hasErrors('__${name}__')}" th:errors="*{__${name}__}">помилка</div>
+</div>
+
+<span th:fragment="score(value)" class="score" th:classappend="${value >= 75} ? 'score-high' : (${value >= 50} ? 'score-mid' : 'score-low')" th:text="${value} + '%'">80%</span>
+
+</body>
+</html>

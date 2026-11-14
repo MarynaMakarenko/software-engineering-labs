@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="uk" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{fragments :: head('Історія роботи')}"></head>
+<body>
+<header th:replace="~{fragments :: header}"></header>
+<nav th:replace="~{fragments :: crumbs}"></nav>
+<main id="main" class="wrap page">
+    <div th:replace="~{fragments :: messages}"></div>
+    <div class="toolbar"><h1>Історія роботи</h1><span class="spacer"></span>
+        <a class="btn" th:href="@{/me/work/new}">+ Додати запис</a></div>
+    <p class="muted" th:text="'Сумарний стаж: ' + ${person.experienceText(#temporals.createToday())}">Стаж</p>
+    <div th:replace="~{shared/person-parts :: workTable(${person}, '/me/work/', '/me/work/')}"></div>
+</main>
+<footer th:replace="~{fragments :: footer}"></footer>
+</body>
+</html>

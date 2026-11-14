@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="uk" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{fragments :: head(${vacancy.position})}"></head>
+<body>
+<header th:replace="~{fragments :: header}"></header>
+<nav th:replace="~{fragments :: crumbs}"></nav>
+<main id="main" class="wrap page">
+    <div th:replace="~{fragments :: messages}"></div>
+    <div class="alert alert-info" th:if="${closed}">Вакансію закрито — подання кандидатур недоступне. <a th:href="@{/vacancies}">До відкритих вакансій</a></div>
+    <h1 th:text="${vacancy.position}">Посада</h1>
+    <p class="lead"><span th:text="${vacancy.company.name}">Компанія</span> · <span th:text="${vacancy.city}">Місто</span>
+        · <span class="badge" th:classappend="'badge-' + ${#strings.toLowerCase(vacancy.status)}" th:text="${vacancy.status.label}">Відкрита</span></p>
+    <div class="cols-2">
+        <section class="card">
+            <dl class="props">
+                <dt>Зарплата</dt><dd th:text="${#numbers.formatInteger(vacancy.salary, 1, 'WHITESPACE')} + ' грн/міс'">0</dd>
+                <dt>Мін. освіта</dt><dd th:text="${vacancy.requiredEducation != null ? vacancy.requiredEducation.label : 'будь-яка'}">—</dd>
+                <dt>Мін. досвід</dt><dd th:text="${vacancy.requiredExperienceYears} + ' р.'">0</dd>
+                <dt>Опубліковано</dt><dd th:text="${#temporals.format(vacancy.createdAt, 'dd.MM.yyyy')}">01.01.2026</dd>
+            </dl>
+            <h2>Вимоги</h2>
+            <p class="pre" th:text="${vacancy.requirements != null ? vacancy.requirements : 'Додаткових вимог немає.'}">Вимоги</p>
+        </section>
+        <section class="card">
+            <h2>Компанія</h2>
+            <p><b th:text="${vacancy.company.name}">Компанія</b></p>
+            <p class="pre" th:if="${vacancy.company.description}" th:text="${vacancy.company.description}">Опис</p>
+            <p class="muted" th:text="${vacancy.company.address}">Адреса</p>
+            <div sec:authorize="isAnonymous()" th:if="${vacancy.open}">
+                <p>Щоб відгукнутися, <a th:href="@{/login}">увійдіть</a> або <a th:href="@{/register}">зареєструйтеся</a> як шукач.</p>
+            </div>
+            <div sec:authorize="hasRole('CANDIDATE')">
+                <p th:if="${myApplication}">Ваш відгук: <span class="badge" th:classappend="'badge-' + ${#strings.toLowerCase(myApplication.status)}" th:text="${myApplication.status.label}">Нова</span>
+                    · <a th:href="@{/me/applications}">Мої відгуки</a></p>
+                <form th:if="${myApplication == null and vacancy.open}" th:action="@{/me/vacancies/{id}/apply(id=${vacancy.id})}" method="post">
+                    <button class="btn" type="submit">Відгукнутися</button>
+                </form>
+            </div>
+            <div sec:authorize="hasRole('RECRUITER')" th:if="${vacancy.open}">
+                <a class="btn" th:href="@{/recruiter/vacancies/{id}/matches(id=${vacancy.id})}">Підібрати кандидатів</a>
+            </div>
+        </section>
+    </div>
+</main>
+<footer th:replace="~{fragments :: footer}"></footer>
+</body>
+</html>

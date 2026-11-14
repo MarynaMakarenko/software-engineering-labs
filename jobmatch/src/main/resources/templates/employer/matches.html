@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="uk" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{fragments :: head('Відповідні резюме')}"></head>
+<body>
+<header th:replace="~{fragments :: header}"></header>
+<nav th:replace="~{fragments :: crumbs}"></nav>
+<main id="main" class="wrap page">
+    <div th:replace="~{fragments :: messages}"></div>
+    <h1 th:text="'Відповідні резюме: ' + ${vacancy.position}">Відповідні резюме</h1>
+    <div class="alert alert-info" th:if="${!vacancy.open}">Вакансію закрито — підбір недоступний. <a th:href="@{/company/vacancies}">До вакансій компанії</a></div>
+    <form class="filters" th:if="${vacancy.open}" th:action="@{/company/vacancies/{id}/matches(id=${vacancy.id})}" method="get">
+        <div class="field"><label for="minScore">Мін. оцінка, %</label><input id="minScore" name="minScore" type="text" inputmode="numeric" th:value="${minScore}" class="short"></div>
+        <div class="field"><button class="btn" type="submit">Оновити</button></div>
+    </form>
+    <p class="muted small">Контактні дані кандидатів передає рекрутер агенції разом із пропозицією кандидатури.</p>
+    <div class="table-wrap" th:if="${!#lists.isEmpty(results)}">
+        <table>
+            <thead><tr><th class="num">Оцінка</th><th>Кандидат</th><th>Бажана посада</th><th class="num">Бажана зарплата</th><th>Освіта</th><th class="num">Стаж</th><th>Складові</th></tr></thead>
+            <tbody><tr th:each="r : ${results}">
+                <td class="num"><span th:replace="~{fragments :: score(${r.score})}"></span></td>
+                <td th:text="${r.person.firstName} + ' ' + ${#strings.substring(r.person.lastName,0,1)} + '.'">Ім'я П.</td>
+                <td th:text="${r.person.desiredPosition != null ? r.person.desiredPosition : '—'}">—</td>
+                <td class="num" th:text="${r.person.desiredSalary != null ? #numbers.formatInteger(r.person.desiredSalary, 1, 'WHITESPACE') : '—'}">—</td>
+                <td th:text="${r.person.highestEducation().isPresent() ? r.person.highestEducation().get().label : '—'}">—</td>
+                <td class="num" th:text="${r.person.experienceText(#temporals.createToday())}">0</td>
+                <td><div th:replace="~{fragments :: scoreParts(${r})}"></div></td>
+            </tr></tbody>
+        </table>
+    </div>
+    <div class="card empty" th:if="${vacancy.open and #lists.isEmpty(results)}">
+        <p th:text="'Немає резюме з оцінкою від ' + ${minScore} + ' %.'">Немає резюме.</p>
+        <p><a th:href="@{/company/vacancies/{id}/matches(id=${vacancy.id},minScore=25)}">Показати часткові збіги (від 25 %)</a></p>
+    </div>
+</main>
+<footer th:replace="~{fragments :: footer}"></footer>
+</body>
+</html>

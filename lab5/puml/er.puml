@@ -1,0 +1,114 @@
+@startuml er
+skinparam defaultFontName Arial
+skinparam defaultFontSize 11
+skinparam shadowing false
+skinparam dpi 160
+skinparam linetype ortho
+skinparam class {
+  BackgroundColor #FFFFFF
+  BorderColor #333333
+  ArrowColor #333333
+}
+hide circle
+hide methods
+hide stereotype
+
+entity user_account {
+  * id : BIGINT <<PK>>
+  --
+  * email : VARCHAR(100) <<UQ>>
+  * password_hash : VARCHAR(100)
+  * role : VARCHAR(20) {CANDIDATE, EMPLOYER, RECRUITER}
+  * enabled : BOOLEAN
+  * created_at : TIMESTAMP
+}
+
+entity person {
+  * id : BIGINT <<PK>>
+  --
+  user_id : BIGINT <<FK, UQ>>
+  * last_name : VARCHAR(50)
+  * first_name : VARCHAR(50)
+  middle_name : VARCHAR(50)
+  birth_date : DATE
+  * phone : VARCHAR(13)
+  * email : VARCHAR(100)
+  * city : VARCHAR(60)
+  home_address : VARCHAR(200)
+  * job_status : VARCHAR(20) {SEARCHING, NOT_SEARCHING}
+  desired_position : VARCHAR(100)
+  desired_salary : INTEGER [1000..1000000]
+  about : VARCHAR(1000)
+  * updated_at : TIMESTAMP
+}
+
+entity company {
+  * id : BIGINT <<PK>>
+  --
+  owner_user_id : BIGINT <<FK, UQ>>
+  * name : VARCHAR(120) <<UQ>>
+  * city : VARCHAR(60)
+  * address : VARCHAR(200)
+  * phone : VARCHAR(13)
+  * email : VARCHAR(100)
+  website : VARCHAR(200)
+  description : VARCHAR(2000)
+}
+
+entity education {
+  * id : BIGINT <<PK>>
+  --
+  * person_id : BIGINT <<FK>>
+  * level : VARCHAR(20) {SECONDARY..PHD}
+  * institution : VARCHAR(150)
+  * specialty : VARCHAR(100)
+  * graduation_year : INTEGER [1950..2035]
+}
+
+entity work_record {
+  * id : BIGINT <<PK>>
+  --
+  * person_id : BIGINT <<FK>>
+  company_id : BIGINT <<FK>>
+  * company_name : VARCHAR(120)
+  * position : VARCHAR(100)
+  salary : INTEGER [0..1000000]
+  * start_date : DATE
+  end_date : DATE (NULL = «досі»)
+}
+
+entity vacancy {
+  * id : BIGINT <<PK>>
+  --
+  * company_id : BIGINT <<FK>>
+  * position : VARCHAR(100)
+  * salary : INTEGER [1000..1000000]
+  required_education : VARCHAR(20)
+  * required_experience_years : INTEGER [0..40]
+  requirements : VARCHAR(2000)
+  * city : VARCHAR(60)
+  * status : VARCHAR(10) {OPEN, CLOSED}
+  * created_at : TIMESTAMP
+}
+
+entity application {
+  * id : BIGINT <<PK>>
+  --
+  * vacancy_id : BIGINT <<FK>>
+  * person_id : BIGINT <<FK>>
+  * source : VARCHAR(20) {CANDIDATE, RECRUITER}
+  * status : VARCHAR(20) {NEW, INVITED, REJECTED, HIRED}
+  comment : VARCHAR(500)
+  * created_at : TIMESTAMP
+  UQ (vacancy_id, person_id)
+}
+
+user_account |o--o| person : "user_id\nSET NULL"
+user_account |o--o| company : "owner_user_id\nSET NULL"
+person ||--o{ education : "CASCADE"
+person ||--o{ work_record : "CASCADE"
+company |o--o{ work_record : "SET NULL"
+company ||--o{ vacancy : "CASCADE"
+vacancy ||--o{ application : "CASCADE"
+person ||--o{ application : "CASCADE"
+@enduml

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="uk" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{fragments :: head('Вакансії')}"></head>
+<body>
+<header th:replace="~{fragments :: header}"></header>
+<nav th:replace="~{fragments :: crumbs}"></nav>
+<main id="main" class="wrap page">
+    <div th:replace="~{fragments :: messages}"></div>
+    <h1>Вакансії</h1>
+    <form class="filters" th:action="@{/vacancies}" method="get" th:object="${criteria}" role="search" aria-label="Пошук вакансій">
+        <div class="field"><label for="position">Посада</label><input type="text" th:field="*{position}" placeholder="напр. Java"></div>
+        <div class="field"><label for="company">Компанія</label><input type="text" th:field="*{company}"></div>
+        <div class="field"><label for="city">Місто</label><input type="text" th:field="*{city}"></div>
+        <div class="field"><label for="salaryFrom">Зарплата від, грн</label><input type="number" min="0" step="1000" th:field="*{salaryFrom}"></div>
+        <div class="field"><button class="btn" type="submit">Знайти</button> <a th:href="@{/vacancies}">Скинути</a></div>
+    </form>
+    <p class="muted" th:text="'Знайдено вакансій: ' + ${#lists.size(vacancies)}">Знайдено: 0</p>
+    <div class="table-wrap" th:if="${!#lists.isEmpty(vacancies)}">
+        <table>
+            <thead><tr><th>Посада</th><th>Компанія</th><th>Місто</th><th class="num">Зарплата, грн</th><th>Освіта</th><th class="num">Досвід, р.</th></tr></thead>
+            <tbody>
+            <tr th:each="v : ${vacancies}">
+                <td><a th:href="@{/vacancies/{id}(id=${v.id})}" th:text="${v.position}">Посада</a></td>
+                <td th:text="${v.company.name}">Компанія</td>
+                <td th:text="${v.city}">Місто</td>
+                <td class="num" th:text="${#numbers.formatInteger(v.salary, 1, 'WHITESPACE')}">0</td>
+                <td th:text="${v.requiredEducation != null ? v.requiredEducation.label : 'будь-яка'}">—</td>
+                <td class="num" th:text="${v.requiredExperienceYears}">0</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="card empty" th:if="${#lists.isEmpty(vacancies)}">
+        <p>За вашими умовами відкритих вакансій немає.</p>
+        <p>Спробуйте прибрати фільтр за зарплатою або містом. <a th:href="@{/vacancies}">Показати всі вакансії</a></p>
+    </div>
+</main>
+<footer th:replace="~{fragments :: footer}"></footer>
+</body>
+</html>

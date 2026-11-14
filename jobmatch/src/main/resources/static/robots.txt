@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /me/
+Disallow: /company/
+Disallow: /recruiter/
+Allow: /

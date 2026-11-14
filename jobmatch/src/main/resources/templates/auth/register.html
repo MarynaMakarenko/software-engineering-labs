@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="uk" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{fragments :: head('Реєстрація')}"></head>
+<body>
+<header th:replace="~{fragments :: header}"></header>
+<nav th:replace="~{fragments :: crumbs}"></nav>
+<main id="main" class="wrap page">
+    <div th:replace="~{fragments :: messages}"></div>
+    <h1>Реєстрація</h1>
+    <form class="form card" th:action="@{/register}" th:object="${form}" method="post" novalidate>
+        <div th:replace="~{fragments :: formErrors(${form})}"></div>
+        <fieldset>
+            <legend>Тип облікового запису <span class="req" aria-hidden="true">*</span></legend>
+            <div class="radio-row">
+                <label><input type="radio" th:field="*{role}" value="CANDIDATE"> Шукач роботи</label>
+                <label><input type="radio" th:field="*{role}" value="EMPLOYER"> Представник компанії</label>
+            </div>
+        </fieldset>
+        <div th:replace="~{fragments :: input('email', 'E-mail', 'email', true, 'Використовується для входу.')}"></div>
+        <div th:replace="~{fragments :: input('password', 'Пароль', 'password', true, 'Від 8 до 64 символів.')}"></div>
+        <div th:replace="~{fragments :: input('passwordConfirm', 'Повторіть пароль', 'password', true, null)}"></div>
+        <div data-role="CANDIDATE" th:hidden="${form.role != null and form.role.name() == 'EMPLOYER'}">
+            <div th:replace="~{fragments :: input('lastName', 'Прізвище', 'text', true, null)}"></div>
+            <div th:replace="~{fragments :: input('firstName', 'Ім\'я', 'text', true, null)}"></div>
+            <div th:replace="~{fragments :: input('homeAddress', 'Домашня адреса', 'text', true, 'Вулиця, будинок, квартира.')}"></div>
+        </div>
+        <div data-role="EMPLOYER" th:hidden="${form.role == null or form.role.name() != 'EMPLOYER'}">
+            <div th:replace="~{fragments :: input('companyName', 'Назва компанії', 'text', true, 'Без організаційно-правової форми, напр. «ТехноСофт».')}"></div>
+            <div th:replace="~{fragments :: input('companyAddress', 'Адреса компанії', 'text', true, null)}"></div>
+            <div th:replace="~{fragments :: input('companyEmail', 'E-mail компанії', 'email', true, 'Для листування з агенцією, напр. hr@company.ua.')}"></div>
+            <div th:replace="~{fragments :: input('website', 'Сайт', 'url', false, 'Починається з https://')}"></div>
+            <div th:replace="~{fragments :: textarea('description', 'Опис компанії', 2000, null)}"></div>
+        </div>
+        <div th:replace="~{fragments :: input('phone', 'Телефон', 'tel', true, 'Формат: +380XXXXXXXXX')}"></div>
+        <div th:replace="~{fragments :: input('city', 'Місто', 'text', true, null)}"></div>
+        <div class="field" data-role="CANDIDATE" th:hidden="${form.role != null and form.role.name() == 'EMPLOYER'}">
+            <label class="check"><input type="checkbox" th:field="*{consent}"> Даю згоду на обробку моїх персональних даних ТОВ «Кадрова агенція «ПрофіКадр» з метою працевлаштування (Закон України «Про захист персональних даних») <span class="req" aria-hidden="true">*</span></label>
+        </div>
+        <div class="form-actions"><button class="btn" type="submit">Створити обліковий запис</button> <a class="btn btn-ghost" th:href="@{/}">Скасувати</a></div>
+    </form>
+</main>
+<footer th:replace="~{fragments :: footer}"></footer>
+</body>
+</html>

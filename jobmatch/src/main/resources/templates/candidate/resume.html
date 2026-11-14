@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="uk" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{fragments :: head('Моє резюме')}"></head>
+<body>
+<header th:replace="~{fragments :: header}"></header>
+<nav th:replace="~{fragments :: crumbs}"></nav>
+<main id="main" class="wrap page">
+    <div th:replace="~{fragments :: messages}"></div>
+    <div class="toolbar"><h1>Моє резюме</h1><span class="spacer"></span>
+        <a class="btn" th:href="@{/me/resume/edit}">Редагувати</a></div>
+    <div th:replace="~{shared/person-parts :: personal(${person})}"></div>
+    <section class="card">
+        <div class="toolbar"><h2>Освіта</h2><span class="spacer"></span>
+            <button class="btn btn-small btn-ghost" type="button" data-toggle="education-form" aria-controls="education-form">+ Додати освіту</button></div>
+        <div th:replace="~{shared/person-parts :: educationTable(${person}, '/me/education/')}"></div>
+    </section>
+    <form th:replace="~{shared/person-parts :: educationForm('/me/education', ${educationOpen != null})}"></form>
+    <p><a th:href="@{/me/work}">Історія роботи →</a> · <a th:href="@{/me/matches}">Відповідні вакансії →</a></p>
+</main>
+<footer th:replace="~{fragments :: footer}"></footer>
+</body>
+</html>

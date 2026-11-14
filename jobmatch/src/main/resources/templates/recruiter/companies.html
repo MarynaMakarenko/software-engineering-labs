@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="uk" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{fragments :: head('Компанії')}"></head>
+<body>
+<header th:replace="~{fragments :: header}"></header>
+<nav th:replace="~{fragments :: crumbs}"></nav>
+<main id="main" class="wrap page">
+    <div th:replace="~{fragments :: messages}"></div>
+    <div class="toolbar"><h1>Компанії</h1><span class="spacer"></span><a class="btn" th:href="@{/recruiter/companies/new}">+ Нова компанія</a></div>
+    <form class="filters" th:action="@{/recruiter/companies}" method="get" role="search" aria-label="Пошук компаній">
+        <div class="field"><label for="q">Назва компанії</label><input type="text" id="q" name="q" th:value="${q}"></div>
+        <div class="field"><button class="btn" type="submit">Знайти</button> <a th:href="@{/recruiter/companies}">Скинути</a></div>
+    </form>
+    <div class="table-wrap" th:if="${!#lists.isEmpty(companies)}">
+        <table>
+            <thead><tr><th>Назва</th><th>Місто</th><th>Телефон</th><th>E-mail</th><th class="num">Відкриті вакансії</th><th>Представник</th></tr></thead>
+            <tbody><tr th:each="c : ${companies}">
+                <td><a th:href="@{/recruiter/companies/{id}(id=${c.id})}" th:text="${c.name}">Назва</a></td>
+                <td th:text="${c.city}">Місто</td><td th:text="${c.phone}">Тел</td><td th:text="${c.email}">E-mail</td>
+                <td class="num" th:text="${c.openVacancyCount}">0</td>
+                <td th:text="${c.owner != null ? c.owner.email : '—'}">—</td>
+            </tr></tbody>
+        </table>
+    </div>
+    <div class="card empty" th:if="${#lists.isEmpty(companies)}"><p>Компаній не знайдено.</p></div>
+</main>
+<footer th:replace="~{fragments :: footer}"></footer>
+</body>
+</html>

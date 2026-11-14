@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="uk" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{fragments :: head('Панель рекрутера')}"></head>
+<body>
+<header th:replace="~{fragments :: header}"></header>
+<nav th:replace="~{fragments :: crumbs}"></nav>
+<main id="main" class="wrap page">
+    <div th:replace="~{fragments :: messages}"></div>
+    <h1>Панель рекрутера</h1>
+    <div class="grid">
+        <a class="card stat" th:href="@{/vacancies}"><b th:text="${#lists.size(openVacancies)}">0</b><span>відкритих вакансій</span></a>
+        <a class="card stat" th:href="@{/recruiter/people(status='SEARCHING')}"><b th:text="${searchingCount}">0</b><span>резюме шукають роботу</span></a>
+        <a class="card stat" th:href="@{/recruiter/applications(status='NEW')}"><b th:text="${newApplications}">0</b><span>нових кандидатур</span></a>
+        <a class="card stat" th:href="@{/recruiter/applications(status='INVITED')}"><b th:text="${invitedApplications}">0</b><span>запрошено на співбесіду</span></a>
+    </div>
+    <h2>Відкриті вакансії</h2>
+    <div class="table-wrap" th:if="${!#lists.isEmpty(openVacancies)}">
+        <table>
+            <thead><tr><th>Посада</th><th>Компанія</th><th>Місто</th><th class="num">Зарплата, грн/міс</th><th>Мін. освіта</th><th class="num">Мін. досвід, р.</th><th><span class="sr">Дія</span></th></tr></thead>
+            <tbody><tr th:each="v : ${openVacancies}">
+                <td><a th:href="@{/vacancies/{id}(id=${v.id})}" th:text="${v.position}">Посада</a></td>
+                <td><a th:href="@{/recruiter/companies/{id}(id=${v.company.id})}" th:text="${v.company.name}">Компанія</a></td>
+                <td th:text="${v.city}">Місто</td>
+                <td class="num" th:text="${#numbers.formatInteger(v.salary, 1, 'WHITESPACE')}">0</td>
+                <td th:text="${v.requiredEducation != null ? v.requiredEducation.label : 'будь-яка'}">—</td>
+                <td class="num" th:text="${v.requiredExperienceYears}">0</td>
+                <td class="actions"><a class="btn btn-small" th:href="@{/recruiter/vacancies/{id}/matches(id=${v.id})}">Підібрати кандидатів</a></td>
+            </tr></tbody>
+        </table>
+    </div>
+    <div class="card empty" th:if="${#lists.isEmpty(openVacancies)}"><p>Відкритих вакансій немає.</p>
+        <p><a th:href="@{/recruiter/companies}">Додайте вакансію в картці компанії</a></p></div>
+</main>
+<footer th:replace="~{fragments :: footer}"></footer>
+</body>
+</html>

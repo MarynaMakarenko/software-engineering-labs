@@ -1,0 +1,1626 @@
+{
+  "config": {
+    "configFile": "/Users/marina.makarenko/Desktop/pi-labs/app/e2e/playwright.config.ts",
+    "rootDir": "/Users/marina.makarenko/Desktop/pi-labs/app/e2e/tests",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "/Users/marina.makarenko/Desktop/pi-labs/app/e2e/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/Users/marina.makarenko/Desktop/pi-labs/app/e2e/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "shard": null,
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.56.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "r2-candidate-matching.spec.ts",
+      "file": "r2-candidate-matching.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "T2-01 | Основний | Коректні | мінімальний: коментар порожній",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "steps",
+                  "description": "Панель рекрутера → «Підібрати кандидатів» біля «Java-розробник» → «Запропонувати» біля «Петренко Іван Олегович» → поле «Коментар» порожнє → «Підтвердити»"
+                },
+                {
+                  "type": "expected",
+                  "description": "Повідомлення «Кандидатуру Петренко Іван Олегович запропоновано на вакансію «Java-розробник» (ТехноСофт)»; у рядку — «Запропоновано: Нова»"
+                },
+                {
+                  "type": "data",
+                  "description": "коментар: 0 символів"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1010,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T15:45:55.667Z",
+                  "annotations": [
+                    {
+                      "type": "steps",
+                      "description": "Панель рекрутера → «Підібрати кандидатів» біля «Java-розробник» → «Запропонувати» біля «Петренко Іван Олегович» → поле «Коментар» порожнє → «Підтвердити»"
+                    },
+                    {
+                      "type": "expected",
+                      "description": "Повідомлення «Кандидатуру Петренко Іван Олегович запропоновано на вакансію «Java-розробник» (ТехноСофт)»; у рядку — «Запропоновано: Нова»"
+                    },
+                    {
+                      "type": "data",
+                      "description": "коментар: 0 символів"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4891e3092b40dd60f35b-86a6b0ccd16660b9e82d",
+          "file": "r2-candidate-matching.spec.ts",
+          "line": 25,
+          "column": 5
+        },
+        {
+          "title": "T2-02 | Основний | Коректні | майже мінімальний: коментар 1 символ",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "steps",
+                  "description": "Підбір для «Java-розробник» → «Запропонувати» біля «Бондар Марія» → коментар «+» → «Підтвердити»"
+                },
+                {
+                  "type": "expected",
+                  "description": "Повідомлення про пропозицію; статус «Запропоновано: Нова»"
+                },
+                {
+                  "type": "data",
+                  "description": "коментар: 1 символ"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 447,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T15:45:56.995Z",
+                  "annotations": [
+                    {
+                      "type": "steps",
+                      "description": "Підбір для «Java-розробник» → «Запропонувати» біля «Бондар Марія» → коментар «+» → «Підтвердити»"
+                    },
+                    {
+                      "type": "expected",
+                      "description": "Повідомлення про пропозицію; статус «Запропоновано: Нова»"
+                    },
+                    {
+                      "type": "data",
+                      "description": "коментар: 1 символ"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4891e3092b40dd60f35b-33c778080c506c068569",
+          "file": "r2-candidate-matching.spec.ts",
+          "line": 42,
+          "column": 5
+        },
+        {
+          "title": "T2-03 | Основний | Коректні | типовий: коментар 96 символів",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "steps",
+                  "description": "Підбір для «Java-розробник» → «Запропонувати» біля «Григоренко-Задорожна» → типовий коментар → «Підтвердити»"
+                },
+                {
+                  "type": "expected",
+                  "description": "Повідомлення про пропозицію; статус «Запропоновано: Нова»"
+                },
+                {
+                  "type": "data",
+                  "description": "коментар: 96 символів"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 431,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T15:45:57.449Z",
+                  "annotations": [
+                    {
+                      "type": "steps",
+                      "description": "Підбір для «Java-розробник» → «Запропонувати» біля «Григоренко-Задорожна» → типовий коментар → «Підтвердити»"
+                    },
+                    {
+                      "type": "expected",
+                      "description": "Повідомлення про пропозицію; статус «Запропоновано: Нова»"
+                    },
+                    {
+                      "type": "data",
+                      "description": "коментар: 96 символів"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4891e3092b40dd60f35b-5f38b696135a5019bfe7",
+          "file": "r2-candidate-matching.spec.ts",
+          "line": 50,
+          "column": 5
+        },
+        {
+          "title": "T2-04 | Основний | Коректні | майже максимальний: коментар 499 символів",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "steps",
+                  "description": "Підбір для «QA-інженер» → «Запропонувати» біля «Лі Ія» → коментар 499 символів → «Підтвердити»"
+                },
+                {
+                  "type": "expected",
+                  "description": "Повідомлення про пропозицію; статус «Запропоновано: Нова»"
+                },
+                {
+                  "type": "data",
+                  "description": "коментар: 499 символів"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 433,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T15:45:57.886Z",
+                  "annotations": [
+                    {
+                      "type": "steps",
+                      "description": "Підбір для «QA-інженер» → «Запропонувати» біля «Лі Ія» → коментар 499 символів → «Підтвердити»"
+                    },
+                    {
+                      "type": "expected",
+                      "description": "Повідомлення про пропозицію; статус «Запропоновано: Нова»"
+                    },
+                    {
+                      "type": "data",
+                      "description": "коментар: 499 символів"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4891e3092b40dd60f35b-23e57e1c6fffcaff7450",
+          "file": "r2-candidate-matching.spec.ts",
+          "line": 57,
+          "column": 5
+        },
+        {
+          "title": "T2-05 | Основний | Коректні | максимальний: коментар 500 символів",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "steps",
+                  "description": "Підбір для «QA-інженер» (мін. оцінка 0) → «Запропонувати» біля «Верховинець-Залізняк…» → коментар 500 символів → «Підтвердити»"
+                },
+                {
+                  "type": "expected",
+                  "description": "Повідомлення про пропозицію; статус «Запропоновано: Нова»"
+                },
+                {
+                  "type": "data",
+                  "description": "коментар: 500 символів"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 456,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T15:45:58.326Z",
+                  "annotations": [
+                    {
+                      "type": "steps",
+                      "description": "Підбір для «QA-інженер» (мін. оцінка 0) → «Запропонувати» біля «Верховинець-Залізняк…» → коментар 500 символів → «Підтвердити»"
+                    },
+                    {
+                      "type": "expected",
+                      "description": "Повідомлення про пропозицію; статус «Запропоновано: Нова»"
+                    },
+                    {
+                      "type": "data",
+                      "description": "коментар: 500 символів"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4891e3092b40dd60f35b-f731c689df55fa3aecd9",
+          "file": "r2-candidate-matching.spec.ts",
+          "line": 64,
+          "column": 5
+        },
+        {
+          "title": "T2-06 | Основний | Некоректні | типовий: підмінений ідентифікатор кандидата",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "steps",
+                  "description": "Відкрити адресу /recruiter/vacancies/1/propose?personId=abc"
+                },
+                {
+                  "type": "expected",
+                  "description": "Сторінка «404 — Не знайдено», кандидатура не створюється"
+                },
+                {
+                  "type": "data",
+                  "description": "personId = abc"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 281,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T15:45:58.788Z",
+                  "annotations": [
+                    {
+                      "type": "steps",
+                      "description": "Відкрити адресу /recruiter/vacancies/1/propose?personId=abc"
+                    },
+                    {
+                      "type": "expected",
+                      "description": "Сторінка «404 — Не знайдено», кандидатура не створюється"
+                    },
+                    {
+                      "type": "data",
+                      "description": "personId = abc"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4891e3092b40dd60f35b-502f2a2d83d92bcca880",
+          "file": "r2-candidate-matching.spec.ts",
+          "line": 72,
+          "column": 5
+        },
+        {
+          "title": "T2-07 | A1 | Коректні | типовий: порожній список → часткові збіги",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "steps",
+                  "description": "Компанії → «Ок» → «Підібрати кандидатів» біля «ІТ» (поріг 50) → «Показати часткові збіги (від 25 %)»"
+                },
+                {
+                  "type": "expected",
+                  "description": "Повідомлення «Немає кандидатів з оцінкою від 50 %.» і кнопка; після натискання — список з порогом 25 % (усі оцінки ≥ 25 %)"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 474,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T15:45:59.076Z",
+                  "annotations": [
+                    {
+                      "type": "steps",
+                      "description": "Компанії → «Ок» → «Підібрати кандидатів» біля «ІТ» (поріг 50) → «Показати часткові збіги (від 25 %)»"
+                    },
+                    {
+                      "type": "expected",
+                      "description": "Повідомлення «Немає кандидатів з оцінкою від 50 %.» і кнопка; після натискання — список з порогом 25 % (усі оцінки ≥ 25 %)"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4891e3092b40dd60f35b-321425ceebe83e03aefe",
+          "file": "r2-candidate-matching.spec.ts",
+          "line": 80,
+          "column": 5
+        },
+        {
+          "title": "T2-08 | A1 | Коректні | максимальний поріг 100 % без кандидатів",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "steps",
+                  "description": "Відкрити підбір для вакансії «ІТ» з порогом 100"
+                },
+                {
+                  "type": "expected",
+                  "description": "Повідомлення «Немає кандидатів з оцінкою від 100 %.» і кнопка «Показати часткові збіги»"
+                },
+                {
+                  "type": "data",
+                  "description": "мін. оцінка = 100"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 299,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T15:45:59.556Z",
+                  "annotations": [
+                    {
+                      "type": "steps",
+                      "description": "Відкрити підбір для вакансії «ІТ» з порогом 100"
+                    },
+                    {
+                      "type": "expected",
+                      "description": "Повідомлення «Немає кандидатів з оцінкою від 100 %.» і кнопка «Показати часткові збіги»"
+                    },
+                    {
+                      "type": "data",
+                      "description": "мін. оцінка = 100"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4891e3092b40dd60f35b-0274f2fcbbf2495cf149",
+          "file": "r2-candidate-matching.spec.ts",
+          "line": 94,
+          "column": 5
+        },
+        {
+          "title": "T2-09 | A2 | Коректні | мінімальний: мін. оцінка 0",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "steps",
+                  "description": "Підбір для «Java-розробник» → поле «Мін. оцінка, %» = 0 → «Оновити»"
+                },
+                {
+                  "type": "expected",
+                  "description": "Список кандидатів з оцінкою ≥ 0 %, відсортований за спаданням; повідомлень про помилку немає"
+                },
+                {
+                  "type": "data",
+                  "description": "мін. оцінка = 0"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 365,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T15:45:59.861Z",
+                  "annotations": [
+                    {
+                      "type": "steps",
+                      "description": "Підбір для «Java-розробник» → поле «Мін. оцінка, %» = 0 → «Оновити»"
+                    },
+                    {
+                      "type": "expected",
+                      "description": "Список кандидатів з оцінкою ≥ 0 %, відсортований за спаданням; повідомлень про помилку немає"
+                    },
+                    {
+                      "type": "data",
+                      "description": "мін. оцінка = 0"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4891e3092b40dd60f35b-8f7a570eccc8ab9ebc1c",
+          "file": "r2-candidate-matching.spec.ts",
+          "line": 103,
+          "column": 7
+        },
+        {
+          "title": "T2-10 | A2 | Коректні | майже мінімальний: мін. оцінка 1",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "steps",
+                  "description": "Підбір для «Java-розробник» → поле «Мін. оцінка, %» = 1 → «Оновити»"
+                },
+                {
+                  "type": "expected",
+                  "description": "Список кандидатів з оцінкою ≥ 1 %, відсортований за спаданням; повідомлень про помилку немає"
+                },
+                {
+                  "type": "data",
+                  "description": "мін. оцінка = 1"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 380,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T15:46:00.232Z",
+                  "annotations": [
+                    {
+                      "type": "steps",
+                      "description": "Підбір для «Java-розробник» → поле «Мін. оцінка, %» = 1 → «Оновити»"
+                    },
+                    {
+                      "type": "expected",
+                      "description": "Список кандидатів з оцінкою ≥ 1 %, відсортований за спаданням; повідомлень про помилку немає"
+                    },
+                    {
+                      "type": "data",
+                      "description": "мін. оцінка = 1"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4891e3092b40dd60f35b-450cc83de2e8860336a5",
+          "file": "r2-candidate-matching.spec.ts",
+          "line": 103,
+          "column": 7
+        },
+        {
+          "title": "T2-11 | A2 | Коректні | типовий: мін. оцінка 50",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "steps",
+                  "description": "Підбір для «Java-розробник» → поле «Мін. оцінка, %» = 50 → «Оновити»"
+                },
+                {
+                  "type": "expected",
+                  "description": "Список кандидатів з оцінкою ≥ 50 %, відсортований за спаданням; повідомлень про помилку немає"
+                },
+                {
+                  "type": "data",
+                  "description": "мін. оцінка = 50"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 360,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T15:46:00.618Z",
+                  "annotations": [
+                    {
+                      "type": "steps",
+                      "description": "Підбір для «Java-розробник» → поле «Мін. оцінка, %» = 50 → «Оновити»"
+                    },
+                    {
+                      "type": "expected",
+                      "description": "Список кандидатів з оцінкою ≥ 50 %, відсортований за спаданням; повідомлень про помилку немає"
+                    },
+                    {
+                      "type": "data",
+                      "description": "мін. оцінка = 50"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4891e3092b40dd60f35b-473829c9f4d56106bd55",
+          "file": "r2-candidate-matching.spec.ts",
+          "line": 103,
+          "column": 7
+        },
+        {
+          "title": "T2-12 | A2 | Коректні | майже максимальний: мін. оцінка 99",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "steps",
+                  "description": "Підбір для «Java-розробник» → поле «Мін. оцінка, %» = 99 → «Оновити»"
+                },
+                {
+                  "type": "expected",
+                  "description": "Список кандидатів з оцінкою ≥ 99 %, відсортований за спаданням; повідомлень про помилку немає"
+                },
+                {
+                  "type": "data",
+                  "description": "мін. оцінка = 99"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 359,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T15:46:00.984Z",
+                  "annotations": [
+                    {
+                      "type": "steps",
+                      "description": "Підбір для «Java-розробник» → поле «Мін. оцінка, %» = 99 → «Оновити»"
+                    },
+                    {
+                      "type": "expected",
+                      "description": "Список кандидатів з оцінкою ≥ 99 %, відсортований за спаданням; повідомлень про помилку немає"
+                    },
+                    {
+                      "type": "data",
+                      "description": "мін. оцінка = 99"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4891e3092b40dd60f35b-c2021096d7a6c1726cc9",
+          "file": "r2-candidate-matching.spec.ts",
+          "line": 103,
+          "column": 7
+        },
+        {
+          "title": "T2-13 | A2 | Коректні | максимальний: мін. оцінка 100",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "steps",
+                  "description": "Підбір для «Java-розробник» → поле «Мін. оцінка, %» = 100 → «Оновити»"
+                },
+                {
+                  "type": "expected",
+                  "description": "Список кандидатів з оцінкою ≥ 100 %, відсортований за спаданням; повідомлень про помилку немає"
+                },
+                {
+                  "type": "data",
+                  "description": "мін. оцінка = 100"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 351,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T15:46:01.349Z",
+                  "annotations": [
+                    {
+                      "type": "steps",
+                      "description": "Підбір для «Java-розробник» → поле «Мін. оцінка, %» = 100 → «Оновити»"
+                    },
+                    {
+                      "type": "expected",
+                      "description": "Список кандидатів з оцінкою ≥ 100 %, відсортований за спаданням; повідомлень про помилку немає"
+                    },
+                    {
+                      "type": "data",
+                      "description": "мін. оцінка = 100"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4891e3092b40dd60f35b-c9d40d6aee2b1cd32ea9",
+          "file": "r2-candidate-matching.spec.ts",
+          "line": 103,
+          "column": 7
+        },
+        {
+          "title": "T2-14 | A2 | Некоректні | мінімальний: мін. оцінка «-1»",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "steps",
+                  "description": "Підбір для «Java-розробник» → поле «Мін. оцінка, %» = -1 → «Оновити»"
+                },
+                {
+                  "type": "expected",
+                  "description": "Діагностичне повідомлення «Мінімальна оцінка … має бути цілим числом від 0 до 100» з трьома частинами; список побудовано з порогом 50 %"
+                },
+                {
+                  "type": "data",
+                  "description": "мін. оцінка = -1"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 355,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T15:46:01.705Z",
+                  "annotations": [
+                    {
+                      "type": "steps",
+                      "description": "Підбір для «Java-розробник» → поле «Мін. оцінка, %» = -1 → «Оновити»"
+                    },
+                    {
+                      "type": "expected",
+                      "description": "Діагностичне повідомлення «Мінімальна оцінка … має бути цілим числом від 0 до 100» з трьома частинами; список побудовано з порогом 50 %"
+                    },
+                    {
+                      "type": "data",
+                      "description": "мін. оцінка = -1"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4891e3092b40dd60f35b-7478dfe2f3b5f0fd0307",
+          "file": "r2-candidate-matching.spec.ts",
+          "line": 118,
+          "column": 7
+        },
+        {
+          "title": "T2-15 | A2 | Некоректні | типовий: мін. оцінка «abc»",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "steps",
+                  "description": "Підбір для «Java-розробник» → поле «Мін. оцінка, %» = abc → «Оновити»"
+                },
+                {
+                  "type": "expected",
+                  "description": "Діагностичне повідомлення «Мінімальна оцінка … має бути цілим числом від 0 до 100» з трьома частинами; список побудовано з порогом 50 %"
+                },
+                {
+                  "type": "data",
+                  "description": "мін. оцінка = abc"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 400,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T15:46:02.065Z",
+                  "annotations": [
+                    {
+                      "type": "steps",
+                      "description": "Підбір для «Java-розробник» → поле «Мін. оцінка, %» = abc → «Оновити»"
+                    },
+                    {
+                      "type": "expected",
+                      "description": "Діагностичне повідомлення «Мінімальна оцінка … має бути цілим числом від 0 до 100» з трьома частинами; список побудовано з порогом 50 %"
+                    },
+                    {
+                      "type": "data",
+                      "description": "мін. оцінка = abc"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4891e3092b40dd60f35b-f4670e92d5194dc01a07",
+          "file": "r2-candidate-matching.spec.ts",
+          "line": 118,
+          "column": 7
+        },
+        {
+          "title": "T2-16 | A2 | Некоректні | максимальний: мін. оцінка «101»",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "steps",
+                  "description": "Підбір для «Java-розробник» → поле «Мін. оцінка, %» = 101 → «Оновити»"
+                },
+                {
+                  "type": "expected",
+                  "description": "Діагностичне повідомлення «Мінімальна оцінка … має бути цілим числом від 0 до 100» з трьома частинами; список побудовано з порогом 50 %"
+                },
+                {
+                  "type": "data",
+                  "description": "мін. оцінка = 101"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 351,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T15:46:02.470Z",
+                  "annotations": [
+                    {
+                      "type": "steps",
+                      "description": "Підбір для «Java-розробник» → поле «Мін. оцінка, %» = 101 → «Оновити»"
+                    },
+                    {
+                      "type": "expected",
+                      "description": "Діагностичне повідомлення «Мінімальна оцінка … має бути цілим числом від 0 до 100» з трьома частинами; список побудовано з порогом 50 %"
+                    },
+                    {
+                      "type": "data",
+                      "description": "мін. оцінка = 101"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4891e3092b40dd60f35b-a2f9993c9ccdbb3671db",
+          "file": "r2-candidate-matching.spec.ts",
+          "line": 118,
+          "column": 7
+        },
+        {
+          "title": "T2-17 | A3 | Коректні | типовий: кандидата вже запропоновано",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "steps",
+                  "description": "Підбір для «Java-розробник» → рядок «Шевченко Оксана»"
+                },
+                {
+                  "type": "expected",
+                  "description": "Кнопки «Запропонувати» немає; показано «Запропоновано: Нова»"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 291,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T15:46:02.827Z",
+                  "annotations": [
+                    {
+                      "type": "steps",
+                      "description": "Підбір для «Java-розробник» → рядок «Шевченко Оксана»"
+                    },
+                    {
+                      "type": "expected",
+                      "description": "Кнопки «Запропонувати» немає; показано «Запропоновано: Нова»"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4891e3092b40dd60f35b-f792d75d3ea94569e311",
+          "file": "r2-candidate-matching.spec.ts",
+          "line": 133,
+          "column": 5
+        },
+        {
+          "title": "T2-18 | A3 | Коректні | кандидат сам відгукнувся",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "steps",
+                  "description": "Підбір для «QA-інженер» → рядок «Коваленко Дмитро»"
+                },
+                {
+                  "type": "expected",
+                  "description": "Кнопки «Запропонувати» немає; показано «Відгукнувся: Нова»"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 278,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T15:46:03.124Z",
+                  "annotations": [
+                    {
+                      "type": "steps",
+                      "description": "Підбір для «QA-інженер» → рядок «Коваленко Дмитро»"
+                    },
+                    {
+                      "type": "expected",
+                      "description": "Кнопки «Запропонувати» немає; показано «Відгукнувся: Нова»"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4891e3092b40dd60f35b-c0b7445d89b10910a52f",
+          "file": "r2-candidate-matching.spec.ts",
+          "line": 140,
+          "column": 5
+        },
+        {
+          "title": "T2-19 | A3 | Некоректні | типовий: повторне підтвердження з другої вкладки",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "steps",
+                  "description": "Відкрити форму пропозиції «Кравчук Олена» → «Агроном» у двох вкладках → «Підтвердити» в першій, потім у другій"
+                },
+                {
+                  "type": "expected",
+                  "description": "Друга спроба: повідомлення «Кандидатура … вже існує» з трьома частинами; дублікат не створено"
+                },
+                {
+                  "type": "data",
+                  "description": "дві вкладки"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 599,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T15:46:03.408Z",
+                  "annotations": [
+                    {
+                      "type": "steps",
+                      "description": "Відкрити форму пропозиції «Кравчук Олена» → «Агроном» у двох вкладках → «Підтвердити» в першій, потім у другій"
+                    },
+                    {
+                      "type": "expected",
+                      "description": "Друга спроба: повідомлення «Кандидатура … вже існує» з трьома частинами; дублікат не створено"
+                    },
+                    {
+                      "type": "data",
+                      "description": "дві вкладки"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4891e3092b40dd60f35b-86ba246b33c0ec51c836",
+          "file": "r2-candidate-matching.spec.ts",
+          "line": 146,
+          "column": 5
+        },
+        {
+          "title": "T2-20 | A4 | Коректні | типовий: підбір для закритої вакансії",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "steps",
+                  "description": "Відкрити підбір для закритої вакансії «Project manager»"
+                },
+                {
+                  "type": "expected",
+                  "description": "Повідомлення «Вакансію закрито — підбір недоступний» і посилання «До відкритих вакансій»; таблиці кандидатів немає"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 323,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T15:46:04.011Z",
+                  "annotations": [
+                    {
+                      "type": "steps",
+                      "description": "Відкрити підбір для закритої вакансії «Project manager»"
+                    },
+                    {
+                      "type": "expected",
+                      "description": "Повідомлення «Вакансію закрито — підбір недоступний» і посилання «До відкритих вакансій»; таблиці кандидатів немає"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4891e3092b40dd60f35b-6a1769d25c85ba53e7fe",
+          "file": "r2-candidate-matching.spec.ts",
+          "line": 163,
+          "column": 5
+        },
+        {
+          "title": "T2-21 | A4 | Некоректні | типовий: вакансію закрили під час заповнення форми",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "steps",
+                  "description": "Відкрити форму пропозиції «Мельник Сергій» → «Бухгалтер»; в іншій вкладці закрити вакансію; натиснути «Підтвердити»"
+                },
+                {
+                  "type": "expected",
+                  "description": "Повідомлення «Вакансію «Бухгалтер» закрито — кандидатури не приймаються»; кандидатура не створюється"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 467,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T15:46:04.340Z",
+                  "annotations": [
+                    {
+                      "type": "steps",
+                      "description": "Відкрити форму пропозиції «Мельник Сергій» → «Бухгалтер»; в іншій вкладці закрити вакансію; натиснути «Підтвердити»"
+                    },
+                    {
+                      "type": "expected",
+                      "description": "Повідомлення «Вакансію «Бухгалтер» закрито — кандидатури не приймаються»; кандидатура не створюється"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4891e3092b40dd60f35b-22238fb9df313098577f",
+          "file": "r2-candidate-matching.spec.ts",
+          "line": 171,
+          "column": 5
+        },
+        {
+          "title": "T2-22 | A5 | Некоректні | типовий: коментар 501 символів",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "steps",
+                  "description": "Форма пропозиції «Ткаченко Андрій» → «Водій-експедитор» → вставити коментар 501 символів (обійти maxlength) → «Підтвердити»"
+                },
+                {
+                  "type": "expected",
+                  "description": "Діагностичне повідомлення «Коментар довший за 500 символів. Скоротіть коментар… Пишіть 2–3 речення…»; введений текст збережено; кандидатура не створюється"
+                },
+                {
+                  "type": "data",
+                  "description": "коментар: 501 символів"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 415,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T15:46:04.812Z",
+                  "annotations": [
+                    {
+                      "type": "steps",
+                      "description": "Форма пропозиції «Ткаченко Андрій» → «Водій-експедитор» → вставити коментар 501 символів (обійти maxlength) → «Підтвердити»"
+                    },
+                    {
+                      "type": "expected",
+                      "description": "Діагностичне повідомлення «Коментар довший за 500 символів. Скоротіть коментар… Пишіть 2–3 речення…»; введений текст збережено; кандидатура не створюється"
+                    },
+                    {
+                      "type": "data",
+                      "description": "коментар: 501 символів"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4891e3092b40dd60f35b-8dadce06145c26624a7c",
+          "file": "r2-candidate-matching.spec.ts",
+          "line": 184,
+          "column": 7
+        },
+        {
+          "title": "T2-23 | A5 | Некоректні | максимальний: коментар 1000 символів",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "steps",
+                  "description": "Форма пропозиції «Ткаченко Андрій» → «Водій-експедитор» → вставити коментар 1000 символів (обійти maxlength) → «Підтвердити»"
+                },
+                {
+                  "type": "expected",
+                  "description": "Діагностичне повідомлення «Коментар довший за 500 символів. Скоротіть коментар… Пишіть 2–3 речення…»; введений текст збережено; кандидатура не створюється"
+                },
+                {
+                  "type": "data",
+                  "description": "коментар: 1000 символів"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 349,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T15:46:05.234Z",
+                  "annotations": [
+                    {
+                      "type": "steps",
+                      "description": "Форма пропозиції «Ткаченко Андрій» → «Водій-експедитор» → вставити коментар 1000 символів (обійти maxlength) → «Підтвердити»"
+                    },
+                    {
+                      "type": "expected",
+                      "description": "Діагностичне повідомлення «Коментар довший за 500 символів. Скоротіть коментар… Пишіть 2–3 речення…»; введений текст збережено; кандидатура не створюється"
+                    },
+                    {
+                      "type": "data",
+                      "description": "коментар: 1000 символів"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4891e3092b40dd60f35b-7d4238ad68621eabfd57",
+          "file": "r2-candidate-matching.spec.ts",
+          "line": 184,
+          "column": 7
+        },
+        {
+          "title": "T2-24 | A6 | Коректні | типовий: «Скасувати» у формі пропозиції",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "steps",
+                  "description": "Підбір для «Frontend-розробник» (мін. оцінка 25) → «Запропонувати» біля «Петренко Іван Олегович» → ввести коментар → «Скасувати»"
+                },
+                {
+                  "type": "expected",
+                  "description": "Повернення до списку підбору; кандидатура не створена (кнопка «Запропонувати» доступна)"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 386,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T15:46:05.588Z",
+                  "annotations": [
+                    {
+                      "type": "steps",
+                      "description": "Підбір для «Frontend-розробник» (мін. оцінка 25) → «Запропонувати» біля «Петренко Іван Олегович» → ввести коментар → «Скасувати»"
+                    },
+                    {
+                      "type": "expected",
+                      "description": "Повернення до списку підбору; кандидатура не створена (кнопка «Запропонувати» доступна)"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4891e3092b40dd60f35b-6b89c42f982e08ee2c14",
+          "file": "r2-candidate-matching.spec.ts",
+          "line": 197,
+          "column": 5
+        },
+        {
+          "title": "T2-25 | A7 | Некоректні | типовий: вакансію видалено",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "steps",
+                  "description": "Відкрити адресу підбору для неіснуючої вакансії /recruiter/vacancies/999/matches"
+                },
+                {
+                  "type": "expected",
+                  "description": "Сторінка «404 — Не знайдено» з посиланням на панель рекрутера"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 299,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T15:46:05.979Z",
+                  "annotations": [
+                    {
+                      "type": "steps",
+                      "description": "Відкрити адресу підбору для неіснуючої вакансії /recruiter/vacancies/999/matches"
+                    },
+                    {
+                      "type": "expected",
+                      "description": "Сторінка «404 — Не знайдено» з посиланням на панель рекрутера"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4891e3092b40dd60f35b-8c3fab63504fe5eeef61",
+          "file": "r2-candidate-matching.spec.ts",
+          "line": 209,
+          "column": 5
+        },
+        {
+          "title": "T2-26 | A7 | Некоректні | людину видалено",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "steps",
+                  "description": "Відкрити форму пропозиції для неіснуючої людини /recruiter/vacancies/1/propose?personId=999"
+                },
+                {
+                  "type": "expected",
+                  "description": "Сторінка «404 — Не знайдено»"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 260,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T15:46:06.283Z",
+                  "annotations": [
+                    {
+                      "type": "steps",
+                      "description": "Відкрити форму пропозиції для неіснуючої людини /recruiter/vacancies/1/propose?personId=999"
+                    },
+                    {
+                      "type": "expected",
+                      "description": "Сторінка «404 — Не знайдено»"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4891e3092b40dd60f35b-d4e97be1e579b3ca567e",
+          "file": "r2-candidate-matching.spec.ts",
+          "line": 217,
+          "column": 5
+        },
+        {
+          "title": "T2-27 | Основний (крок 4) | Коректні | перегляд картки й історії кандидата",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "steps",
+                  "description": "Підбір для «Java-розробник» → натиснути «Петренко Іван Олегович»"
+                },
+                {
+                  "type": "expected",
+                  "description": "Картка людини з особистими даними, освітою й історією роботи (2 записи, стаж 7 р. 3 міс.)"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 386,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T15:46:06.549Z",
+                  "annotations": [
+                    {
+                      "type": "steps",
+                      "description": "Підбір для «Java-розробник» → натиснути «Петренко Іван Олегович»"
+                    },
+                    {
+                      "type": "expected",
+                      "description": "Картка людини з особистими даними, освітою й історією роботи (2 записи, стаж 7 р. 3 міс.)"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4891e3092b40dd60f35b-80c7ddc1170624866a53",
+          "file": "r2-candidate-matching.spec.ts",
+          "line": 224,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-14T15:45:55.077Z",
+    "duration": 11926.886,
+    "expected": 27,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

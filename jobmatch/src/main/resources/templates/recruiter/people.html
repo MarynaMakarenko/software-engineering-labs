@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="uk" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{fragments :: head('Резюме')}"></head>
+<body>
+<header th:replace="~{fragments :: header}"></header>
+<nav th:replace="~{fragments :: crumbs}"></nav>
+<main id="main" class="wrap page">
+    <div th:replace="~{fragments :: messages}"></div>
+    <div class="toolbar"><h1>Резюме</h1><span class="spacer"></span><a class="btn" th:href="@{/recruiter/people/new}">+ Нова людина</a></div>
+    <form class="filters" th:action="@{/recruiter/people}" method="get" th:object="${criteria}" role="search" aria-label="Пошук резюме">
+        <div class="field"><label for="name">Прізвище або ім'я</label><input type="text" th:field="*{name}"></div>
+        <div class="field"><label for="position">Посада (бажана або з історії)</label><input type="text" th:field="*{position}"></div>
+        <div class="field"><label for="company">Компанія з історії роботи</label><input type="text" th:field="*{company}"></div>
+        <div class="field"><label for="minEducation">Освіта не нижче</label>
+            <select th:field="*{minEducation}"><option value="">будь-яка</option>
+                <option th:each="l : ${T(ua.knu.jobmatch.domain.EducationLevel).values()}" th:value="${l}" th:text="${l.label}">Бакалавр</option></select></div>
+        <div class="field"><label for="salaryFrom">Бажана зарплата від</label><input type="number" min="0" step="1000" th:field="*{salaryFrom}"></div>
+        <div class="field"><label for="salaryTo">до, грн</label><input type="number" min="0" step="1000" th:field="*{salaryTo}"></div>
+        <div class="field"><label for="status">Статус</label>
+            <select th:field="*{status}"><option value="">усі</option>
+                <option th:each="s : ${T(ua.knu.jobmatch.domain.JobStatus).values()}" th:value="${s}" th:text="${s.label}">Шукає</option></select></div>
+        <div class="field"><button class="btn" type="submit">Знайти</button> <a th:href="@{/recruiter/people}">Скинути</a></div>
+    </form>
+    <p class="muted" th:text="'Знайдено резюме: ' + ${#lists.size(people)}">0</p>
+    <div class="table-wrap" th:if="${!#lists.isEmpty(people)}">
+        <table>
+            <thead><tr><th>ПІБ</th><th>Бажана посада</th><th class="num">Бажана зарплата, грн/міс</th><th>Освіта</th><th>Стаж</th><th>Місто</th><th>Статус</th></tr></thead>
+            <tbody><tr th:each="p : ${people}">
+                <td><a th:href="@{/recruiter/people/{id}(id=${p.id})}" th:text="${p.fullName}">ПІБ</a></td>
+                <td th:text="${p.desiredPosition != null ? p.desiredPosition : '—'}">—</td>
+                <td class="num" th:text="${p.desiredSalary != null ? #numbers.formatInteger(p.desiredSalary, 1, 'WHITESPACE') : '—'}">—</td>
+                <td th:text="${p.highestEducation().isPresent() ? p.highestEducation().get().label : '—'}">—</td>
+                <td th:text="${p.experienceText(#temporals.createToday())}">0</td>
+                <td th:text="${p.city}">Місто</td>
+                <td><span class="badge" th:classappend="'badge-' + ${#strings.toLowerCase(p.jobStatus)}" th:text="${p.jobStatus.label}">Шукає</span></td>
+            </tr></tbody>
+        </table>
+    </div>
+    <div class="card empty" th:if="${#lists.isEmpty(people)}"><p>За цими критеріями резюме не знайдено.</p>
+        <p>Приберіть один із фільтрів або <a th:href="@{/recruiter/people}">покажіть усі резюме</a>.</p></div>
+</main>
+<footer th:replace="~{fragments :: footer}"></footer>
+</body>
+</html>

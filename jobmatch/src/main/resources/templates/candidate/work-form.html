@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="uk" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{fragments :: head('Запис історії роботи')}"></head>
+<body>
+<header th:replace="~{fragments :: header}"></header>
+<nav th:replace="~{fragments :: crumbs}"></nav>
+<main id="main" class="wrap page">
+    <div th:replace="~{fragments :: messages}"></div>
+    <h1 th:text="${#strings.endsWith(action, 'new') ? 'Новий запис історії роботи' : 'Редагування запису'}">Запис</h1>
+    <form class="card form" th:action="@{${action}}" th:object="${form}" method="post" novalidate>
+        <div th:replace="~{fragments :: formErrors(${form})}"></div>
+        <div th:replace="~{fragments :: input('companyName', 'Компанія', 'text', true, null)}"></div>
+        <div th:replace="~{fragments :: input('position', 'Посада', 'text', true, null)}"></div>
+        <div th:replace="~{fragments :: input('salary', 'Зарплата, грн/міс', 'number', false, 'Необов\'язково.')}"></div>
+        <div th:replace="~{fragments :: input('startDate', 'Дата початку', 'date', true, null)}"></div>
+        <div th:replace="~{fragments :: input('endDate', 'Дата завершення', 'date', false, 'Порожнє поле — працюю досі.')}"></div>
+        <div class="form-actions"><button class="btn" type="submit">Зберегти</button> <a class="btn btn-ghost" th:href="@{/me/work}">Скасувати</a></div>
+    </form>
+</main>
+<footer th:replace="~{fragments :: footer}"></footer>
+</body>
+</html>

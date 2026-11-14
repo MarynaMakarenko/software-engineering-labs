@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="uk" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{fragments :: head(${company.name})}"></head>
+<body>
+<header th:replace="~{fragments :: header}"></header>
+<nav th:replace="~{fragments :: crumbs}"></nav>
+<main id="main" class="wrap page">
+    <div th:replace="~{fragments :: messages}"></div>
+    <div class="toolbar"><h1 th:text="${company.name}">Компанія</h1><span class="spacer"></span>
+        <a class="btn" th:href="@{/company/edit}">Редагувати профіль</a></div>
+    <section class="card">
+        <dl class="props">
+            <dt>Місто</dt><dd th:text="${company.city}">Місто</dd>
+            <dt>Адреса</dt><dd th:text="${company.address}">Адреса</dd>
+            <dt>Телефон</dt><dd th:text="${company.phone}">Телефон</dd>
+            <dt>E-mail</dt><dd th:text="${company.email}">E-mail</dd>
+            <dt>Сайт</dt><dd th:text="${company.website != null ? company.website : '—'}">—</dd>
+            <dt>Опис</dt><dd class="pre" th:text="${company.description != null ? company.description : '—'}">—</dd>
+            <dt>Відкриті вакансії</dt><dd><a th:href="@{/company/vacancies}" th:text="${company.openVacancyCount}">0</a></dd>
+        </dl>
+    </section>
+</main>
+<footer th:replace="~{fragments :: footer}"></footer>
+</body>
+</html>

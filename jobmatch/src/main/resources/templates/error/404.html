@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="uk" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{fragments :: head('Не знайдено')}"></head>
+<body>
+<header th:replace="~{fragments :: header}"></header>
+<nav th:replace="~{fragments :: crumbs}"></nav>
+<main id="main" class="wrap page">
+    <div th:replace="~{fragments :: messages}"></div>
+    <h1>404 — Не знайдено</h1>
+    <div class="card">
+        <p th:text="${detail != null ? detail : 'Сторінки за цією адресою не існує.'}">Сторінки не існує.</p>
+        <p class="muted">Запис міг бути видалений іншим користувачем або адресу введено з помилкою.</p>
+        <p><a class="btn" th:href="@{/}">На головну</a> <a class="btn btn-ghost" th:href="@{/vacancies}">До вакансій</a>
+           <a class="btn btn-ghost" sec:authorize="hasRole('RECRUITER')" th:href="@{/recruiter}">До панелі рекрутера</a></p>
+    </div>
+</main>
+<footer th:replace="~{fragments :: footer}"></footer>
+</body>
+</html>

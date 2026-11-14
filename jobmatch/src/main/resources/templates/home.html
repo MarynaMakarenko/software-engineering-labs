@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="uk" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{fragments :: head('Головна')}"></head>
+<body>
+<header th:replace="~{fragments :: header}"></header>
+<nav th:replace="~{fragments :: crumbs}"></nav>
+<main id="main" class="wrap">
+    <div th:replace="~{fragments :: messages}"></div>
+</main>
+<section class="hero">
+    <div class="wrap">
+        <h1>Робота і кандидати — в одному місці</h1>
+        <p>JobMatch — веб-застосунок кадрової агенції «ПрофіКадр». Шукачі ведуть резюме та отримують відповідні вакансії, компанії публікують вакансії, рекрутери підбирають кандидатів за посадою, зарплатою, освітою і досвідом.</p>
+        <form class="hero-search" th:action="@{/vacancies}" method="get" role="search" aria-label="Пошук вакансій">
+            <label for="hs-position" class="sr">Посада</label><input id="hs-position" name="position" type="text" placeholder="Посада, напр. Java-розробник">
+            <label for="hs-city" class="sr">Місто</label><input id="hs-city" name="city" type="text" placeholder="Місто">
+            <button class="btn" type="submit">Знайти</button>
+        </form>
+        <a class="btn" th:href="@{/vacancies}">Переглянути вакансії (<span th:text="${openCount}">0</span>)</a>
+        <a class="btn btn-ghost" th:href="@{/register}" sec:authorize="isAnonymous()">Зареєструватися</a>
+    </div>
+</section>
+<main class="wrap page">
+    <div class="alert alert-success" role="status" th:if="${param.logout}">Ви вийшли із застосунку.</div>
+    <div th:replace="~{fragments :: messages}"></div>
+    <h2>Нові вакансії</h2>
+    <div class="grid">
+        <article class="card vacancy-card" th:each="v : ${latest}">
+            <h3><a th:href="@{/vacancies/{id}(id=${v.id})}" th:text="${v.position}">Посада</a></h3>
+            <div class="muted" th:text="${v.company.name} + ' · ' + ${v.city}">Компанія · Місто</div>
+            <div class="salary" th:text="${#numbers.formatInteger(v.salary, 1, 'WHITESPACE')} + ' грн'">50 000 грн</div>
+        </article>
+    </div>
+    <div class="cols-2 mt">
+        <section class="card">
+            <h2>Шукачам роботи</h2>
+            <p>Створіть резюме, додайте освіту та історію роботи — JobMatch покаже вакансії з оцінкою відповідності, а рекрутер агенції запропонує вас компаніям.</p>
+        </section>
+        <section class="card">
+            <h2>Компаніям</h2>
+            <p>Опублікуйте вакансію, переглядайте відповідні резюме та кандидатури, запрошуйте на співбесіду в кілька натискань.</p>
+        </section>
+    </div>
+</main>
+<footer th:replace="~{fragments :: footer}"></footer>
+</body>
+</html>

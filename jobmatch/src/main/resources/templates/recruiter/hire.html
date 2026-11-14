@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="uk" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{fragments :: head('Реєстрація працевлаштування')}"></head>
+<body>
+<header th:replace="~{fragments :: header}"></header>
+<nav th:replace="~{fragments :: crumbs}"></nav>
+<main id="main" class="wrap page">
+    <div th:replace="~{fragments :: messages}"></div>
+    <h1>Реєстрація працевлаштування</h1>
+    <section class="card">
+        <dl class="props">
+            <dt>Кандидат</dt><dd th:text="${candidacy.person.fullName}">ПІБ</dd>
+            <dt>Вакансія</dt><dd th:text="${candidacy.vacancy.position}">Посада</dd>
+            <dt>Компанія</dt><dd th:text="${candidacy.vacancy.company.name}">Компанія</dd>
+            <dt>Зарплата</dt><dd th:text="${#numbers.formatInteger(candidacy.vacancy.salary, 1, 'WHITESPACE')} + ' грн/міс'">0</dd>
+        </dl>
+        <p>Після підтвердження: статус кандидатури — «Працевлаштовано»; в історію роботи додається запис (компанія, посада, зарплата, дата початку); вакансію буде закрито; статус людини — «Не шукає».</p>
+    </section>
+    <form class="card form" th:action="@{/recruiter/applications/{id}/hire(id=${candidacy.id})}" method="post" novalidate
+          th:attr="data-confirm='Зареєструвати працевлаштування ' + ${candidacy.person.fullName} + ' і закрити вакансію?'">
+        <div class="field"><label for="startDate">Дата початку роботи <span class="req" aria-hidden="true">*</span></label>
+            <input type="date" id="startDate" name="startDate" th:value="${today}" class="short" aria-required="true">
+            <div class="hint">Не пізніше ніж через 90 днів від сьогодні.</div></div>
+        <div class="form-actions"><button class="btn" type="submit">Підтвердити</button>
+            <a class="btn btn-ghost" th:href="@{/recruiter/applications(status='INVITED')}">Скасувати</a></div>
+    </form>
+</main>
+<footer th:replace="~{fragments :: footer}"></footer>
+</body>
+</html>

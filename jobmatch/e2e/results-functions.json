@@ -1,0 +1,2732 @@
+{
+  "config": {
+    "configFile": "/Users/marina.makarenko/Desktop/pi-labs/app/e2e/playwright.config.ts",
+    "rootDir": "/Users/marina.makarenko/Desktop/pi-labs/app/e2e/tests",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "/Users/marina.makarenko/Desktop/pi-labs/app/e2e/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/Users/marina.makarenko/Desktop/pi-labs/app/e2e/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "shard": null,
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.56.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "functions.spec.ts",
+      "file": "functions.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "F1.1 | U1 Вхід | Коректні | мінімальний: найкоротший e-mail (r@pk.ua)",
+          "ok": true,
+          "tags": [
+            "pk.ua)"
+          ],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "steps",
+                  "description": "«Увійти» → E-mail r@pk.ua, пароль Demo2026! → «Увійти»"
+                },
+                {
+                  "type": "expected",
+                  "description": "Відкрито «Панель рекрутера»; у шапці — «r@pk.ua · Рекрутер»"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 514,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T15:46:15.873Z",
+                  "annotations": [
+                    {
+                      "type": "steps",
+                      "description": "«Увійти» → E-mail r@pk.ua, пароль Demo2026! → «Увійти»"
+                    },
+                    {
+                      "type": "expected",
+                      "description": "Відкрито «Панель рекрутера»; у шапці — «r@pk.ua · Рекрутер»"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1ba8b77368fd3441e8a3-c9bd21dc37521be7b6b0",
+          "file": "functions.spec.ts",
+          "line": 8,
+          "column": 5
+        },
+        {
+          "title": "F1.2 | U1 Вхід | Коректні | типовий: шукач",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "steps",
+                  "description": "«Увійти» → E-mail ivan.petrenko@example.com, пароль → «Увійти»"
+                },
+                {
+                  "type": "expected",
+                  "description": "Відкрито «Моє резюме»"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 378,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T15:46:16.629Z",
+                  "annotations": [
+                    {
+                      "type": "steps",
+                      "description": "«Увійти» → E-mail ivan.petrenko@example.com, пароль → «Увійти»"
+                    },
+                    {
+                      "type": "expected",
+                      "description": "Відкрито «Моє резюме»"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1ba8b77368fd3441e8a3-43dd17a15c7367b887e9",
+          "file": "functions.spec.ts",
+          "line": 14,
+          "column": 5
+        },
+        {
+          "title": "F1.3 | U1 Вхід | Коректні | максимальний: e-mail 94 символи",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "steps",
+                  "description": "«Увійти» → E-mail довжиною 94 символи (шукач Верховинець-Залізняк), пароль → «Увійти»"
+                },
+                {
+                  "type": "expected",
+                  "description": "Відкрито «Моє резюме» з ПІБ максимальної довжини"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 277,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T15:46:17.012Z",
+                  "annotations": [
+                    {
+                      "type": "steps",
+                      "description": "«Увійти» → E-mail довжиною 94 символи (шукач Верховинець-Залізняк), пароль → «Увійти»"
+                    },
+                    {
+                      "type": "expected",
+                      "description": "Відкрито «Моє резюме» з ПІБ максимальної довжини"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1ba8b77368fd3441e8a3-33c9d91a06f36b51865d",
+          "file": "functions.spec.ts",
+          "line": 20,
+          "column": 5
+        },
+        {
+          "title": "F1.4 | U1 Вхід | Некоректні | типовий: неправильний пароль",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "steps",
+                  "description": "«Увійти» → E-mail olena.koval@profikadr.ua, пароль wrong-password → «Увійти»"
+                },
+                {
+                  "type": "expected",
+                  "description": "Повідомлення «Неправильний e-mail або пароль.» з трьома частинами; залишається сторінка «Вхід»"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 340,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T15:46:17.296Z",
+                  "annotations": [
+                    {
+                      "type": "steps",
+                      "description": "«Увійти» → E-mail olena.koval@profikadr.ua, пароль wrong-password → «Увійти»"
+                    },
+                    {
+                      "type": "expected",
+                      "description": "Повідомлення «Неправильний e-mail або пароль.» з трьома частинами; залишається сторінка «Вхід»"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1ba8b77368fd3441e8a3-a82924162a5783376dd3",
+          "file": "functions.spec.ts",
+          "line": 26,
+          "column": 5
+        },
+        {
+          "title": "F2.1 | U2 Вихід | Коректні | типовий",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "steps",
+                  "description": "Увійти як рекрутер → «Вийти» у шапці"
+                },
+                {
+                  "type": "expected",
+                  "description": "Головна сторінка з повідомленням «Ви вийшли із застосунку.»; у шапці — «Увійти», «Реєстрація»"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 340,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T15:46:17.641Z",
+                  "annotations": [
+                    {
+                      "type": "steps",
+                      "description": "Увійти як рекрутер → «Вийти» у шапці"
+                    },
+                    {
+                      "type": "expected",
+                      "description": "Головна сторінка з повідомленням «Ви вийшли із застосунку.»; у шапці — «Увійти», «Реєстрація»"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1ba8b77368fd3441e8a3-d9b3fc3e928a64ed0bc3",
+          "file": "functions.spec.ts",
+          "line": 34,
+          "column": 5
+        },
+        {
+          "title": "F2.2 | U2 Вихід | Некоректні | типовий: кабінет після виходу",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "steps",
+                  "description": "Увійти як рекрутер → «Вийти» → відкрити /recruiter"
+                },
+                {
+                  "type": "expected",
+                  "description": "Перенаправлення на сторінку «Вхід»"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 362,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T15:46:17.986Z",
+                  "annotations": [
+                    {
+                      "type": "steps",
+                      "description": "Увійти як рекрутер → «Вийти» → відкрити /recruiter"
+                    },
+                    {
+                      "type": "expected",
+                      "description": "Перенаправлення на сторінку «Вхід»"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1ba8b77368fd3441e8a3-4720ab45bfafd0042f65",
+          "file": "functions.spec.ts",
+          "line": 41,
+          "column": 5
+        },
+        {
+          "title": "F3.1 | U3 Довідка | Коректні | типовий: гість",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "steps",
+                  "description": "Головна → «Допомога»"
+                },
+                {
+                  "type": "expected",
+                  "description": "Сторінка «Допомога» з частими питаннями і посиланням «Завантажити Настанову користувача (PDF)»"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 311,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T15:46:18.355Z",
+                  "annotations": [
+                    {
+                      "type": "steps",
+                      "description": "Головна → «Допомога»"
+                    },
+                    {
+                      "type": "expected",
+                      "description": "Сторінка «Допомога» з частими питаннями і посиланням «Завантажити Настанову користувача (PDF)»"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1ba8b77368fd3441e8a3-84f4a71aed95f215e6ce",
+          "file": "functions.spec.ts",
+          "line": 50,
+          "column": 5
+        },
+        {
+          "title": "F4.1 | G1 Пошук вакансій | Коректні | мінімальний: без фільтрів",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "steps",
+                  "description": "Головна → «Вакансії»"
+                },
+                {
+                  "type": "expected",
+                  "description": "Таблиця 11 відкритих вакансій; закритої «Project manager» немає"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 187,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T15:46:18.672Z",
+                  "annotations": [
+                    {
+                      "type": "steps",
+                      "description": "Головна → «Вакансії»"
+                    },
+                    {
+                      "type": "expected",
+                      "description": "Таблиця 11 відкритих вакансій; закритої «Project manager» немає"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1ba8b77368fd3441e8a3-6b4dfc6a932aff5dd7b2",
+          "file": "functions.spec.ts",
+          "line": 59,
+          "column": 5
+        },
+        {
+          "title": "F4.2 | G1 Пошук вакансій | Коректні | типовий: посада «java», зарплата від 50000",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "steps",
+                  "description": "«Вакансії» → Посада = java, Зарплата від = 50000 → «Знайти»"
+                },
+                {
+                  "type": "expected",
+                  "description": "1 вакансія «Java-розробник», ТехноСофт, 85 000"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 223,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T15:46:18.865Z",
+                  "annotations": [
+                    {
+                      "type": "steps",
+                      "description": "«Вакансії» → Посада = java, Зарплата від = 50000 → «Знайти»"
+                    },
+                    {
+                      "type": "expected",
+                      "description": "1 вакансія «Java-розробник», ТехноСофт, 85 000"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1ba8b77368fd3441e8a3-b537a73e8d18993f52b5",
+          "file": "functions.spec.ts",
+          "line": 66,
+          "column": 5
+        },
+        {
+          "title": "F4.3 | G1 Пошук вакансій | Коректні | максимальний: усі 4 фільтри, немає результатів",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "steps",
+                  "description": "«Вакансії» → Посада = розробник, Компанія = ТехноСофт, Місто = Київ, Зарплата від = 1000000 → «Знайти»"
+                },
+                {
+                  "type": "expected",
+                  "description": "Повідомлення «За вашими умовами відкритих вакансій немає.» з порадою прибрати фільтр"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 120,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T15:46:19.094Z",
+                  "annotations": [
+                    {
+                      "type": "steps",
+                      "description": "«Вакансії» → Посада = розробник, Компанія = ТехноСофт, Місто = Київ, Зарплата від = 1000000 → «Знайти»"
+                    },
+                    {
+                      "type": "expected",
+                      "description": "Повідомлення «За вашими умовами відкритих вакансій немає.» з порадою прибрати фільтр"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1ba8b77368fd3441e8a3-4e1cde606db158e906be",
+          "file": "functions.spec.ts",
+          "line": 75,
+          "column": 5
+        },
+        {
+          "title": "F4.4 | G1 Пошук вакансій | Некоректні | типовий: зарплата «abc»",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "steps",
+                  "description": "Відкрити /vacancies?salaryFrom=abc"
+                },
+                {
+                  "type": "expected",
+                  "description": "Діагностичне повідомлення «Фільтр зарплати містить нечислове значення «abc» — фільтр не застосовано.»; показано всі вакансії"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 122,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T15:46:19.219Z",
+                  "annotations": [
+                    {
+                      "type": "steps",
+                      "description": "Відкрити /vacancies?salaryFrom=abc"
+                    },
+                    {
+                      "type": "expected",
+                      "description": "Діагностичне повідомлення «Фільтр зарплати містить нечислове значення «abc» — фільтр не застосовано.»; показано всі вакансії"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1ba8b77368fd3441e8a3-b45dc6b8ef234eb1e802",
+          "file": "functions.spec.ts",
+          "line": 80,
+          "column": 5
+        },
+        {
+          "title": "F4.5 | G1 Картка вакансії | Коректні | типовий",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "steps",
+                  "description": "«Вакансії» → «Java-розробник»"
+                },
+                {
+                  "type": "expected",
+                  "description": "Картка: зарплата 85 000 грн/міс, мін. освіта Бакалавр, мін. досвід 3 р., вимоги, опис компанії; для гостя — запрошення увійти"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 162,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T15:46:19.352Z",
+                  "annotations": [
+                    {
+                      "type": "steps",
+                      "description": "«Вакансії» → «Java-розробник»"
+                    },
+                    {
+                      "type": "expected",
+                      "description": "Картка: зарплата 85 000 грн/міс, мін. освіта Бакалавр, мін. досвід 3 р., вимоги, опис компанії; для гостя — запрошення увійти"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1ba8b77368fd3441e8a3-f43cb711254c56017840",
+          "file": "functions.spec.ts",
+          "line": 86,
+          "column": 5
+        },
+        {
+          "title": "F5.1 | G2 Реєстрація | Коректні | мінімальний: шукач, пароль 8 символів",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "steps",
+                  "description": "«Реєстрація» → тип «Шукач роботи», e-mail a@b.ua, пароль і повтор 12345678, прізвище «Ко», ім'я «Ян», домашня адреса «вул. Й, 1», телефон +380501112233, місто «Київ», згода ✓ → «Створити обліковий запис»"
+                },
+                {
+                  "type": "expected",
+                  "description": "Сторінка «Вхід» з повідомленням «Реєстрацію завершено. Увійдіть з указаними e-mail і паролем.»; вхід з цими даними відкриває «Моє резюме»"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 584,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T15:46:19.519Z",
+                  "annotations": [
+                    {
+                      "type": "steps",
+                      "description": "«Реєстрація» → тип «Шукач роботи», e-mail a@b.ua, пароль і повтор 12345678, прізвище «Ко», ім'я «Ян», домашня адреса «вул. Й, 1», телефон +380501112233, місто «Київ», згода ✓ → «Створити обліковий запис»"
+                    },
+                    {
+                      "type": "expected",
+                      "description": "Сторінка «Вхід» з повідомленням «Реєстрацію завершено. Увійдіть з указаними e-mail і паролем.»; вхід з цими даними відкриває «Моє резюме»"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1ba8b77368fd3441e8a3-94bc621278f3a90d6cff",
+          "file": "functions.spec.ts",
+          "line": 94,
+          "column": 5
+        },
+        {
+          "title": "F5.2 | G2 Реєстрація | Коректні | типовий: представник компанії",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "steps",
+                  "description": "«Реєстрація» → тип «Представник компанії», e-mail hr@novatech.ua, пароль Demo2026!, назва «НоваТех», адреса «вул. Січових Стрільців, 12», e-mail компанії jobs@novatech.ua, телефон, місто → «Створити обліковий запис»"
+                },
+                {
+                  "type": "expected",
+                  "description": "Повідомлення «Реєстрацію завершено…»; після входу — сторінка «НоваТех» (Моя компанія)"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 461,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T15:46:20.109Z",
+                  "annotations": [
+                    {
+                      "type": "steps",
+                      "description": "«Реєстрація» → тип «Представник компанії», e-mail hr@novatech.ua, пароль Demo2026!, назва «НоваТех», адреса «вул. Січових Стрільців, 12», e-mail компанії jobs@novatech.ua, телефон, місто → «Створити обліковий запис»"
+                    },
+                    {
+                      "type": "expected",
+                      "description": "Повідомлення «Реєстрацію завершено…»; після входу — сторінка «НоваТех» (Моя компанія)"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1ba8b77368fd3441e8a3-f532da9e97f00533c19e",
+          "file": "functions.spec.ts",
+          "line": 113,
+          "column": 5
+        },
+        {
+          "title": "F5.3 | G2 Реєстрація | Коректні | максимальний: поля граничної довжини",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "steps",
+                  "description": "«Реєстрація» → шукач: e-mail 100 символів, пароль 64 символи, прізвище й ім'я по 50 символів, адреса 200 символів, місто 60 символів, згода ✓ → «Створити обліковий запис»"
+                },
+                {
+                  "type": "expected",
+                  "description": "Повідомлення «Реєстрацію завершено…»"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 329,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T15:46:20.576Z",
+                  "annotations": [
+                    {
+                      "type": "steps",
+                      "description": "«Реєстрація» → шукач: e-mail 100 символів, пароль 64 символи, прізвище й ім'я по 50 символів, адреса 200 символів, місто 60 символів, згода ✓ → «Створити обліковий запис»"
+                    },
+                    {
+                      "type": "expected",
+                      "description": "Повідомлення «Реєстрацію завершено…»"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1ba8b77368fd3441e8a3-a75c1a380df027620e5b",
+          "file": "functions.spec.ts",
+          "line": 131,
+          "column": 5
+        },
+        {
+          "title": "F5.4 | G2 Реєстрація | Некоректні | типовий: e-mail уже зареєстровано, без згоди",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "steps",
+                  "description": "«Реєстрація» → шукач з e-mail ivan.petrenko@example.com, згоду не позначено → «Створити обліковий запис»"
+                },
+                {
+                  "type": "expected",
+                  "description": "Повідомлення «Форму не збережено…» зі змістом «Не надано згоду на обробку персональних даних…»; введені дані збережено у формі"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 387,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T15:46:20.910Z",
+                  "annotations": [
+                    {
+                      "type": "steps",
+                      "description": "«Реєстрація» → шукач з e-mail ivan.petrenko@example.com, згоду не позначено → «Створити обліковий запис»"
+                    },
+                    {
+                      "type": "expected",
+                      "description": "Повідомлення «Форму не збережено…» зі змістом «Не надано згоду на обробку персональних даних…»; введені дані збережено у формі"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1ba8b77368fd3441e8a3-28df782f268289a937da",
+          "file": "functions.spec.ts",
+          "line": 149,
+          "column": 5
+        },
+        {
+          "title": "F5.5 | G2 Реєстрація | Некоректні | мінімальний: пароль 7 символів, телефон без +380",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "steps",
+                  "description": "«Реєстрація» → пароль 1234567, телефон 0671234567 → «Створити обліковий запис»"
+                },
+                {
+                  "type": "expected",
+                  "description": "Повідомлення під полями: «Пароль має містити від 8 до 64 символів…», «Телефон має неправильний формат…»"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 242,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T15:46:21.302Z",
+                  "annotations": [
+                    {
+                      "type": "steps",
+                      "description": "«Реєстрація» → пароль 1234567, телефон 0671234567 → «Створити обліковий запис»"
+                    },
+                    {
+                      "type": "expected",
+                      "description": "Повідомлення під полями: «Пароль має містити від 8 до 64 символів…», «Телефон має неправильний формат…»"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1ba8b77368fd3441e8a3-01b0c221101920f3f701",
+          "file": "functions.spec.ts",
+          "line": 171,
+          "column": 5
+        },
+        {
+          "title": "F6.1 | C1 Ведення резюме | Коректні | типовий: зміна бажаної зарплати",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "steps",
+                  "description": "Шукач → «Моє резюме» → «Редагувати» → Бажана зарплата = 82000 → «Зберегти»"
+                },
+                {
+                  "type": "expected",
+                  "description": "Повідомлення «Резюме збережено.»; у резюме — «82 000 грн»"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 529,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T15:46:21.549Z",
+                  "annotations": [
+                    {
+                      "type": "steps",
+                      "description": "Шукач → «Моє резюме» → «Редагувати» → Бажана зарплата = 82000 → «Зберегти»"
+                    },
+                    {
+                      "type": "expected",
+                      "description": "Повідомлення «Резюме збережено.»; у резюме — «82 000 грн»"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1ba8b77368fd3441e8a3-fbfa216d4dc95cd8132d",
+          "file": "functions.spec.ts",
+          "line": 184,
+          "column": 5
+        },
+        {
+          "title": "F6.2 | C1 Ведення резюме | Коректні | мінімальний/максимальний: додати й видалити освіту",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "steps",
+                  "description": "«Моє резюме» → «+ Додати освіту» → Рівень «Магістр», заклад «КПІ», спеціальність «ІПЗ», рік 2035 → «Додати»; потім «Видалити» біля запису → підтвердити"
+                },
+                {
+                  "type": "expected",
+                  "description": "Повідомлення «Запис про освіту додано.» (рядок 2035 у таблиці освіти), потім «Запис про освіту видалено.»"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 451,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T15:46:22.083Z",
+                  "annotations": [
+                    {
+                      "type": "steps",
+                      "description": "«Моє резюме» → «+ Додати освіту» → Рівень «Магістр», заклад «КПІ», спеціальність «ІПЗ», рік 2035 → «Додати»; потім «Видалити» біля запису → підтвердити"
+                    },
+                    {
+                      "type": "expected",
+                      "description": "Повідомлення «Запис про освіту додано.» (рядок 2035 у таблиці освіти), потім «Запис про освіту видалено.»"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1ba8b77368fd3441e8a3-e7ffb63114859690993c",
+          "file": "functions.spec.ts",
+          "line": 195,
+          "column": 5
+        },
+        {
+          "title": "F6.3 | C1 Ведення резюме | Некоректні | типовий: телефон і зарплата поза межами",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "steps",
+                  "description": "«Моє резюме» → «Редагувати» → Телефон = 067-123-45-67, Бажана зарплата = 999 → «Зберегти»"
+                },
+                {
+                  "type": "expected",
+                  "description": "Форма не зберігається; під полями — «Телефон має неправильний формат…» і «Бажана зарплата менша за 1000 грн…»"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 425,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T15:46:22.540Z",
+                  "annotations": [
+                    {
+                      "type": "steps",
+                      "description": "«Моє резюме» → «Редагувати» → Телефон = 067-123-45-67, Бажана зарплата = 999 → «Зберегти»"
+                    },
+                    {
+                      "type": "expected",
+                      "description": "Форма не зберігається; під полями — «Телефон має неправильний формат…» і «Бажана зарплата менша за 1000 грн…»"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1ba8b77368fd3441e8a3-2bdbe92676931e4e96c2",
+          "file": "functions.spec.ts",
+          "line": 210,
+          "column": 5
+        },
+        {
+          "title": "F7.1 | C2 Історія роботи | Коректні | типовий: додати, редагувати, видалити запис",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "steps",
+                  "description": "«Історія роботи» → «+ Додати запис» → компанія «Стартап», посада «Стажер», 2018-06-01 – 2018-08-31 → «Зберегти»; «Редагувати» → посада «Java-стажер» → «Зберегти»; «Видалити» → підтвердити"
+                },
+                {
+                  "type": "expected",
+                  "description": "Повідомлення «Запис історії роботи додано.», «…збережено.», «…видалено.»; стаж змінюється відповідно"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 656,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T15:46:22.971Z",
+                  "annotations": [
+                    {
+                      "type": "steps",
+                      "description": "«Історія роботи» → «+ Додати запис» → компанія «Стартап», посада «Стажер», 2018-06-01 – 2018-08-31 → «Зберегти»; «Редагувати» → посада «Java-стажер» → «Зберегти»; «Видалити» → підтвердити"
+                    },
+                    {
+                      "type": "expected",
+                      "description": "Повідомлення «Запис історії роботи додано.», «…збережено.», «…видалено.»; стаж змінюється відповідно"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1ba8b77368fd3441e8a3-f5c039d8152dd0790a6c",
+          "file": "functions.spec.ts",
+          "line": 224,
+          "column": 5
+        },
+        {
+          "title": "F7.2 | C2 Історія роботи | Некоректні | типовий: дата завершення раніша за початок",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "steps",
+                  "description": "«Історія роботи» → «+ Додати запис» → 2024-05-01 – 2024-04-01 → «Зберегти»"
+                },
+                {
+                  "type": "expected",
+                  "description": "Повідомлення «Дата завершення раніша за дату початку. Виправте одну з дат…»; запис не додано"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 364,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T15:46:23.631Z",
+                  "annotations": [
+                    {
+                      "type": "steps",
+                      "description": "«Історія роботи» → «+ Додати запис» → 2024-05-01 – 2024-04-01 → «Зберегти»"
+                    },
+                    {
+                      "type": "expected",
+                      "description": "Повідомлення «Дата завершення раніша за дату початку. Виправте одну з дат…»; запис не додано"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1ba8b77368fd3441e8a3-8ab39ebb488b36f07eb1",
+          "file": "functions.spec.ts",
+          "line": 245,
+          "column": 5
+        },
+        {
+          "title": "F8.1 | C3 Відповідні вакансії | Коректні | типовий",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "steps",
+                  "description": "Шукач Петренко → «Відповідні вакансії»"
+                },
+                {
+                  "type": "expected",
+                  "description": "Першою у списку — «Java-розробник» з оцінкою 100 %; показано складові оцінки"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 315,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T15:46:24.002Z",
+                  "annotations": [
+                    {
+                      "type": "steps",
+                      "description": "Шукач Петренко → «Відповідні вакансії»"
+                    },
+                    {
+                      "type": "expected",
+                      "description": "Першою у списку — «Java-розробник» з оцінкою 100 %; показано складові оцінки"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1ba8b77368fd3441e8a3-a1bcf60d75312b209d9a",
+          "file": "functions.spec.ts",
+          "line": 258,
+          "column": 5
+        },
+        {
+          "title": "F8.2 | C3 Відповідні вакансії | Некоректні | типовий: мін. оцінка «x»",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "steps",
+                  "description": "«Відповідні вакансії» → Мін. оцінка = x → «Оновити»"
+                },
+                {
+                  "type": "expected",
+                  "description": "Діагностичне повідомлення «…має бути цілим числом від 0 до 100»; список з порогом 50 %"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 280,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T15:46:24.322Z",
+                  "annotations": [
+                    {
+                      "type": "steps",
+                      "description": "«Відповідні вакансії» → Мін. оцінка = x → «Оновити»"
+                    },
+                    {
+                      "type": "expected",
+                      "description": "Діагностичне повідомлення «…має бути цілим числом від 0 до 100»; список з порогом 50 %"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1ba8b77368fd3441e8a3-063e247ea59009b77ee1",
+          "file": "functions.spec.ts",
+          "line": 266,
+          "column": 5
+        },
+        {
+          "title": "F9.1 | C4 Відгук на вакансію | Коректні | типовий",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "steps",
+                  "description": "Шукач Петренко → «Вакансії» → «QA-інженер» → «Відгукнутися»"
+                },
+                {
+                  "type": "expected",
+                  "description": "Повідомлення «Відгук надіслано…»; на картці — «Ваш відгук: Нова»"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 386,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T15:46:24.607Z",
+                  "annotations": [
+                    {
+                      "type": "steps",
+                      "description": "Шукач Петренко → «Вакансії» → «QA-інженер» → «Відгукнутися»"
+                    },
+                    {
+                      "type": "expected",
+                      "description": "Повідомлення «Відгук надіслано…»; на картці — «Ваш відгук: Нова»"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1ba8b77368fd3441e8a3-d4c6580e785f55c93c0f",
+          "file": "functions.spec.ts",
+          "line": 272,
+          "column": 5
+        },
+        {
+          "title": "F9.2 | C4 Відгук на вакансію | Некоректні | типовий: закрита вакансія",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "steps",
+                  "description": "Шукач → відкрити /vacancies/4 (закрита «Project manager»)"
+                },
+                {
+                  "type": "expected",
+                  "description": "Повідомлення «Вакансію закрито — подання кандидатур недоступне.»; кнопки «Відгукнутися» немає"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 290,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T15:46:24.998Z",
+                  "annotations": [
+                    {
+                      "type": "steps",
+                      "description": "Шукач → відкрити /vacancies/4 (закрита «Project manager»)"
+                    },
+                    {
+                      "type": "expected",
+                      "description": "Повідомлення «Вакансію закрито — подання кандидатур недоступне.»; кнопки «Відгукнутися» немає"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1ba8b77368fd3441e8a3-4d4a7b002181bbcb17a8",
+          "file": "functions.spec.ts",
+          "line": 281,
+          "column": 5
+        },
+        {
+          "title": "F10.1 | C5 Мої відгуки | Коректні | типовий",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "steps",
+                  "description": "Шукач Петренко → «Мої відгуки»"
+                },
+                {
+                  "type": "expected",
+                  "description": "Таблиця кандидатур з рядком «QA-інженер», ТехноСофт, джерело «Відгук шукача», статус «Нова»"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 316,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T15:46:25.292Z",
+                  "annotations": [
+                    {
+                      "type": "steps",
+                      "description": "Шукач Петренко → «Мої відгуки»"
+                    },
+                    {
+                      "type": "expected",
+                      "description": "Таблиця кандидатур з рядком «QA-інженер», ТехноСофт, джерело «Відгук шукача», статус «Нова»"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1ba8b77368fd3441e8a3-b25bb53ff64ba9132a71",
+          "file": "functions.spec.ts",
+          "line": 288,
+          "column": 5
+        },
+        {
+          "title": "F10.2 | C5 Мої відгуки | Коректні | мінімальний: немає відгуків",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "steps",
+                  "description": "Увійти як шукач ya@i.ua → «Мої відгуки»"
+                },
+                {
+                  "type": "expected",
+                  "description": "Повідомлення «Ви ще не відгукувалися на вакансії.» і посилання на відповідні вакансії"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 292,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T15:46:25.614Z",
+                  "annotations": [
+                    {
+                      "type": "steps",
+                      "description": "Увійти як шукач ya@i.ua → «Мої відгуки»"
+                    },
+                    {
+                      "type": "expected",
+                      "description": "Повідомлення «Ви ще не відгукувалися на вакансії.» і посилання на відповідні вакансії"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1ba8b77368fd3441e8a3-243929664b1f56bd7efc",
+          "file": "functions.spec.ts",
+          "line": 296,
+          "column": 5
+        },
+        {
+          "title": "F11.1 | E1 Профіль компанії | Коректні | типовий",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "steps",
+                  "description": "Представник ТехноСофт → «Моя компанія» → «Редагувати профіль» → Сайт = https://technosoft.ua → «Зберегти»"
+                },
+                {
+                  "type": "expected",
+                  "description": "Повідомлення «Профіль компанії збережено.»; у профілі — новий сайт"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 415,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T15:46:25.910Z",
+                  "annotations": [
+                    {
+                      "type": "steps",
+                      "description": "Представник ТехноСофт → «Моя компанія» → «Редагувати профіль» → Сайт = https://technosoft.ua → «Зберегти»"
+                    },
+                    {
+                      "type": "expected",
+                      "description": "Повідомлення «Профіль компанії збережено.»; у профілі — новий сайт"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1ba8b77368fd3441e8a3-e324d6103a03c0716247",
+          "file": "functions.spec.ts",
+          "line": 304,
+          "column": 5
+        },
+        {
+          "title": "F11.2 | E1 Профіль компанії | Некоректні | типовий: сайт без https, назва зайнята",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "steps",
+                  "description": "«Редагувати профіль» → Сайт = technosoft.ua → «Зберегти»; потім Назва = «АгроПлюс» → «Зберегти»"
+                },
+                {
+                  "type": "expected",
+                  "description": "Повідомлення «Адреса сайту має неправильний формат…»; потім «Компанія з назвою «АгроПлюс» вже існує…»"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 407,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T15:46:26.331Z",
+                  "annotations": [
+                    {
+                      "type": "steps",
+                      "description": "«Редагувати профіль» → Сайт = technosoft.ua → «Зберегти»; потім Назва = «АгроПлюс» → «Зберегти»"
+                    },
+                    {
+                      "type": "expected",
+                      "description": "Повідомлення «Адреса сайту має неправильний формат…»; потім «Компанія з назвою «АгроПлюс» вже існує…»"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1ba8b77368fd3441e8a3-d6009736e187fcd6d74a",
+          "file": "functions.spec.ts",
+          "line": 314,
+          "column": 5
+        },
+        {
+          "title": "F12.1 | E2 Ведення вакансій | Коректні | типовий: додати, редагувати, закрити, видалити",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "steps",
+                  "description": "«Вакансії компанії» → «+ Нова вакансія» → посада «DevOps-інженер», 90000, Бакалавр, 3 р., Київ → «Зберегти»; «Редагувати» → зарплата 95000; «Закрити»; «Відкрити»; «Видалити» → підтвердити"
+                },
+                {
+                  "type": "expected",
+                  "description": "Повідомлення «Вакансію «DevOps-інженер» опубліковано.», «Вакансію збережено.», «Вакансію закрито.», «Вакансію відкрито.», «Вакансію видалено.»"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 833,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T15:46:26.742Z",
+                  "annotations": [
+                    {
+                      "type": "steps",
+                      "description": "«Вакансії компанії» → «+ Нова вакансія» → посада «DevOps-інженер», 90000, Бакалавр, 3 р., Київ → «Зберегти»; «Редагувати» → зарплата 95000; «Закрити»; «Відкрити»; «Видалити» → підтвердити"
+                    },
+                    {
+                      "type": "expected",
+                      "description": "Повідомлення «Вакансію «DevOps-інженер» опубліковано.», «Вакансію збережено.», «Вакансію закрито.», «Вакансію відкрито.», «Вакансію видалено.»"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1ba8b77368fd3441e8a3-1af273e4fe431000de5f",
+          "file": "functions.spec.ts",
+          "line": 326,
+          "column": 5
+        },
+        {
+          "title": "F12.2 | E2 Ведення вакансій | Некоректні | мінімальний/максимальний: зарплата 999 і досвід 41",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "steps",
+                  "description": "«+ Нова вакансія» → посада «Х», зарплата 999, досвід 41 → «Зберегти»"
+                },
+                {
+                  "type": "expected",
+                  "description": "Повідомлення «Назва посади має бути від 2 до 100 символів…», «Зарплата менша за 1000 грн…», «Досвід більший за 40 років…»"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 364,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T15:46:27.580Z",
+                  "annotations": [
+                    {
+                      "type": "steps",
+                      "description": "«+ Нова вакансія» → посада «Х», зарплата 999, досвід 41 → «Зберегти»"
+                    },
+                    {
+                      "type": "expected",
+                      "description": "Повідомлення «Назва посади має бути від 2 до 100 символів…», «Зарплата менша за 1000 грн…», «Досвід більший за 40 років…»"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1ba8b77368fd3441e8a3-6a2c30a6ebbee1b5e2b5",
+          "file": "functions.spec.ts",
+          "line": 354,
+          "column": 5
+        },
+        {
+          "title": "F13.1 | E3 Відповідні резюме | Коректні | типовий",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "steps",
+                  "description": "«Вакансії компанії» → «Відповідні резюме» біля «Java-розробник»"
+                },
+                {
+                  "type": "expected",
+                  "description": "Список кандидатів у форматі «Ім'я П.» без контактів, з оцінками і складовими"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 345,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T15:46:27.949Z",
+                  "annotations": [
+                    {
+                      "type": "steps",
+                      "description": "«Вакансії компанії» → «Відповідні резюме» біля «Java-розробник»"
+                    },
+                    {
+                      "type": "expected",
+                      "description": "Список кандидатів у форматі «Ім'я П.» без контактів, з оцінками і складовими"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1ba8b77368fd3441e8a3-e4f3d8c013ac63f4688b",
+          "file": "functions.spec.ts",
+          "line": 367,
+          "column": 5
+        },
+        {
+          "title": "F14.1 | E4 Розгляд кандидатур | Коректні | типовий: запросити й відхилити",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "steps",
+                  "description": "«Вакансії компанії» → «Кандидатури» біля «Java-розробник» → «Запросити» біля «Оксана Ш.»; «Кандидатури» біля «QA-інженер» → «Відхилити» біля «Іван П.» → підтвердити"
+                },
+                {
+                  "type": "expected",
+                  "description": "Повідомлення «Кандидата запрошено на співбесіду…» (статус «Запрошено»), потім «Кандидатуру відхилено.» (статус «Відхилено»); кнопок рішення для них більше немає"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 462,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T15:46:28.299Z",
+                  "annotations": [
+                    {
+                      "type": "steps",
+                      "description": "«Вакансії компанії» → «Кандидатури» біля «Java-розробник» → «Запросити» біля «Оксана Ш.»; «Кандидатури» біля «QA-інженер» → «Відхилити» біля «Іван П.» → підтвердити"
+                    },
+                    {
+                      "type": "expected",
+                      "description": "Повідомлення «Кандидата запрошено на співбесіду…» (статус «Запрошено»), потім «Кандидатуру відхилено.» (статус «Відхилено»); кнопок рішення для них більше немає"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1ba8b77368fd3441e8a3-8066462f313f9089e57d",
+          "file": "functions.spec.ts",
+          "line": 375,
+          "column": 5
+        },
+        {
+          "title": "F14.2 | E4 Розгляд кандидатур | Некоректні | типовий: чужа вакансія",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "steps",
+                  "description": "Представник ТехноСофт відкриває /company/vacancies/5/applications (вакансія «Нова Логістика»)"
+                },
+                {
+                  "type": "expected",
+                  "description": "Сторінка «404 — Не знайдено»"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 258,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T15:46:28.765Z",
+                  "annotations": [
+                    {
+                      "type": "steps",
+                      "description": "Представник ТехноСофт відкриває /company/vacancies/5/applications (вакансія «Нова Логістика»)"
+                    },
+                    {
+                      "type": "expected",
+                      "description": "Сторінка «404 — Не знайдено»"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1ba8b77368fd3441e8a3-c4cc57b35e2a38535a0d",
+          "file": "functions.spec.ts",
+          "line": 391,
+          "column": 5
+        },
+        {
+          "title": "F15.1 | R1 Пошук резюме | Коректні | мінімальний: без фільтрів",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "steps",
+                  "description": "Рекрутер → «Резюме»"
+                },
+                {
+                  "type": "expected",
+                  "description": "Таблиця всіх резюме (усі статуси), впорядкована за прізвищем"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 353,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T15:46:29.028Z",
+                  "annotations": [
+                    {
+                      "type": "steps",
+                      "description": "Рекрутер → «Резюме»"
+                    },
+                    {
+                      "type": "expected",
+                      "description": "Таблиця всіх резюме (усі статуси), впорядкована за прізвищем"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1ba8b77368fd3441e8a3-65982412488e606ae4f6",
+          "file": "functions.spec.ts",
+          "line": 399,
+          "column": 5
+        },
+        {
+          "title": "F15.2 | R1 Пошук резюме | Коректні | типовий: освіта не нижче «Магістр», посада «java»",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "steps",
+                  "description": "«Резюме» → Освіта не нижче = Магістр, Посада = java → «Знайти»"
+                },
+                {
+                  "type": "expected",
+                  "description": "Резюме: Олійник Віктор, Шевченко Оксана (+ Григоренко-Задорожна з посадою Java у бажаній)"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 359,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T15:46:29.386Z",
+                  "annotations": [
+                    {
+                      "type": "steps",
+                      "description": "«Резюме» → Освіта не нижче = Магістр, Посада = java → «Знайти»"
+                    },
+                    {
+                      "type": "expected",
+                      "description": "Резюме: Олійник Віктор, Шевченко Оксана (+ Григоренко-Задорожна з посадою Java у бажаній)"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1ba8b77368fd3441e8a3-24c0b5ea0d836713d1b9",
+          "file": "functions.spec.ts",
+          "line": 406,
+          "column": 5
+        },
+        {
+          "title": "F15.3 | R1 Пошук резюме | Коректні | максимальний: усі фільтри",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "steps",
+                  "description": "«Резюме» → ПІБ = пет, Посада = java, Компанія = Глобал, Освіта = Бакалавр, Зарплата 50000–90000, Статус = Шукає роботу → «Знайти»"
+                },
+                {
+                  "type": "expected",
+                  "description": "Одне резюме — Петренко Іван Олегович"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 281,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T15:46:29.750Z",
+                  "annotations": [
+                    {
+                      "type": "steps",
+                      "description": "«Резюме» → ПІБ = пет, Посада = java, Компанія = Глобал, Освіта = Бакалавр, Зарплата 50000–90000, Статус = Шукає роботу → «Знайти»"
+                    },
+                    {
+                      "type": "expected",
+                      "description": "Одне резюме — Петренко Іван Олегович"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1ba8b77368fd3441e8a3-1758868c106718a35c1e",
+          "file": "functions.spec.ts",
+          "line": 417,
+          "column": 5
+        },
+        {
+          "title": "F15.4 | R1 Пошук резюме | Некоректні | типовий: зарплата від «п'ять»",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "steps",
+                  "description": "Відкрити /recruiter/people?salaryFrom=п'ять"
+                },
+                {
+                  "type": "expected",
+                  "description": "Діагностичне повідомлення «Фільтр зарплати містить нечислове значення…»; показано всі резюме"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 378,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T15:46:30.036Z",
+                  "annotations": [
+                    {
+                      "type": "steps",
+                      "description": "Відкрити /recruiter/people?salaryFrom=п'ять"
+                    },
+                    {
+                      "type": "expected",
+                      "description": "Діагностичне повідомлення «Фільтр зарплати містить нечислове значення…»; показано всі резюме"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1ba8b77368fd3441e8a3-237ad2eae394cf0099c7",
+          "file": "functions.spec.ts",
+          "line": 424,
+          "column": 5
+        },
+        {
+          "title": "F16.1 | R3 Підбір вакансій для шукача | Коректні | типовий",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "steps",
+                  "description": "«Резюме» → «Петренко Іван Олегович» → «Підібрати вакансії»"
+                },
+                {
+                  "type": "expected",
+                  "description": "Першою — «Java-розробник», ТехноСофт, 100 % (позначка поданої кандидатури)"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 459,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T15:46:30.422Z",
+                  "annotations": [
+                    {
+                      "type": "steps",
+                      "description": "«Резюме» → «Петренко Іван Олегович» → «Підібрати вакансії»"
+                    },
+                    {
+                      "type": "expected",
+                      "description": "Першою — «Java-розробник», ТехноСофт, 100 % (позначка поданої кандидатури)"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1ba8b77368fd3441e8a3-6b6b6aea283dff27e179",
+          "file": "functions.spec.ts",
+          "line": 430,
+          "column": 5
+        },
+        {
+          "title": "F17.1 | R4 Історія роботи | Коректні | максимальний: 3 записи, PhD",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "steps",
+                  "description": "«Резюме» → «Верховинець-Залізняк…»"
+                },
+                {
+                  "type": "expected",
+                  "description": "Картка з 3 записами історії роботи (поточний — «досі»), 3 записами освіти, стажем 12 р. 4 міс."
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 319,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T15:46:30.885Z",
+                  "annotations": [
+                    {
+                      "type": "steps",
+                      "description": "«Резюме» → «Верховинець-Залізняк…»"
+                    },
+                    {
+                      "type": "expected",
+                      "description": "Картка з 3 записами історії роботи (поточний — «досі»), 3 записами освіти, стажем 12 р. 4 міс."
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1ba8b77368fd3441e8a3-035497320bf2072e407e",
+          "file": "functions.spec.ts",
+          "line": 438,
+          "column": 5
+        },
+        {
+          "title": "F17.2 | R4 Історія роботи | Коректні | мінімальний: без історії",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "steps",
+                  "description": "«Резюме» → «Бо Ян»"
+                },
+                {
+                  "type": "expected",
+                  "description": "Картка з текстом «Історію роботи не вказано.» і «Освіту не вказано.», стаж 0 р. 0 міс."
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 282,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T15:46:31.211Z",
+                  "annotations": [
+                    {
+                      "type": "steps",
+                      "description": "«Резюме» → «Бо Ян»"
+                    },
+                    {
+                      "type": "expected",
+                      "description": "Картка з текстом «Історію роботи не вказано.» і «Освіту не вказано.», стаж 0 р. 0 міс."
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1ba8b77368fd3441e8a3-1e91b36e9aa22a40faf9",
+          "file": "functions.spec.ts",
+          "line": 445,
+          "column": 5
+        },
+        {
+          "title": "F18.1 | R5 Ведення даних людей | Коректні | типовий: додати, редагувати, додати запис роботи, видалити",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "steps",
+                  "description": "«Резюме» → «+ Нова людина» → прізвище «Демченко», ім'я «Олег», телефон, e-mail, місто → «Зберегти»; «+ Додати запис» роботи → «Додати»; «Редагувати» → місто «Львів»; «Видалити» → підтвердити (текст підтвердження з кількістю записів)"
+                },
+                {
+                  "type": "expected",
+                  "description": "Повідомлення «Резюме Демченко Олег додано…», «Запис історії роботи додано.», «Резюме збережено.», «Резюме Демченко Олег видалено…»"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 695,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T15:46:31.500Z",
+                  "annotations": [
+                    {
+                      "type": "steps",
+                      "description": "«Резюме» → «+ Нова людина» → прізвище «Демченко», ім'я «Олег», телефон, e-mail, місто → «Зберегти»; «+ Додати запис» роботи → «Додати»; «Редагувати» → місто «Львів»; «Видалити» → підтвердити (текст підтвердження з кількістю записів)"
+                    },
+                    {
+                      "type": "expected",
+                      "description": "Повідомлення «Резюме Демченко Олег додано…», «Запис історії роботи додано.», «Резюме збережено.», «Резюме Демченко Олег видалено…»"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1ba8b77368fd3441e8a3-b241ad38951d2f9d3411",
+          "file": "functions.spec.ts",
+          "line": 452,
+          "column": 5
+        },
+        {
+          "title": "F18.2 | R5 Ведення даних людей | Некоректні | типовий: порожнє прізвище, цифри в імені",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "steps",
+                  "description": "«+ Нова людина» → прізвище порожнє, ім'я «Олег2» → «Зберегти»"
+                },
+                {
+                  "type": "expected",
+                  "description": "Повідомлення «Не вказано прізвище…», «Ім’я містить недопустимі символи…»; людину не додано"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 343,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T15:46:32.200Z",
+                  "annotations": [
+                    {
+                      "type": "steps",
+                      "description": "«+ Нова людина» → прізвище порожнє, ім'я «Олег2» → «Зберегти»"
+                    },
+                    {
+                      "type": "expected",
+                      "description": "Повідомлення «Не вказано прізвище…», «Ім’я містить недопустимі символи…»; людину не додано"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1ba8b77368fd3441e8a3-0e41519bd6297b9ea0ef",
+          "file": "functions.spec.ts",
+          "line": 482,
+          "column": 5
+        },
+        {
+          "title": "F19.1 | R6 Компанії та вакансії | Коректні | типовий: додати компанію і вакансію, видалити",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "steps",
+                  "description": "«Компанії» → «+ Нова компанія» → «БудКом», Одеса, адреса, телефон, e-mail → «Зберегти»; «+ Нова вакансія» → «Виконроб», 40000 → «Зберегти»; «Видалити» компанію → підтвердити"
+                },
+                {
+                  "type": "expected",
+                  "description": "Повідомлення «Компанію «БудКом» додано.», «Вакансію «Виконроб» додано.», «Компанію «БудКом» видалено разом з її вакансіями.»"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 740,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T15:46:32.548Z",
+                  "annotations": [
+                    {
+                      "type": "steps",
+                      "description": "«Компанії» → «+ Нова компанія» → «БудКом», Одеса, адреса, телефон, e-mail → «Зберегти»; «+ Нова вакансія» → «Виконроб», 40000 → «Зберегти»; «Видалити» компанію → підтвердити"
+                    },
+                    {
+                      "type": "expected",
+                      "description": "Повідомлення «Компанію «БудКом» додано.», «Вакансію «Виконроб» додано.», «Компанію «БудКом» видалено разом з її вакансіями.»"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1ba8b77368fd3441e8a3-7c079b00d67fb683ef0f",
+          "file": "functions.spec.ts",
+          "line": 491,
+          "column": 5
+        },
+        {
+          "title": "F19.2 | R6 Компанії та вакансії | Некоректні | типовий: назва вже існує",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "steps",
+                  "description": "«+ Нова компанія» → Назва = «ТехноСофт», решта полів коректні → «Зберегти»"
+                },
+                {
+                  "type": "expected",
+                  "description": "Повідомлення «Компанія з назвою «ТехноСофт» вже існує.» з порадою змінити назву"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 369,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T15:46:33.293Z",
+                  "annotations": [
+                    {
+                      "type": "steps",
+                      "description": "«+ Нова компанія» → Назва = «ТехноСофт», решта полів коректні → «Зберегти»"
+                    },
+                    {
+                      "type": "expected",
+                      "description": "Повідомлення «Компанія з назвою «ТехноСофт» вже існує.» з порадою змінити назву"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1ba8b77368fd3441e8a3-f6c84c3768db2dacb626",
+          "file": "functions.spec.ts",
+          "line": 516,
+          "column": 5
+        },
+        {
+          "title": "F20.1 | R7 Працевлаштування | Некоректні | максимальний: дата початку +91 день",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "steps",
+                  "description": "«Кандидатури» → фільтр «Запрошено» → «Зареєструвати працевлаштування» біля «Бондар Марія» → дата = сьогодні + 91 день → «Підтвердити» → підтвердити"
+                },
+                {
+                  "type": "expected",
+                  "description": "Повідомлення «Дата початку роботи не вказана або пізніша за …»; статус кандидатури не змінено"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 395,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T15:46:33.667Z",
+                  "annotations": [
+                    {
+                      "type": "steps",
+                      "description": "«Кандидатури» → фільтр «Запрошено» → «Зареєструвати працевлаштування» біля «Бондар Марія» → дата = сьогодні + 91 день → «Підтвердити» → підтвердити"
+                    },
+                    {
+                      "type": "expected",
+                      "description": "Повідомлення «Дата початку роботи не вказана або пізніша за …»; статус кандидатури не змінено"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1ba8b77368fd3441e8a3-f9d00e3c49d1012afc19",
+          "file": "functions.spec.ts",
+          "line": 528,
+          "column": 5
+        },
+        {
+          "title": "F20.2 | R7 Працевлаштування | Коректні | типовий: дата за замовчуванням",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "steps",
+                  "description": "«Кандидатури» → «Запрошено» → «Зареєструвати працевлаштування» біля «Бондар Марія» → дата сьогодні → «Підтвердити» → підтвердити"
+                },
+                {
+                  "type": "expected",
+                  "description": "Повідомлення «Працевлаштування Бондар Марія Сергіївна на вакансію «Frontend-розробник» (ТехноСофт) зареєстровано.»; вакансія закрита; статус людини «Не шукає»; в історії роботи — новий запис «досі»"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 527,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T15:46:34.067Z",
+                  "annotations": [
+                    {
+                      "type": "steps",
+                      "description": "«Кандидатури» → «Запрошено» → «Зареєструвати працевлаштування» біля «Бондар Марія» → дата сьогодні → «Підтвердити» → підтвердити"
+                    },
+                    {
+                      "type": "expected",
+                      "description": "Повідомлення «Працевлаштування Бондар Марія Сергіївна на вакансію «Frontend-розробник» (ТехноСофт) зареєстровано.»; вакансія закрита; статус людини «Не шукає»; в історії роботи — новий запис «досі»"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1ba8b77368fd3441e8a3-21455feee349f1e2a6e2",
+          "file": "functions.spec.ts",
+          "line": 540,
+          "column": 5
+        },
+        {
+          "title": "F20.3 | R7 Працевлаштування | Некоректні | типовий: кандидатура не «Запрошено»",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "steps",
+                  "description": "Відкрити форму працевлаштування для кандидатури зі статусом «Нова» (Коваленко → QA-інженер) і натиснути «Підтвердити»"
+                },
+                {
+                  "type": "expected",
+                  "description": "Повідомлення «Працевлаштування можна зареєструвати лише для кандидатури зі статусом «Запрошено»…»"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 350,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T15:46:34.600Z",
+                  "annotations": [
+                    {
+                      "type": "steps",
+                      "description": "Відкрити форму працевлаштування для кандидатури зі статусом «Нова» (Коваленко → QA-інженер) і натиснути «Підтвердити»"
+                    },
+                    {
+                      "type": "expected",
+                      "description": "Повідомлення «Працевлаштування можна зареєструвати лише для кандидатури зі статусом «Запрошено»…»"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1ba8b77368fd3441e8a3-33ee88544dcaba3ea46f",
+          "file": "functions.spec.ts",
+          "line": 555,
+          "column": 5
+        },
+        {
+          "title": "F21.1 | Доступ за ролями | Некоректні | типовий: шукач відкриває панель рекрутера",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "steps",
+                  "description": "Увійти як шукач → відкрити /recruiter"
+                },
+                {
+                  "type": "expected",
+                  "description": "Сторінка «403 — Доступ заборонено»"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 262,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T15:46:34.954Z",
+                  "annotations": [
+                    {
+                      "type": "steps",
+                      "description": "Увійти як шукач → відкрити /recruiter"
+                    },
+                    {
+                      "type": "expected",
+                      "description": "Сторінка «403 — Доступ заборонено»"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1ba8b77368fd3441e8a3-84ef59450c14a23fa3eb",
+          "file": "functions.spec.ts",
+          "line": 568,
+          "column": 5
+        },
+        {
+          "title": "F21.2 | Неіснуюча сторінка | Некоректні | типовий",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "steps",
+                  "description": "Відкрити /no-such-page"
+                },
+                {
+                  "type": "expected",
+                  "description": "Сторінка «404 — Не знайдено» з посиланнями «На головну», «До вакансій»"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 140,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T15:46:35.221Z",
+                  "annotations": [
+                    {
+                      "type": "steps",
+                      "description": "Відкрити /no-such-page"
+                    },
+                    {
+                      "type": "expected",
+                      "description": "Сторінка «404 — Не знайдено» з посиланнями «На головну», «До вакансій»"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1ba8b77368fd3441e8a3-7adb31017cbfa29355a3",
+          "file": "functions.spec.ts",
+          "line": 575,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-14T15:46:15.327Z",
+    "duration": 20111.793,
+    "expected": 51,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

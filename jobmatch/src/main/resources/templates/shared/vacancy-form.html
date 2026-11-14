@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="uk" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{fragments :: head('Вакансія')}"></head>
+<body>
+<header th:replace="~{fragments :: header}"></header>
+<nav th:replace="~{fragments :: crumbs}"></nav>
+<main id="main" class="wrap page">
+    <div th:replace="~{fragments :: messages}"></div>
+    <h1 th:text="${#strings.endsWith(action, 'new') ? 'Нова вакансія' : 'Редагування вакансії'}">Вакансія</h1>
+    <form class="card form" th:action="@{${action}}" th:object="${form}" method="post" novalidate>
+        <div th:replace="~{fragments :: formErrors(${form})}"></div>
+        <div th:replace="~{fragments :: input('position', 'Посада', 'text', true, 'Одна посада, напр. «Java-розробник».')}"></div>
+        <div th:replace="~{fragments :: input('salary', 'Зарплата, грн/міс', 'number', true, '1000–1 000 000')}"></div>
+        <div class="field"><label for="requiredEducation">Мінімальна освіта</label>
+            <select th:field="*{requiredEducation}" class="short">
+                <option value="">будь-яка</option>
+                <option th:each="l : ${T(ua.knu.jobmatch.domain.EducationLevel).values()}" th:value="${l}" th:text="${l.label}">Бакалавр</option>
+            </select></div>
+        <div th:replace="~{fragments :: input('requiredExperienceYears', 'Мінімальний досвід, років', 'number', true, '0–40; 0 — без досвіду.')}"></div>
+        <div th:replace="~{fragments :: input('city', 'Місто роботи', 'text', true, null)}"></div>
+        <div th:replace="~{fragments :: textarea('requirements', 'Вимоги', 2000, 'Без вимог до віку і статі (ст. 11-1 Закону «Про зайнятість населення»).')}"></div>
+        <div class="form-actions"><button class="btn" type="submit">Зберегти</button>
+            <a class="btn btn-ghost" th:href="@{${#strings.startsWith(action, '/company') ? '/company/vacancies' : '/recruiter/companies'}}">Скасувати</a></div>
+    </form>
+</main>
+<footer th:replace="~{fragments :: footer}"></footer>
+</body>
+</html>

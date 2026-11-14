@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="uk" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{fragments :: head('Мої відгуки')}"></head>
+<body>
+<header th:replace="~{fragments :: header}"></header>
+<nav th:replace="~{fragments :: crumbs}"></nav>
+<main id="main" class="wrap page">
+    <div th:replace="~{fragments :: messages}"></div>
+    <h1>Мої відгуки</h1>
+    <div class="table-wrap" th:if="${!#lists.isEmpty(applications)}">
+        <table>
+            <thead><tr><th>Дата</th><th>Вакансія</th><th>Компанія</th><th>Джерело</th><th>Статус</th></tr></thead>
+            <tbody><tr th:each="a : ${applications}">
+                <td th:text="${#temporals.format(a.createdAt, 'dd.MM.yyyy')}">01.01.2026</td>
+                <td><a th:href="@{/vacancies/{id}(id=${a.vacancy.id})}" th:text="${a.vacancy.position}">Посада</a></td>
+                <td th:text="${a.vacancy.company.name}">Компанія</td>
+                <td th:text="${a.source.label}">Відгук</td>
+                <td><span class="badge" th:classappend="'badge-' + ${#strings.toLowerCase(a.status)}" th:text="${a.status.label}">Нова</span></td>
+            </tr></tbody>
+        </table>
+    </div>
+    <div class="card empty" th:if="${#lists.isEmpty(applications)}">
+        <p>Ви ще не відгукувалися на вакансії.</p><p><a th:href="@{/me/matches}">Переглянути відповідні вакансії</a></p>
+    </div>
+</main>
+<footer th:replace="~{fragments :: footer}"></footer>
+</body>
+</html>

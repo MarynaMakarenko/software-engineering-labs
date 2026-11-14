@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="uk" xmlns:th="http://www.thymeleaf.org">
+<body>
+<section th:fragment="personal(person)" class="card">
+    <h2>Особисті дані</h2>
+    <dl class="props">
+        <dt>ПІБ</dt><dd th:text="${person.fullName}">ПІБ</dd>
+        <dt>Дата народження</dt><dd th:text="${person.birthDate != null ? #temporals.format(person.birthDate, 'dd.MM.yyyy') : '—'}">—</dd>
+        <dt>Телефон</dt><dd th:text="${person.phone}">+380</dd>
+        <dt>E-mail</dt><dd th:text="${person.email}">e-mail</dd>
+        <dt>Місто</dt><dd th:text="${person.city}">Місто</dd>
+        <dt>Домашня адреса</dt><dd th:text="${person.homeAddress != null ? person.homeAddress : '—'}">—</dd>
+        <dt>Статус пошуку</dt><dd><span class="badge" th:classappend="'badge-' + ${#strings.toLowerCase(person.jobStatus)}" th:text="${person.jobStatus.label}">Шукає</span></dd>
+        <dt>Бажана посада</dt><dd th:text="${person.desiredPosition != null ? person.desiredPosition : '—'}">—</dd>
+        <dt>Бажана зарплата</dt><dd th:text="${person.desiredSalary != null ? #numbers.formatInteger(person.desiredSalary, 1, 'WHITESPACE') + ' грн' : '—'}">—</dd>
+        <dt>Стаж</dt><dd th:text="${person.experienceText(#temporals.createToday())}">0 р.</dd>
+        <dt>Про себе</dt><dd class="pre" th:text="${person.about != null ? person.about : '—'}">—</dd>
+    </dl>
+</section>
+
+<div th:fragment="educationTable(person, deleteBase)">
+    <div class="table-wrap" th:if="${!#lists.isEmpty(person.educations)}">
+        <table>
+            <thead><tr><th>Рівень</th><th>Заклад</th><th>Спеціальність</th><th class="num">Рік</th><th th:if="${deleteBase != null}"><span class="sr">Дії</span></th></tr></thead>
+            <tbody><tr th:each="e : ${person.educations}">
+                <td th:text="${e.level.label}">Бакалавр</td><td th:text="${e.institution}">Заклад</td>
+                <td th:text="${e.specialty}">Спец.</td><td class="num" th:text="${e.graduationYear}">2020</td>
+                <td class="actions" th:if="${deleteBase != null}">
+                    <form th:action="@{${deleteBase} + ${e.id} + '/delete'}" method="post" data-confirm="Видалити запис про освіту?">
+                        <button class="btn btn-small btn-danger" type="submit">Видалити</button></form>
+                </td>
+            </tr></tbody>
+        </table>
+    </div>
+    <p class="muted" th:if="${#lists.isEmpty(person.educations)}">Освіту не вказано.</p>
+</div>
+
+<form th:fragment="educationForm(action, open)" th:action="@{${action}}" th:object="${educationForm}" method="post" novalidate
+      id="education-form" th:hidden="${!open}" class="card form">
+    <h3>Новий запис про освіту</h3>
+    <div th:replace="~{fragments :: formErrors(${educationForm})}"></div>
+    <div class="field"><label for="level">Рівень <span class="req" aria-hidden="true">*</span></label>
+        <select th:field="*{level}" th:errorclass="invalid" class="short">
+            <option value="">— виберіть —</option>
+            <option th:each="l : ${T(ua.knu.jobmatch.domain.EducationLevel).values()}" th:value="${l}" th:text="${l.label}">Бакалавр</option>
+        </select></div>
+    <div th:replace="~{fragments :: input('institution', 'Навчальний заклад', 'text', true, null)}"></div>
+    <div th:replace="~{fragments :: input('specialty', 'Спеціальність', 'text', true, null)}"></div>
+    <div th:replace="~{fragments :: input('graduationYear', 'Рік закінчення', 'number', true, '1950–2035')}"></div>
+    <div class="form-actions"><button class="btn" type="submit">Додати</button>
+        <button class="btn btn-ghost" type="button" data-toggle="education-form">Скасувати</button></div>
+</form>
+
+<div th:fragment="workTable(person, editBase, deleteBase)">
+    <div class="table-wrap" th:if="${!#lists.isEmpty(person.workRecords)}">
+        <table>
+            <thead><tr><th>Період</th><th>Компанія</th><th>Посада</th><th class="num">Зарплата, грн</th><th th:if="${deleteBase != null}"><span class="sr">Дії</span></th></tr></thead>
+            <tbody><tr th:each="w : ${person.workRecords}">
+                <td th:text="${#temporals.format(w.startDate, 'MM.yyyy')} + ' – ' + ${w.endDate != null ? #temporals.format(w.endDate, 'MM.yyyy') : 'досі'}">01.2020 – досі</td>
+                <td th:text="${w.companyName}">Компанія</td>
+                <td th:text="${w.position}">Посада</td>
+                <td class="num" th:text="${w.salary != null ? #numbers.formatInteger(w.salary, 1, 'WHITESPACE') : '—'}">—</td>
+                <td class="actions" th:if="${deleteBase != null}">
+                    <a th:if="${editBase != null}" class="btn btn-small btn-ghost" th:href="@{${editBase} + ${w.id} + '/edit'}">Редагувати</a>
+                    <form th:action="@{${deleteBase} + ${w.id} + '/delete'}" method="post" data-confirm="Видалити запис історії роботи?">
+                        <button class="btn btn-small btn-danger" type="submit">Видалити</button></form>
+                </td>
+            </tr></tbody>
+        </table>
+    </div>
+    <p class="muted" th:if="${#lists.isEmpty(person.workRecords)}">Історію роботи не вказано.</p>
+</div>
+
+<div th:fragment="personFields">
+    <div class="cols-2">
+        <div>
+            <div th:replace="~{fragments :: input('lastName', 'Прізвище', 'text', true, null)}"></div>
+            <div th:replace="~{fragments :: input('firstName', 'Ім\'я', 'text', true, null)}"></div>
+            <div th:replace="~{fragments :: input('middleName', 'По батькові', 'text', false, null)}"></div>
+            <div th:replace="~{fragments :: input('birthDate', 'Дата народження', 'date', false, null)}"></div>
+            <div th:replace="~{fragments :: input('phone', 'Телефон', 'tel', true, 'Формат: +380XXXXXXXXX')}"></div>
+            <div th:replace="~{fragments :: input('email', 'E-mail', 'email', true, null)}"></div>
+        </div>
+        <div>
+            <div th:replace="~{fragments :: input('city', 'Місто', 'text', true, null)}"></div>
+            <div th:replace="~{fragments :: input('homeAddress', 'Домашня адреса', 'text', false, null)}"></div>
+            <div class="field"><label for="jobStatus">Статус пошуку <span class="req" aria-hidden="true">*</span></label>
+                <select th:field="*{jobStatus}" class="short">
+                    <option th:each="s : ${T(ua.knu.jobmatch.domain.JobStatus).values()}" th:value="${s}" th:text="${s.label}">Шукає</option>
+                </select></div>
+            <div th:replace="~{fragments :: input('desiredPosition', 'Бажана посада', 'text', false, 'Одна посада, напр. «Java-розробник».')}"></div>
+            <div th:replace="~{fragments :: input('desiredSalary', 'Бажана зарплата, грн/міс', 'number', false, '1000–1 000 000; порожнє — без обмежень.')}"></div>
+        </div>
+    </div>
+    <div th:replace="~{fragments :: textarea('about', 'Про себе', 1000, 'Ключові навички і досягнення.')}"></div>
+</div>
+</body>
+</html>
